@@ -10,6 +10,7 @@
 <body>
 <a href="AllGenre.php">Genre</a>
 <a href="trending.php?page=1">Trending</a>
+<a href="topRated.php?page=1">Top Rated</a>
     <?php
         require_once 'core.php';
         $core = new Core();

@@ -9,6 +9,11 @@ class Core{
         return json_decode($data, true);
     }
 
+    public function getTopRated($page){
+        $data = file_get_contents('https://api.themoviedb.org/3/movie/top_rated?api_key='.self::$APIkey.'&page='.$page);
+        return json_decode($data, true);
+    }
+
     public function getMovie($movie_id){
         $data = file_get_contents('https://api.themoviedb.org/3/movie/'.$movie_id.'?api_key='.self::$APIkey);
         return json_decode($data, true);
