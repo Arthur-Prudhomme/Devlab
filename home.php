@@ -9,11 +9,11 @@
 </head>
 <body>
 <a href="AllGenre.php">Genre</a>
-<a href="trending.php">Genre</a>
+<a href="trending.php?page=1">Trending</a>
     <?php
         require_once 'core.php';
         $core = new Core();
-        $trending = $core->getTrending();
+        $trending = $core->getTrending(1);
 
         foreach($trending['results'] as $item) {
             echo '<div>';

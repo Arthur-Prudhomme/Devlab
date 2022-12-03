@@ -4,8 +4,8 @@ class Core{
 
     private static $APIkey = 'e62f0ff469851025669bbc2c9d762e25';
 
-    public function getTrending(){
-        $data = file_get_contents('https://api.themoviedb.org/3/trending/movie/day?api_key='.self::$APIkey);
+    public function getTrending($page){
+        $data = file_get_contents('https://api.themoviedb.org/3/trending/movie/day?api_key='.self::$APIkey.'&page='.$page);
         return json_decode($data, true);
     }
 
