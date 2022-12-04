@@ -12,7 +12,18 @@
 <a href="AllGenre.php">Genre</a>
 <a href="trending.php?page=1">Trending</a>
 <a href="topRated.php?page=1">Top Rated</a>
+
+<form method="post">
+    <input type="text" name="search" placeholder="enter keyword">
+    <input type="submit" value="Search">
+</form>
+
+<br>
     <?php
+        if(!empty($_POST)){
+            header("Location: search.php?keyword=".$_POST['search']."&page=1");
+        }
+
         require_once 'core.php';
         $core = new Core();
         $trending = $core->getTrending(1);
