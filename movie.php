@@ -24,17 +24,6 @@
       $movie = $core->getMovie($movie_id);
       $cast = $core->getCast($movie_id);
 
-      echo '<div>';
-      echo '<br><br>';
-
-      echo '<div>';
-      foreach($movie['genres'] as $item) {
-        echo '<a href=genre.php?id='.$item['id'].'&page=1>'.$item['name'].'<br /></a>';
-      }
-      echo '</div>';
-      echo '</div>';
-
-      echo '<br><br>';
     ?>
 
     <main class="flex flex-col mt-32 ">
@@ -45,13 +34,23 @@
         ?>
           
       </div>
-      <div class="flex flex-col w-8/12">
+      <div class=" droite flex flex-col w-8/12">
         <div>
           <h2 class="titre uppercase font-bold text-3xl">
             <?php 
               echo $movie['title'] . '<br />';
             ?>
           </h2>
+          <h4 class="flex flex-row mt-2">
+            Genres : 
+            <?php
+              echo '<div>';
+              foreach($movie['genres'] as $item) {
+                echo '<a href=genre.php?id='.$item['id'].'&page=1>'.$item['name'].'</a>';
+              }
+              echo '</div>';
+            ?>
+          </h4>
           <p class="leading-5 mt-4 titre">
             <?php
               echo $movie['overview'];
@@ -81,16 +80,23 @@
         </div>
         <div>
           <h3 class="titre uppercase font-bold text-2xl">actors</h3>
-          <div class="acteur flex snap-x snap-mandatory h-max w-full mx:auto overflow-scroll overflow-y-hidden mt-6">
+          <div class="acteur flex snap-x snap-mandatory h-max w-full mx:auto overflow-scroll overflow-y-hidden mt-6 justify-between">
             <div class="mr-8 snap-start shrink-0 flex flex-row text-center">
               <?php
                 foreach($cast['cast'] as $item) {
-                  ?><?php
-                  echo '<div>';
-                  echo '<img src='.$core->getImg($item['profile_path'],200).'><br />';
-                  echo $item['name'] . ' as ' . $item['character'] . '<br />';
-                  echo '<p>'.$movie['title'].'<br /></p>';
-                  echo '</div>';
+                  ?>
+                    <div class=" mr-8">
+                      <?php
+                      echo '<img src='.$core->getImg($item['profile_path'],200).'><br />';
+                      ?>
+                      <p>
+                        <?php echo $item['name'] . ' as '. '<br />'; ?>
+                      </p>
+                      <p class=" text-rouge font-bold">
+                        <?php echo $item['character'] . ''; ?>
+                      </p>
+                    </div>
+                  <?php
                 }
               ?>
             </div>

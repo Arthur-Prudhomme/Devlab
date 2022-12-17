@@ -44,16 +44,30 @@
     border-radius: 20px;
 }
 
+.movie {
+    height: 100Vh;
+}
+
+.movie h4 a{
+    margin-left: 2vh;
+    color: #726F6F;
+    opacity: 50%;
+}
+
 .movie .affiche img{
     border-radius: 20px;
+    height: 90%;
+}
+
+.movie .droite {
+    margin-left: 3vh;
+    margin-right: -3vh;
 }
 
 .movie .acteur img {
     border-radius:10px;
 }
 
-.movie .acteur p{
-    color: #AE0000;
-    font-weight: bold;
-    font-size: 14px;
+.movie .acteur::-webkit-scrollbar {
+    display: none;
 }
