@@ -44,11 +44,9 @@
           <h4 class="flex flex-row mt-2">
             Genres : 
             <?php
-              echo '<div>';
               foreach($movie['genres'] as $item) {
                 echo '<a href=genre.php?id='.$item['id'].'&page=1>'.$item['name'].'</a>';
               }
-              echo '</div>';
             ?>
           </h4>
           <p class="leading-5 mt-4 titre">
@@ -58,8 +56,8 @@
           </p>
 
           <div class="flex flex-row my-6 w-5/12 justify-between">
-            <button class="btn off bg-fond px-7 py-2 text-rouge font-bold uppercase rounded-lg">watched</button>
-            <button class="appear bg-fond px-7 py-2 font-bold uppercase rounded-lg">add to album</button>
+            <button class="btn off bg-fond px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black">watched</button>
+            <button class="appear bg-fond px-7 py-2 font-bold uppercase rounded-lg hover:bg-black">add to album</button>
           </div>
 
           <div class="hidden album absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col bg-form text-rouge w-2/12 mx-auto py-2 justify-between h-64">

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+input:focus {
+    outline: none;
+}
+
 .films {
     width: 100%;
 }
@@ -54,14 +58,13 @@
     opacity: 50%;
 }
 
+.movie h4 a:hover{
+    opacity: 80%;
+}
+
 .movie .affiche img{
     border-radius: 20px;
     height: 90%;
-}
-
-.movie .droite {
-    margin-left: 3vh;
-    margin-right: -3vh;
 }
 
 .movie .acteur img {

@@ -12,6 +12,7 @@ module.exports = {
         gris:'#726F6F',
         form:'#0A0F14',
         rouge:'#AE0000',
+        darker_rouge:'#670101',
         bg:'#15191E',
       },
 

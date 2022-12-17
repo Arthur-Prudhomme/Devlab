@@ -86,6 +86,7 @@
             <img class="rounded-2xl" src="../build/img/dune.jpg" alt="">
         </div>
       </div>
+
       <!-- <div id="carouselExampleSlidesOnly" class="carousel slide relative " data-bs-ride="carousel">
           <div class="carousel-inner relative w-full overflow-hidden rounded-2xl">
               <div class="carousel-item active relative float-left w-full">
@@ -133,8 +134,6 @@
       </div>
 
   </main>
-
-
 
 </div>
 <script>
