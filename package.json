@@ -1,0 +1,25 @@
+{
+  "name": "devlab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/input.css -o ./build/css/style.css --watch",
+    "prettier": "npx prettier  --write **/*.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arthur-Prudhomme/Devlab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arthur-Prudhomme/Devlab/issues"
+  },
+  "homepage": "https://github.com/Arthur-Prudhomme/Devlab#readme",
+  "devDependencies": {
+    "prettier-plugin-tailwindcss": "^0.2.0",
+    "tailwindcss": "^3.2.4"
+  }
+}

@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.films {
+    width: 100%;
+}
+
+.films div {
+    width: 100%;
+    height: 93%;
+    z-index: 10;
+    display: flex;
+    position: relative;
+    align-items: center;
+    border-radius: 20px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.films div div {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent, #000);
+    position: absolute;
+    z-index: 5;
+}
+
+.films p{
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    bottom: 6%;
+    z-index: 10;
+    width: 90%;
+}
+
+.films img {
+    display: flex;
+    z-index: -10;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.movie .affiche img{
+    border-radius: 20px;
+}
+
+.movie .acteur img {
+    border-radius:10px;
+}
+
+.movie .acteur p{
+    color: #AE0000;
+    font-weight: bold;
+    font-size: 14px;
+}
