@@ -32,8 +32,35 @@
     ?>
 
     <main class="flex flex-col mt-32  w-11/12 mx-auto">
+    <div class="flex flex-row w-full items-center mx-auto">
+      <h2 class="titre uppercase text-rouge font-bold text-2xl w-11/12 mx-auto">trending</h2>
+      <div class="w-full flex flex-col items-end">
+        <button class="uppercase filter bg-rouge txt-fond rounded-md px-4 py-1 font-extrabold w-max focus:rounded-br-none relative">filter
 
-    <h2 class="titre uppercase text-rouge mt-8 font-bold text-2xl">Trending</h2>
+        <div class="hidden absolute top-8 right-0 bg-rouge text-fond capitalize flex flex-col w-[500px] rounded-lg rounded-tr-none py-2 justify-between z-20 font-normal">
+          <div class="mt-2 flex flex-row items-center w-11/12 mx-auto ">
+            <h3 class="uppercase font-bold mr-2">movies</h3>
+            <input class="w-4 h-4 mr-2 ml-1" type="radio">All
+            <input class="w-4 h-4 mr-2 ml-1" type="radio">Only watched
+            <input class="w-4 h-4 mr-2 ml-1" type="radio">Only unwatched
+          </div>
+          <div class="mt-4 flex flex-row items-center w-11/12 mx-auto">
+            <h3 class="uppercase font-bold mr-2">age</h3>
+            <input class="w-4 h-4 mr-2 ml-1" type="radio">All
+            <input class="w-4 h-4 mr-2 ml-1" type="radio">-18
+            <input class="w-4 h-4 mr-2 ml-1" type="radio">-16
+            <input class="w-4 h-4 mr-2 ml-1" type="radio">-12
+          </div>
+          <div class="mt-4 flex flex-row items-center w-11/12 mx-auto">
+            <h3 class="uppercase font-bold mr-2">order</h3>
+            <input class="w-4 h-4 mr-2 ml-1" type="radio">Ascending
+            <input class="w-4 h-4 mr-2 ml-1" type="radio">Descending
+          </div>
+        </div>
+        </button>
+      </div>
+    </div>
+
 
     <div class="films grid grid-cols-5 gap-4 mx-auto mt-8">
 
@@ -59,6 +86,8 @@
     </main>
   </div>
   
+  <script>
+</script>
 
 </body>
 </html>

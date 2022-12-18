@@ -15,11 +15,7 @@ module.exports = {
         darker_rouge:'#670101',
         bg:'#15191E',
       },
-
-      hauteur:{
-        'slider':'500px',
-      },
-
+      
       backgroundImage: {
         'card-bg': "url('https://i.pinimg.com/originals/df/07/fb/df07fbdb4002b4098f68ea166fafa7de.jpg')",
         'card_bg': "url('https://static0.srcdn.com/wordpress/wp-content/uploads/2020/02/v-for-vendetta-Edited.jpg')",

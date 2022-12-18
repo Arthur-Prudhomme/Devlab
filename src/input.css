@@ -74,12 +74,3 @@ input:focus {
 .movie .acteur::-webkit-scrollbar {
     display: none;
 }
-
-.on {
-  background-color: #AE0000;
-  color: #0D1013;
-}
-
-.off {
-  border: none;
-}
