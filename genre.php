@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="./style.css" rel="stylesheet">
+    <link href="src/input.css" rel="stylesheet">
+    <link href="./build/css/style.css" rel="stylesheet">
 </head>
 <body>
     <?php
