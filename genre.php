@@ -11,29 +11,59 @@
     <link href="./build/css/style.css" rel="stylesheet">
 </head>
 <body>
+
+  <div class="bg-bg h-full w-full flex flex-col relative">
+
+    <?php 
+    require_once 'utils/header.php';
+    ?>
+
     <?php
-    $genre_id = $_GET['id'];
-    $page = $_GET['page'];
+      $genre_id = $_GET['id'];
+      $page = $_GET['page'];
 
-    require_once 'core.php';
-    $core = new Core();
+      require_once 'core.php';
+      $core = new Core();
 
-    $movie = $core->getMovieByGenre($genre_id,$page);
-    foreach($movie['results'] as $item) {
-        echo '<div>';
-        echo $item['title'] . '<br />';
-        echo '<a href=movie.php?id='.$item['id'].'><img src='. $core->getImg($item['poster_path'],200).'></a>';
-        echo '</div>';
+      $movie = $core->getMovieByGenre($genre_id,$page);
+    ?>
+    <?php
+    if(!empty($_POST)){
+        header("Location: trending.php?page=".$_POST['page']);
     }
     ?>
-    <form method="post">
-        <input type="number" name="page" placeholder="enter page" min="1" max="<?php echo $movie['total_pages'] ?>" value="<?php echo $page ?>">
-        <input type="submit" value="Jump to">
-    </form>
-    <?php
-        if(!empty($_POST)){
-            header("Location: genre.php?id=".$genre_id."&page=".$_POST['page']);
-        }
-    ?>
+
+      <main class="flex flex-col mt-32  w-11/12 mx-auto">
+
+        <h2 class="titre uppercase text-rouge mt-8 font-bold text-2xl">Genre : '
+          <?php 
+              
+            ?>'
+        </h2>
+
+        <div class="films grid grid-cols-5 gap-4 mx-auto mt-8">
+
+          <?php
+
+            foreach($movie['results'] as $item) {
+              echo '<a href=movie.php?id='.$item['id'].'>';
+              echo '<div>';
+              echo '<img src='. $core->getImg($item['poster_path'],200).'>';
+              echo '<div> </div>';
+              echo '<p>'. $item["title"]. '</p>'. '<br />';
+              echo '</div>';
+              echo '</a>';
+          }
+
+          ?>
+        </div>
+
+        <form class="mt-8 mb-24 w-1/2" method="post">
+            <input class="text-font rounded-md pl-1  w-1/12" type="number" name="page" placeholder="enter page" min="1" max="<?php echo $trending['total_pages'] ?>" value="<?php echo $page ?>">
+            <input class="text-white hover:opacity-60 cursor-pointer" type="submit" value="Jump to">
+        </form>
+
+      </main>
+    </div>
 </body>
 </html>
