@@ -31,36 +31,47 @@
     }
     ?>
 
-    <main class="flex flex-col mt-32  w-11/12 mx-auto">
+    <main class="flex flex-col mt-20 lg:mt-32  w-11/12 mx-auto">
     <div class="flex flex-row w-full items-center mx-auto">
       <h2 class="titre uppercase text-rouge font-bold text-2xl w-11/12 mx-auto">trending</h2>
       <div class="w-full flex flex-col items-end">
         <button class="btnFilter uppercase bg-fond text-rouge rounded-md px-4 py-1 font-bold w-max focus:rounded-br-none relative">filter
 
-        <div class=" filter absolute top-8 right-0 bg-fond text-gris capitalize flex flex-col lg:w-[500px] rounded-lg rounded-tr-none py-4 pb-6 justify-between z-20 font-normal">
-          <div class="mt-2 flex flex-col lg:flex-row items-center w-11/12 mx-auto ">
+        <div class="hidden filter absolute top-8 right-0 bg-fond text-gris capitalize flex flex-col lg:w-[500px] w-[300px] rounded-lg rounded-tr-none py-4 pb-6 justify-between z-20 font-normal">
+          <div class="mt-2 flex flex-col lg:flex-row lg:items-center items-start w-11/12 mx-auto ">
             <div>
               <h3 class="uppercase font-bold mr-2">movies</h3>
             </div>
-            <div>
+            <div class="mt-2">
               <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">All
-              <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">Only watched
-              <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">Only unwatched
+              <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">Watched
+              <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">Unwatched
             </div>
           </div>
           <div class="w-full border-t-gris border-t mt-4"></div>
-          <div class="mt-4 flex flex-col lg:flex-row items-center w-11/12 mx-auto">
-            <h3 class="uppercase font-bold mr-2">age</h3>
-            <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">All
-            <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">-18
-            <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">-16
-            <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">-12
+          <div class="mt-4 flex flex-col lg:flex-row lg:items-center items-start w-11/12 mx-auto">
+            <div>
+              <h3 class="uppercase font-bold mr-2">age</h3>
+            </div>
+
+            <div class="mt-2">
+              <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">All
+              <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">-18
+              <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">-16
+              <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">-12
+            </div>
+            
           </div>
           <div class="w-full border-t-gris border-t mt-4"></div>
-          <div class="mt-4 flex flex-col lg:flex-row items-center w-11/12 mx-auto">
-            <h3 class="uppercase font-bold mr-2">order</h3>
-            <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">Ascending
-            <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">Descending
+          <div class="mt-4 flex flex-col lg:flex-row lg:items-center items-start w-11/12 mx-auto">
+            <div>
+              <h3 class="uppercase font-bold mr-2">order</h3>
+            </div>
+            <div class="mt-2">
+              <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">Ascending
+              <input name="drone" class="w-4 h-4 mr-2 ml-1" type="radio">Descending
+            </div>
+            
           </div>
         </div>
         </button>
