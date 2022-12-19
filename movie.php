@@ -42,24 +42,24 @@
 
     ?>
 
-  <div class="bg-bg h-full w-full flex flex-col relative">
+  <div class="bg-bg h-max lg:h-full w-full flex flex-col relative">
 
     <main class="flex flex-col mt-32 ">
-    <div class="flex flex-row w-11/12 mx-auto text-gris">
-      <div class="affiche flex w-5/12 rounded-2xl">
+    <div class="flex flex-col lg:flex-row w-11/12 mx-auto text-gris">
+      <div class="affiche flex lg:w-5/12 rounded-2xl">
         <?php 
           echo '<img src='.$core->getImg($movie['poster_path'],300).'><br />';
         ?>
           
       </div>
-      <div class=" droite flex flex-col w-8/12">
+      <div class="droite flex flex-col w-full lg:w-8/12">
         <div>
-          <h2 class="titre uppercase font-bold text-3xl">
+          <h2 class="titre uppercase font-bold mt-8 lg:mt-0 text-2xl lg:text-3xl">
             <?php 
               echo $movie['title'] . '<br />';
             ?>
           </h2>
-          <h4 class="flex flex-row mt-2">
+          <h4 class="flex flex-col lg:flex-row mt-2">
             Genres : 
             <?php
               foreach($movie['genres'] as $item) {
@@ -73,14 +73,13 @@
             ?>
           </p>
 
-          <div class="flex flex-row my-6 w-5/12 justify-between">
+          <div class="flex flex-row my-6 lg:w-5/12 justify-between">
             <button class="btn off bg-fond px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black">watched</button>
             <button class="bg-fond px-7 py-2 font-bold uppercase rounded-lg hover:bg-black">add to album</button>
           </div>
-
   
         </div>
-        <div>
+        <div class="mb-12 lg:mb-0">
           <h3 class="titre uppercase font-bold text-2xl">actors</h3>
           <div class="acteur flex snap-x snap-mandatory h-max w-full mx:auto overflow-scroll overflow-y-hidden mt-6 justify-between">
             <div class="mr-8 snap-start shrink-0 flex flex-row text-center">

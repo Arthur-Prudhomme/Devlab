@@ -1,4 +1,14 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="icon" type="image/png" href="../build/img/logo_v2_fond.svg" />
+</head>
+<body>
+  
 <header class="z-20 flex fixed top-0 w-screen flex-row bg-fond text-gris h-20">
     <div class="w-11/12 flex flex-row justify-between mx-auto">
         <div class="w-1/2 flex items-center">
