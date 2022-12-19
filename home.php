@@ -78,7 +78,7 @@
       </div>
   </div>
 
-  <main class="flex flex-col mt-32 mb-24">
+  <main class="flex flex-col mt-24 lg:mt-32 mb-24 px-5 lg:px-0">
       <div class="flex mx-auto flex-col">
 
       <div class="rounded-2xl flex">
@@ -140,7 +140,7 @@
 
       <h2 class="titre uppercase text-rouge mt-8 font-bold text-2xl">Trending</h2>
 
-        <div class="films grid grid-cols-5 gap-4 mx-auto mt-8">
+        <div class="films grid grid-cols-2 lg:grid-cols-5 gap-4 mx-auto mt-8 w-11/12 ">
 
           <?php
             foreach($trending['results'] as $item) {

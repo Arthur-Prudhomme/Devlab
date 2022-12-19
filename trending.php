@@ -62,7 +62,7 @@
     </div>
 
 
-    <div class="films grid grid-cols-5 gap-4 mx-auto mt-8">
+    <div class="films grid grid-cols-2 lg:grid-cols-5 gap-4 mx-auto mt-8">
 
     <?php
 

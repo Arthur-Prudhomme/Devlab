@@ -33,7 +33,7 @@
     }
     ?>
 
-      <main class="flex flex-col mt-32  w-11/12 mx-auto">
+      <main class="flex flex-col mt-20 lg:mt-32  w-11/12 mx-auto">
 
         <h2 class="titre uppercase text-rouge mt-8 font-bold text-2xl">Genre : '
           <?php 
@@ -41,7 +41,7 @@
             ?>'
         </h2>
 
-        <div class="films grid grid-cols-5 gap-4 mx-auto mt-8">
+        <div class="films grid grid-cols-2 lg:grid-cols-5 gap-4 mx-auto mt-8">
 
           <?php
 
