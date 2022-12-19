@@ -18,10 +18,10 @@
         </div>
         <div class="menu w-1/2 hidden lg:flex flex-row justify-between items-center text-gris">
           <ul class="flex flex-col lg:flex-row justify-between lg:items-center lg:w-full w-2/3 bg-fond absolute lg:relative top-0 right-0 p-8 lg:p-0 lg:h-auto h-80"> 
-              <a href="home.php" class="  text-gris cursor-pointer">Home</a>
-              <a href="AllGenre.php" class="  text-gris cursor-pointer">Genre</a>
-              <a href="topRated.php?page=1" class="  text-gris cursor-pointer">Top Rated </a>
-              <a href="trending.php?page=1" class="  text-gris cursor-pointer">Trending</a>
+              <a href="home.php" class="text-gris cursor-pointer">Home</a>
+              <a href="AllGenre.php" class="text-gris cursor-pointer">Genre</a>
+              <a href="topRated.php?page=1" class="text-gris cursor-pointer">Top Rated </a>
+              <a href="trending.php?page=1" class="text-gris cursor-pointer">Trending</a>
               <a class=" text-gris appear cursor-pointer">Login</a>
 
               <form class="lg:flex flex-row" method="post">
