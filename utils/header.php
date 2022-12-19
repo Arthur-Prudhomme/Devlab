@@ -9,7 +9,7 @@
 </head>
 <body>
   
-<header class="z-20 flex fixed top-0 w-screen flex-row bg-fond text-gris h-14 lg:h-20">
+<header class="z-50 flex fixed top-0 w-screen flex-row bg-fond text-gris h-14 lg:h-20">
     <div class="w-11/12 flex flex-row justify-between mx-auto">
         <div class="w-1/2 flex items-center">
           <a href="home.php">
@@ -35,7 +35,7 @@
             
             <div class="block w-5 transform -translate-x-1/2 -translate-y-1/2 ">
               <span  class="rounded-sm block absolute h-0.5 w-7 text-gris bg-current transform transition duration-500 ease-in-out" :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
-              <span  class="rounded-sm block absolute  h-0.5 w-5 text-gris bg-current   transform transition duration-500 ease-in-out" :class="{'opacity-0': open } "></span>
+              <span  class="rounded-sm block absolute  h-0.5 w-5 text-gris bg-current transform transition duration-500 ease-in-out" :class="{'opacity-0': open } "></span>
               <span  class=" rounded-sm block absolute  h-0.5 w-7 text-gris bg-current transform  transition duration-500 ease-in-out" :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
             </div>
           </button>
