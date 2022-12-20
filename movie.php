@@ -13,8 +13,9 @@
 <body class="movie">
 
   <div class="hidden albums w-full h-full z-10 fixed">
+    <div class="bg-fond w-screen h-screen opacity-70"></div>
     <div class="absolute flex flex-col bg-form text-rouge w-8/12 lg:w-2/12 mx-auto py-2 justify-between h-64 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-      <svg class="close absolute top-4 right-4 cursor-pointer z-10" width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="closeAlbum absolute top-4 right-4 cursor-pointer z-10" width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M8 0.25C3.71875 0.25 0.25 3.71875 0.25 8C0.25 12.2812 3.71875 15.75 8 15.75C12.2812 15.75 15.75 12.2812 15.75 8C15.75 3.71875 12.2812 0.25 8 0.25ZM8 14.25C4.53125 14.25 1.75 11.4688 1.75 8C1.75 4.5625 4.53125 1.75 8 1.75C11.4375 1.75 14.25 4.5625 14.25 8C14.25 11.4688 11.4375 14.25 8 14.25ZM11.1562 6.0625C11.3125 5.9375 11.3125 5.6875 11.1562 5.53125L10.4688 4.84375C10.3125 4.6875 10.0625 4.6875 9.9375 4.84375L8 6.78125L6.03125 4.84375C5.90625 4.6875 5.65625 4.6875 5.5 4.84375L4.8125 5.53125C4.65625 5.6875 4.65625 5.9375 4.8125 6.0625L6.75 8L4.8125 9.96875C4.65625 10.0938 4.65625 10.3438 4.8125 10.5L5.5 11.1875C5.65625 11.3438 5.90625 11.3438 6.03125 11.1875L8 9.25L9.9375 11.1875C10.0625 11.3438 10.3125 11.3438 10.4688 11.1875L11.1562 10.5C11.3125 10.3438 11.3125 10.0938 11.1562 9.96875L9.21875 8L11.1562 6.0625Z" fill="#AE0000"/>
       </svg>
 
@@ -121,13 +122,13 @@
     
     const addTo = document.querySelector('.addTo');
     const albums = document.querySelector('.albums');
-    const close = document.querySelector('.close');
+    const closeAlbum = document.querySelector('.closeAlbum');
     
     addTo.addEventListener('click', () => {
       albums.classList.toggle('hidden');
     });
     
-    close.addEventListener('click', () => {
+    closeAlbum.addEventListener('click', () => {
       albums.classList.toggle('hidden');
     });
 

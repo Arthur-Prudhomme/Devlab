@@ -11,7 +11,7 @@
     <link href="./style.css" rel="stylesheet">
     <link href="src/input.css" rel="stylesheet">
     <link href="./build/css/style.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com/%22%3E"></script>
+    <script src="https://cdn.tailwindcss.com/%22%3E"></script>  
 </head>
 <body>
   

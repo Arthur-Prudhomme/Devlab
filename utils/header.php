@@ -119,7 +119,6 @@
         });
     });
     
-    //quand change est cliqué si login et visible alors le cacher et afficher register et vice versa
     change.addEventListener('click', () => {
         if (login.classList.contains('hidden')) {
             login.classList.remove('hidden');
@@ -133,5 +132,6 @@
             register.classList.add('flex');
         }
     });
+  
     
 </script>
