@@ -16,9 +16,8 @@
 <form method="post">
     <input type="text" name="search" placeholder="enter keyword">
     <input type="submit" value="Search">
-</form>
+</form><br>
 
-<br>
     <?php
         if(!empty($_POST)){
             header("Location: search.php?keyword=".$_POST['search']."&page=1");

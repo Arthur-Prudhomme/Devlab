@@ -31,10 +31,12 @@
 
     echo '<br><br>';
     foreach($cast['cast'] as $item) {
+        echo '<a href=actor.php?id='.$item['id'].'>';
         echo '<div>';
         echo '<img src='.$core->getImg($item['profile_path'],200).'><br />';
         echo $item['name'] . ' as ' . $item['character'] . '<br />';
-        echo '</div><br><br>';
+        echo '</div>';
+        echo '</a><br><br>';
     }
 ?>
 

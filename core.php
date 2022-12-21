@@ -42,4 +42,14 @@ class Core{
         $data = file_get_contents('https://api.themoviedb.org/3/search/movie?api_key='.self::$APIkey.'&query='.$keyword.'&page='.$page);
         return json_decode($data, true);
     }
+
+    public function getPerson($person_id){
+        $data = file_get_contents('https://api.themoviedb.org/3/person/'.$person_id.'?api_key='.self::$APIkey);
+        return json_decode($data, true);
+    }
+
+    public function getMovieByPerson($person_id,$page){
+        $data = file_get_contents('https://api.themoviedb.org/3/discover/movie?api_key='.self::$APIkey.'&with_people='.$person_id.'&page='.$page);
+        return json_decode($data, true);
+    }
 }
