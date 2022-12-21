@@ -6,3 +6,7 @@ body{
 body a{
     color: white;
 }
+
+body button a{
+    color: black;
+}

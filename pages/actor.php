@@ -5,13 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="./style.css" rel="stylesheet">
+    <title>actor</title>
+    <link href="../style.css" rel="stylesheet">
 </head>
 <body>
     <?php
     $person_id = $_GET['id'];
-    require_once 'core.php';
+    require_once '../controllers/core.php';
     $core = new Core();
     $person = $core->getPerson($person_id);
 
@@ -22,7 +22,7 @@
     echo 'Known for : '.$person['known_for_department'].'<br><br>';
     echo 'Biography : '.$person['biography'];
     echo '</div><br><br>';
-    echo '<a href=allActorMovie.php?id='.$person_id.'&page=1>Voir films</a>';
+    echo '<a href=./allActorMovie.php?id='.$person_id.'&page=1>Voir films</a>';
 ?>
 </body>
 </html>

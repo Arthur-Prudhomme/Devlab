@@ -5,17 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>allGenre</title>
     <link href="./style.css" rel="stylesheet">
 </head>
 <body>
     <?php
-    require_once 'core.php';
+    require_once '../controllers/core.php';
     $core = new Core();
 
     $allGenre = $core->getAllGenre();
     foreach ($allGenre['genres'] as $item) {
-        echo '<a href=genre.php?id='.$item['id'].'&page=1>'.$item['name'].'<br /></a>';
+        echo '<a href=../pages/genre.php?id='.$item['id'].'&page=1>'.$item['name'].'<br /></a>';
     }
 
 ?>

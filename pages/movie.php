@@ -5,13 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="./style.css" rel="stylesheet">
+    <title>movie</title>
+    <link href="../style.css" rel="stylesheet">
 </head>
 <body>
 <?php
     $movie_id = $_GET['id'];
-    require_once 'core.php';
+    require_once '../controllers/core.php';
     $core = new Core();
     $movie = $core->getMovie($movie_id);
     $cast = $core->getCast($movie_id);
