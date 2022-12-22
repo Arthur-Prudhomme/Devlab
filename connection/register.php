@@ -12,14 +12,36 @@
         <input type="email" name="email" placeholder="email">
         <input type="password" name="password1" placeholder="password">
         <input type="password" name="password2" placeholder="retype password">
-        <input type="text" name="first_name" placeholder="firstname">
-        <input type="text" name="last_name" placeholder="lastname">
         <input type="submit" value="Register">
     </form>
     <button><a href="./login.php">Already have an account ?</a></button>
-    
-    <?php
 
+    <?php
+        require_once '../controllers/user.php';
+        require_once '../controllers/connection.php';
+
+        if ($_POST) {
+            $user = new User(
+                $_POST['email'],
+                $_POST['password1'],
+                $_POST['password2']
+            );
+
+            if ($user->verifyUser()) {
+                $connection = new Connection();
+                $result = $connection->insertUser($user);
+
+                if ($result) {
+                    echo 'Registered with success';
+                    header("Location: login.php");
+                } else {
+                    echo 'Internal error...';
+                }
+
+            } else {
+                echo 'Form has an error';
+            }
+        }
     ?>
 
 </body>

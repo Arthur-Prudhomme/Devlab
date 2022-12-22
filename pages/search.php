@@ -1,13 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>search</title>
-    <link href="../style.css" rel="stylesheet">
-</head>
+<?php
+require_once './header.php';
+?>
 <body>
 
     <form method="post">
@@ -19,15 +12,15 @@
         $keyword = $_GET['keyword'];
         $page = $_GET['page'];
 
-        require_once '../controllers/core.php';
-        $core = new Core();
+        require_once '../controllers/api.php';
+        $api = new API();
 
-        $search = $core->getMovieBySearch($keyword,$page);
+        $search = $api->getMovieBySearch($keyword,$page);
         foreach($search['results'] as $item) {
-            $movie = $core->getMovie($item['id']);
+            $movie = $api->getMovie($item['id']);
             echo '<div>';
             echo $movie['title'] . '<br />';
-            echo '<a href=movie.php?id='.$movie['id'].'><img src='. $core->getImg($movie['poster_path'],200).'></a>';
+            echo '<a href=movie.php?id='.$movie['id'].'><img src='. $api->getImg($movie['poster_path'],200).'></a>';
             echo '</div>';
         }
     ?>

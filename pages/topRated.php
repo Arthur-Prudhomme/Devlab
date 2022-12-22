@@ -1,25 +1,18 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>topRated</title>
-    <link href="../style.css" rel="stylesheet">
-</head>
+<?php
+require_once './header.php';
+?>
 <body>
     <?php
         $page = $_GET['page'];
 
-        require_once '../controllers/core.php';
-        $core = new Core();
+        require_once '../controllers/api.php';
+        $api = new API();
 
-        $topRated = $core->getTopRated($page);
+        $topRated = $api->getTopRated($page);
         foreach($topRated['results'] as $item) {
             echo '<div>';
             echo $item['title'] . '<br />';
-            echo '<a href=movie.php?id='.$item['id'].'><img src='. $core->getImg($item['poster_path'],200).'></a>';
+            echo '<a href=movie.php?id='.$item['id'].'><img src='. $api->getImg($item['poster_path'],200).'></a>';
             echo '</div>';
         }
     ?>

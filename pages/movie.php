@@ -1,24 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>movie</title>
-    <link href="../style.css" rel="stylesheet">
-</head>
-<body>
+<?php
+require_once './header.php';
+?>
 <?php
     $movie_id = $_GET['id'];
-    require_once '../controllers/core.php';
-    $core = new Core();
-    $movie = $core->getMovie($movie_id);
-    $cast = $core->getCast($movie_id);
+    require_once '../controllers/api.php';
+    $api = new API();
+    $movie = $api->getMovie($movie_id);
+    $cast = $api->getCast($movie_id);
 
     echo '<div>';
     echo $movie['title'] . '<br />';
-    echo '<img src='.$core->getImg($movie['poster_path'],300).'><br />';
+    echo '<img src='.$api->getImg($movie['poster_path'],300).'><br />';
     echo $movie['overview'];
     echo '<br><br>';
 
@@ -31,12 +23,11 @@
 
     echo '<br><br>';
     foreach($cast['cast'] as $item) {
-        echo '<a href=actor.php?id='.$item['id'].'>';
         echo '<div>';
-        echo '<img src='.$core->getImg($item['profile_path'],200).'><br />';
+        echo '<a href=actor.php?id='.$item['id'].'><img src='.$api->getImg($item['profile_path'],200).'><br /></a>';
         echo $item['name'] . ' as ' . $item['character'] . '<br />';
         echo '</div>';
-        echo '</a><br><br>';
+        echo '<br><br>';
     }
 ?>
 

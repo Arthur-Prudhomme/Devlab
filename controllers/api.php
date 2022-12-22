@@ -1,6 +1,6 @@
 <?php
 
-class Core{
+class API{
 
     private static $APIkey = 'e62f0ff469851025669bbc2c9d762e25';
 

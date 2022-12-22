@@ -1,23 +1,15 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>allGenre</title>
-    <link href="./style.css" rel="stylesheet">
-</head>
+<?php
+    require_once '../pages/header.php';
+?>
 <body>
     <?php
-    require_once '../controllers/core.php';
-    $core = new Core();
+    require_once '../controllers/api.php';
+    $api = new API();
 
-    $allGenre = $core->getAllGenre();
+    $allGenre = $api->getAllGenre();
     foreach ($allGenre['genres'] as $item) {
         echo '<a href=../pages/genre.php?id='.$item['id'].'&page=1>'.$item['name'].'<br /></a>';
     }
-
 ?>
 </body>
 </html>
