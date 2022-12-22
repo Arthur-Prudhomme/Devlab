@@ -25,15 +25,37 @@ class Connection
         }else{
             $query = 'INSERT INTO user (email, password)
                     VALUES (:email, :password)';
-
             $statement = $this->pdo->prepare($query);
-
-            return $statement->execute([
+            $statement->execute([
                 'email' => $user->email,
                 'password' => md5($user->password . 'VforVendetta'),
             ]);
+
+            $query = 'SELECT `id` FROM `user` WHERE `email` =?';
+            $get_id = $this->pdo->prepare($query);
+            $get_id->execute(array($login_email));
+            $get_id = $get_id->fetch();
+
+            $query = 'INSERT INTO album (user_id, name, is_watched)
+                    VALUES (:user_id, :name, :is_watched)';
+            $statement = $this->pdo->prepare($query);
+            $statement->execute([
+                'user_id' => $get_id['id'],
+                'name' => 'watched',
+                'is_watched' => '1',
+            ]);
+
+            $query = 'INSERT INTO album (user_id, name, is_watch_later)
+                    VALUES (:user_id, :name, :is_watch_later)';
+            $statement = $this->pdo->prepare($query);
+            return $statement->execute([
+                'user_id' => $get_id['id'],
+                'name' => 'watch_later',
+                'is_watch_later' => '1',
+            ]);
         }
     }
+
     public function login(){
         $login_email = $_POST['email'];
         $login_password = md5($_POST['password'] . 'VforVendetta');
