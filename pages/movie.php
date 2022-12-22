@@ -1,5 +1,5 @@
 <?php
-require_once './header.php';
+require_once '../utils/header.php';
 ?>
 <?php
     $movie_id = $_GET['id'];

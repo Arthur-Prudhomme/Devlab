@@ -1,11 +1,11 @@
 <?php
-    require_once './pages/header.php';
+    require_once './utils/header.php';
 ?>
 <body>
 <a href="./mids/allGenre.php">Genre</a>
 <a href="./pages/trending.php?page=1">Trending</a>
 <a href="./pages/topRated.php?page=1">Top Rated</a>
-<button><a href="./connection/login.php">Login</a></button><br><br>
+<button><a href="./connection/login.php">Login</a></button>
 
 <form method="post">
     <input type="text" name="search" placeholder="enter keyword">
