@@ -5,6 +5,7 @@ require_once '../controllers/connection.php';
 <body>
 <?php
 require_once '../connection/logout.php';
+
 ?>
 </body>
 </html>

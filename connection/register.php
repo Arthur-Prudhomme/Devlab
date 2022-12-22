@@ -15,6 +15,7 @@
         <input type="submit" value="Register">
     </form>
     <button><a href="./login.php">Already have an account ?</a></button>
+    <button><a href="../index.php">Back</a></button>
 
     <?php
         require_once '../controllers/user.php';

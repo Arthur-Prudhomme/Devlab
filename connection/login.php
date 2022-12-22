@@ -14,6 +14,7 @@
         <input type="submit" value="Login">
     </form>
     <button><a href="./register.php">Don't have an account ?</a></button>
+    <button><a href="../index.php">Back</a></button>
     <?php
     require_once '../controllers/connection.php';
 
