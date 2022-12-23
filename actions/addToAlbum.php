@@ -8,15 +8,10 @@ require_once '../controllers/album.php';
 require_once '../actions/logout.php';
 $album = new Album();
 $allAlbums = $album->getAllAlbumFromUserId($_SESSION['id']);
-$histAlbum = [];
 
-foreach ($allAlbums as $albums){
-    array_push($histAlbum, $albums['id']);
-    echo '<div>';
-    echo '<a href="album_content.php?id='. $albums['id'] .'">' . $albums['name'] . '</a>';
-    echo '</div>';
-}
-$_SESSION['hist'] = $histAlbum;
+$album->insertMovieIntoAlbum($_GET['album_id'], $_GET['movie_id']);
+header("Location: ../pages/movie.php?id=" . $_GET['movie_id']);
+
 ?>
 </body>
 </html>

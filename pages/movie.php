@@ -17,6 +17,7 @@ require_once '../utils/header.php';
     <form method="POST">
         <input type="submit" name="watched" placeholder="Watched" value="watched">
         <input type="submit" name="watch_later" placeholder="Watch Later" value="watch_later">
+        <input type="submit" name="add_to" placeholder="Add To" value="add_to">
     </form>
 
     <?php
@@ -26,9 +27,11 @@ require_once '../utils/header.php';
             if(isset($_POST['watched'])){
                 $album_id = $album->getAlbumIdByNameAndUserId($_SESSION['id'], 'watched');
                 $album->insertMovieIntoAlbum($album_id, $_GET['id']);
-            }else{
+            }elseif(isset($_POST['watch_later'])){
                 $album_id = $album->getAlbumIdByNameAndUserId($_SESSION['id'], 'watch_later');
                 $album->insertMovieIntoAlbum($album_id, $_GET['id']);
+            }else{
+                header("Location: ../mids/allAlbum.php?movie_id=" . $_GET['id']);
             }
         }else{
             echo 'You need to be logged to use this';

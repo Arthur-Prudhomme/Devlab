@@ -62,8 +62,14 @@ class Album{
         $statement = $statement->fetch();
         return $statement['id'];
     }
-    public function createAlbum(){
-
+    public function createAlbum($user_id, $album_name, $album_visibility){
+        $query = 'INSERT INTO album (user_id, name, is_private) VALUES (:user_id, :album_name, :album_visibility)';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'user_id' => $user_id,
+            'album_name' => $album_name,
+            'album_visibility' => $album_visibility
+        ]);
     }
     public function deleteAlbum(){
 

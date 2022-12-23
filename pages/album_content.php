@@ -6,7 +6,7 @@ require_once '../controllers/api.php';
 ?>
 <body>
 <?php
-require_once '../connection/logout.php';
+require_once '../actions/logout.php';
 $album = new Album();
 $convert = (int) $_GET['id'];
 $check = array_search($convert, $_SESSION['hist']);
