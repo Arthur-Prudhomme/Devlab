@@ -4,6 +4,7 @@ require_once '../utils/header.php';
     $movie_id = $_GET['id'];
     require_once '../controllers/api.php';
     require_once '../controllers/album.php';
+    require_once '../controllers/connection.php';
     $api = new API();
     $movie = $api->getMovie($movie_id);
     $cast = $api->getCast($movie_id);
@@ -15,12 +16,26 @@ require_once '../utils/header.php';
 
     <form method="POST">
         <input type="submit" name="watched" placeholder="Watched" value="watched">
-    </form>
-    <form method="POST">
         <input type="submit" name="watch_later" placeholder="Watch Later" value="watch_later">
     </form>
 
     <?php
+    $album = new Album();
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(isset($_SESSION['id'])){
+            if(isset($_POST['watched'])){
+                $album_id = $album->getAlbumIdByNameAndUserId($_SESSION['id'], 'watched');
+                $album->insertMovieIntoAlbum($album_id, $_GET['id']);
+            }else{
+                $album_id = $album->getAlbumIdByNameAndUserId($_SESSION['id'], 'watch_later');
+                $album->insertMovieIntoAlbum($album_id, $_GET['id']);
+            }
+        }else{
+            echo 'You need to be logged to use this';
+            echo '<br><br>';
+        }
+    }
+
     echo $movie['overview'];
     echo '<br><br>';
 
@@ -38,16 +53,6 @@ require_once '../utils/header.php';
         echo $item['name'] . ' as ' . $item['character'] . '<br />';
         echo '</div>';
         echo '<br><br>';
-    }
-
-    if(isset($_SESSION['id'])){
-        $album = new Album();
-        if(array_key_exists('watched', $_POST)){
-            $album->insertMovieIntoAlbum(1, $_GET['id']);
-        }
-        if(array_key_exists('watch_later', $_POST)){
-            $album->insertMovieIntoAlbum(2, $_GET['id']);
-        }
     }
 ?>
 
