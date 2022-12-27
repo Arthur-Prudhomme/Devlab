@@ -5,11 +5,12 @@ require_once '../utils/header.php';
     <?php
     $genre_id = $_GET['id'];
     $page = $_GET['page'];
+    $order_by = "popularity." . $_GET['order'];
 
     require_once '../controllers/api.php';
     $api = new API();
 
-    $movie = $api->getMovieByGenre($genre_id,$page);
+    $movie = $api->getMovieByGenre($genre_id,$page,$order_by);
     foreach($movie['results'] as $item) {
         echo '<div>';
         echo $item['title'] . '<br />';

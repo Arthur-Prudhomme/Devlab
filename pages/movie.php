@@ -44,7 +44,7 @@ require_once '../utils/header.php';
 
     echo '<div>';
     foreach ($movie['genres'] as $item) {
-        echo '<a href=genre.php?id=' . $item['id'] . '&page=1>' . $item['name'] . '<br /></a>';
+        echo '<a href=genre.php?id=' . $item['id'] . '&page=1&order=desc>' . $item['name'] . '<br /></a>';
     }
     echo '</div>';
     echo '</div>';

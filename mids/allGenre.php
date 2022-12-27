@@ -8,7 +8,7 @@
 
     $allGenre = $api->getAllGenre();
     foreach ($allGenre['genres'] as $item) {
-        echo '<a href=../pages/genre.php?id='.$item['id'].'&page=1>'.$item['name'].'<br /></a>';
+        echo '<a href=../pages/genre.php?id='.$item['id'].'&page=1&order=desc>'.$item['name'].'<br /></a>';
     }
 ?>
 </body>

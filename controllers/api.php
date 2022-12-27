@@ -33,8 +33,8 @@ class API{
         return json_decode($data, true);
     }
 
-    public function getMovieByGenre($genre_id,$page){
-        $data = file_get_contents('https://api.themoviedb.org/3/discover/movie?api_key='.self::$APIkey.'&with_genres='.$genre_id.'&page='.$page);
+    public function getMovieByGenre($genre_id,$page,$order){
+        $data = file_get_contents('https://api.themoviedb.org/3/discover/movie?api_key='.self::$APIkey.'&with_genres='.$genre_id.'&page='.$page.'&sort_by='.$order);
         return json_decode($data, true);
     }
 
