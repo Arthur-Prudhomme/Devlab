@@ -19,7 +19,7 @@ class Album{
         $statement->execute(array($album_id));
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function insertMovieIntoAlbum(int $album_id, int $movie_id){
+    public function insertMovieIntoAlbum(int $album_id, int $movie_id, bool $deleteIfExist){
         $query = 'SELECT * FROM album_content WHERE `album_id` = :album_id AND `movie_id` = :movie_id';
         $statement = $this->pdo->prepare($query);
         $statement->execute([
@@ -28,13 +28,15 @@ class Album{
         ]);
         $statement = $statement->fetch();
 
-        if(isset($statement['album_id'])){
+        if(isset($statement['album_id']) && $deleteIfExist == 1){
             $query = 'DELETE FROM album_content WHERE `album_id` = :album_id AND `movie_id` = :movie_id';
             $statement = $this->pdo->prepare($query);
             $statement->execute([
                 'album_id' => $album_id,
                 'movie_id' => $movie_id
             ]);
+        }elseif (isset($statement['album_id']) && $deleteIfExist == 0){
+            return 'The movie is already in this album';
         }else {
             $query = 'INSERT INTO album_content (album_id, movie_id) VALUES (:album_id, :movie_id)';
             $statement = $this->pdo->prepare($query);

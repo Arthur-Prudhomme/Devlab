@@ -9,7 +9,7 @@ require_once '../controllers/connection.php';
 </form>
 
 <?php
-    require_once '../connection/logout.php';
+    require_once '../actions/logout.php';
 ?>
 
 </body>

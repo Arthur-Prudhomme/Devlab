@@ -5,6 +5,7 @@
 <a href="./mids/allGenre.php">Genre</a>
 <a href="./pages/trending.php?page=1">Trending</a>
 <a href="./pages/topRated.php?page=1">Top Rated</a>
+<input id="search_bar" name="input" oninput=instantResearch() />
 
 <?php
     require_once './controllers/connection.php';
@@ -14,11 +15,8 @@
         echo '<button><a href="./connection/login.php">Login</a></button>';
     }
 ?>
-
-<form method="post">
-    <input type="text" name="search" placeholder="enter keyword">
-    <input type="submit" value="Search">
-</form><br>
+<div id="search_results"></div>
+<br><br>
 
     <?php
         if(!empty($_POST)){
@@ -36,5 +34,7 @@
             echo '</div>';
         }
     ?>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>

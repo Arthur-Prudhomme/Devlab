@@ -1,9 +1,8 @@
 <?php
-require_once '../utils/header.php';
-
+if($_SERVER['REQUEST_METHOD'] === 'GET'){
+    require_once '../utils/header.php';
     $movie_id = $_GET['id'];
     require_once '../controllers/api.php';
-    require_once '../controllers/album.php';
     require_once '../controllers/connection.php';
     $api = new API();
     $movie = $api->getMovie($movie_id);
@@ -14,30 +13,12 @@ require_once '../utils/header.php';
     echo '<img src='.$api->getImg($movie['poster_path'],300).'><br />';
     ?>
 
-    <form method="POST">
-        <input type="submit" name="watched" placeholder="Watched" value="watched">
-        <input type="submit" name="watch_later" placeholder="Watch Later" value="watch_later">
-        <input type="submit" name="add_to" placeholder="Add To" value="add_to">
-    </form>
+    <button onclick=button("watched")>watched</button>
+    <button onclick=button("watch_later")>watch_later</button>
+    <button onclick=button("add_to")>add to</button>
+    <br>
 
     <?php
-    $album = new Album();
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        if(isset($_SESSION['id'])){
-            if(isset($_POST['watched'])){
-                $album_id = $album->getAlbumIdByNameAndUserId($_SESSION['id'], 'watched');
-                $album->insertMovieIntoAlbum($album_id, $_GET['id']);
-            }elseif(isset($_POST['watch_later'])){
-                $album_id = $album->getAlbumIdByNameAndUserId($_SESSION['id'], 'watch_later');
-                $album->insertMovieIntoAlbum($album_id, $_GET['id']);
-            }else{
-                header("Location: ../mids/allAlbum.php?movie_id=" . $_GET['id']);
-            }
-        }else{
-            echo 'You need to be logged to use this';
-            echo '<br><br>';
-        }
-    }
 
     echo $movie['overview'];
     echo '<br><br>';
@@ -57,7 +38,33 @@ require_once '../utils/header.php';
         echo '</div>';
         echo '<br><br>';
     }
-?>
-
-</body>
-</html>
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../script.js"></script>
+    </body>
+    </html>
+<?php
+}elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    require_once '../controllers/connection.php';
+    require_once '../controllers/album.php';
+    $album = new Album();
+    $action = file_get_contents('php://input');
+    $action = json_decode($action, true);
+    if(isset($_SESSION['id'])){
+        if($action["action"] == "watched"){
+            $album_id = $album->getAlbumIdByNameAndUserId($_SESSION['id'], 'watched');
+            $album->insertMovieIntoAlbum($album_id, $_GET['id'],1);
+        }elseif($action["action"] == "watch_later"){
+            $album_id = $album->getAlbumIdByNameAndUserId($_SESSION['id'], 'watch_later');
+            $album->insertMovieIntoAlbum($album_id, $_GET['id'],1);
+        }elseif($action["action"] == "add_to"){
+            var_dump($action["action"]);
+        }
+    }else{
+        ini_set('display_errors',0);
+        throw new Error('You need to be logged to use this');
+    }
+}else{
+    ini_set('display_errors',0);
+    throw new Error('unknow method');
+}
