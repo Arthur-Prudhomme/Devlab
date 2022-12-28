@@ -19,4 +19,7 @@ foreach ($allAlbums as $albums){
 $_SESSION['hist'] = $histAlbum;
 ?>
 </body>
+<?php
+require_once '../utils/footer.php';
+?>
 </html>

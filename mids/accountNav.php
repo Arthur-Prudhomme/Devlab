@@ -13,4 +13,7 @@ require_once '../controllers/connection.php';
 ?>
 
 </body>
+<?php
+require_once '../utils/footer.php';
+?>
 </html>

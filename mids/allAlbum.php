@@ -20,4 +20,7 @@ echo '<br><br>';
 echo '<a href="./addAlbum.php?movie_id='.$_GET['movie_id'].'">New Album</a>';
 ?>
 </body>
+<?php
+require_once '../utils/footer.php';
+?>
 </html>

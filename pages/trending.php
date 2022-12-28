@@ -26,4 +26,7 @@ require_once '../utils/header.php';
     }
     ?>
 </body>
+<?php
+require_once '../utils/footer.php';
+?>
 </html>

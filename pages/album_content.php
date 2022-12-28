@@ -26,4 +26,7 @@ if(is_int($check)){
 }
 ?>
 </body>
+<?php
+require_once '../utils/footer.php';
+?>
 </html>

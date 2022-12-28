@@ -18,4 +18,7 @@ require_once '../utils/header.php';
     echo '<a href=./allActorMovie.php?id='.$person_id.'&page=1>Voir films</a>';
 ?>
 </body>
+<?php
+require_once '../utils/footer.php';
+?>
 </html>

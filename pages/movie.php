@@ -39,9 +39,10 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
         echo '<br><br>';
     }
     ?>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../script.js"></script>
     </body>
+    <?php
+    require_once '../utils/footer.php';
+    ?>
     </html>
 <?php
 }elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
