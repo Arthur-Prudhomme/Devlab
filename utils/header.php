@@ -22,7 +22,7 @@
         }
     ?>
 
-    <input id="search_bar" name="input" oninput=instantResearch() />
+    <input id="search_bar" name="input" oninput=instantResearch(<?php if(isset($check_path)){echo 1;}else{echo 0;} ?>) />
 
     <?php
     if(isset($check_path)){
