@@ -20,14 +20,14 @@ $album = new Album();
 </form>
 
 <?php
-if(!empty($_POST)){
-    if($_POST['visibility'] == 'public'){
+if (!empty($_POST)) {
+    if ($_POST['visibility'] == 'public') {
         $visibility = 0;
-    }else{
+    } else {
         $visibility = 1;
     }
-    $album->createAlbum($_SESSION['id'], $_POST['album_name'], $visibility);
-    header("Location: ./allAlbum.php?movie_id=".$_GET['movie_id']);
+    $album->createAlbum($_SESSION['user']['id'], $_POST['album_name'], $visibility);
+    header("Location: ./allAlbum.php?movie_id=" . $_GET['movie_id']);
 }
 ?>
 

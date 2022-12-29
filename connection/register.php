@@ -8,44 +8,44 @@
     <link href="../style.css" rel="stylesheet">
 </head>
 <body>
-    <form method="POST">
-        <input type="email" name="email" placeholder="email">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password1" placeholder="password">
-        <input type="password" name="password2" placeholder="retype password">
-        <input type="submit" value="Register">
-    </form>
-    <button><a href="./login.php">Already have an account ?</a></button>
-    <button><a href="../index.php">Back</a></button>
+<form method="POST">
+    <input type="email" name="email" placeholder="email">
+    <input type="text" name="username" placeholder="username">
+    <input type="password" name="password1" placeholder="password">
+    <input type="password" name="password2" placeholder="retype password">
+    <input type="submit" value="Register">
+</form>
+<button><a href="./login.php">Already have an account ?</a></button>
+<button><a href="../index.php">Back</a></button>
 
-    <?php
-        require_once '../controllers/user.php';
-        require_once '../controllers/connection.php';
+<?php
+require_once '../controllers/user.php';
+require_once '../controllers/connection.php';
 
-        if ($_POST) {
-            $user = new User(
-                $_POST['email'],
-                $_POST['username'],
-                $_POST['password1'],
-                $_POST['password2']
-            );
+if ($_POST) {
+    $user = new User(
+        $_POST['email'],
+        $_POST['username'],
+        $_POST['password1'],
+        $_POST['password2']
+    );
 
-            if ($user->verifyUser()) {
-                $connection = new Connection();
-                $result = $connection->insertUser($user);
+    if ($user->verifyUser()) {
+        $connection = new Connection();
+        $result = $connection->insertUser($user);
 
-                if ($result) {
-                    echo 'Registered with success';
-                    header("Location: login.php");
-                } else {
-                    echo 'Internal error...';
-                }
-
-            } else {
-                echo 'Form has an error';
-            }
+        if ($result) {
+            echo 'Registered with success';
+            header("Location: login.php");
+        } else {
+            echo 'Internal error...';
         }
-    ?>
+
+    } else {
+        echo 'Form has an error';
+    }
+}
+?>
 
 </body>
 </html>

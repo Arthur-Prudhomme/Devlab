@@ -19,8 +19,8 @@ class Connection
         $email_check->execute(array($login_email));
         $email_check = $email_check->fetch();
 
-        if(isset($email_check['email'])){
-            echo'There is already an account registered with this email - ';
+        if (isset($email_check['email'])) {
+            echo 'There is already an account registered with this email - ';
             return false;
         }
         $username = $user->username;
@@ -29,10 +29,10 @@ class Connection
         $username_check->execute(array($username));
         $username_check = $username_check->fetch();
 
-        if(isset($username_check['username'])){
-            echo'There is already an account registered with this username - ';
+        if (isset($username_check['username'])) {
+            echo 'There is already an account registered with this username - ';
             return false;
-        }else{
+        } else {
             $query = 'INSERT INTO user (email, username, password)
                     VALUES (:email, :username, :password)';
             $statement = $this->pdo->prepare($query);
@@ -67,7 +67,8 @@ class Connection
         }
     }
 
-    public function login(){
+    public function login()
+    {
         $login_email = $_POST['email'];
         $login_password = md5($_POST['password'] . 'VforVendetta');
 
@@ -77,17 +78,15 @@ class Connection
         $login_check->execute(array($login_email));
         $login_check = $login_check->fetch();
 
-        if(!$login_check){
-            echo'There is no account registered with this email';
-        }
-        else{
-            if($login_check['password'] == $login_password){
-                $_SESSION['id'] = $login_check['id'];
-                $_SESSION['email'] = $login_check['email'];
+        if (!$login_check) {
+            echo 'There is no account registered with this email';
+        } else {
+            if ($login_check['password'] == $login_password) {
+                $_SESSION['user'] = $login_check;
 
                 header("Location: ../index.php");
-            }else{
-                echo'Wrong password';
+            } else {
+                echo 'Wrong password';
             }
         }
     }

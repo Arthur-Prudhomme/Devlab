@@ -1,5 +1,5 @@
 <?php
-if($_SERVER['REQUEST_METHOD'] === 'GET'){
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     require_once '../utils/header.php';
     ?>
     <body>
@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
 
     echo '<div>';
     echo $movie['title'] . '<br />';
-    echo '<img src='.$api->getImg($movie['poster_path'],300).'><br />';
+    echo '<img src=' . $api->getImg($movie['poster_path'], 300) . '><br />';
     ?>
 
     <button onclick=button("watched")>watched</button>
@@ -47,28 +47,28 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
     require_once '../utils/footer.php';
     ?>
     </html>
-<?php
-}elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    <?php
+} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../controllers/connection.php';
     require_once '../controllers/album.php';
     $album = new Album();
     $action = file_get_contents('php://input');
     $action = json_decode($action, true);
-    if(isset($_SESSION['id'])){
-        if($action["action"] == "watched"){
+    if (isset($_SESSION['id'])) {
+        if ($action["action"] == "watched") {
             $album_id = $album->getAlbumIdByNameAndUserId($_SESSION['id'], 'watched');
-            $album->insertMovieIntoAlbum($album_id, $_GET['id'],1);
-        }elseif($action["action"] == "watch_later"){
+            $album->insertMovieIntoAlbum($album_id, $_GET['id'], 1);
+        } elseif ($action["action"] == "watch_later") {
             $album_id = $album->getAlbumIdByNameAndUserId($_SESSION['id'], 'watch_later');
-            $album->insertMovieIntoAlbum($album_id, $_GET['id'],1);
-        }elseif($action["action"] == "add_to"){
+            $album->insertMovieIntoAlbum($album_id, $_GET['id'], 1);
+        } elseif ($action["action"] == "add_to") {
             var_dump($action["action"]);
         }
-    }else{
-        ini_set('display_errors',0);
+    } else {
+        ini_set('display_errors', 0);
         throw new Error('You need to be logged to use this');
     }
-}else{
-    ini_set('display_errors',0);
+} else {
+    ini_set('display_errors', 0);
     throw new Error('unknow method');
 }
