@@ -22,12 +22,23 @@ class Connection
         if(isset($email_check['email'])){
             echo'There is already an account registered with this email - ';
             return false;
+        }
+        $username = $user->username;
+        $query = 'SELECT * FROM `user` WHERE `username` =?';
+        $username_check = $this->pdo->prepare($query);
+        $username_check->execute(array($username));
+        $username_check = $username_check->fetch();
+
+        if(isset($username_check['username'])){
+            echo'There is already an account registered with this username - ';
+            return false;
         }else{
-            $query = 'INSERT INTO user (email, password)
-                    VALUES (:email, :password)';
+            $query = 'INSERT INTO user (email, username, password)
+                    VALUES (:email, :username, :password)';
             $statement = $this->pdo->prepare($query);
             $statement->execute([
                 'email' => $user->email,
+                'username' => $user->username,
                 'password' => md5($user->password . 'VforVendetta'),
             ]);
 

@@ -10,6 +10,7 @@
 <body>
     <form method="POST">
         <input type="email" name="email" placeholder="email">
+        <input type="text" name="username" placeholder="username">
         <input type="password" name="password1" placeholder="password">
         <input type="password" name="password2" placeholder="retype password">
         <input type="submit" value="Register">
@@ -24,6 +25,7 @@
         if ($_POST) {
             $user = new User(
                 $_POST['email'],
+                $_POST['username'],
                 $_POST['password1'],
                 $_POST['password2']
             );
