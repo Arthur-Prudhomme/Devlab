@@ -1,11 +1,12 @@
 <?php
 require_once '../utils/header.php';
-require_once '../controllers/connection.php';
-require_once '../controllers/album.php';
+
 ?>
 <body>
 <?php
 require_once '../actions/logout.php';
+require_once '../controllers/connection.php';
+require_once '../controllers/album.php';
 $album = new Album();
 ?>
 

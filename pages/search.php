@@ -2,7 +2,9 @@
 require_once '../utils/header.php';
 ?>
 <body>
-
+    <?php
+        require_once '../controllers/api.php';
+    ?>
     <form method="post">
         <input type="text" name="search" placeholder="enter keyword">
         <input type="submit" value="Search">
@@ -11,8 +13,6 @@ require_once '../utils/header.php';
     <?php
         $keyword = $_GET['keyword'];
         $page = $_GET['page'];
-
-        require_once '../controllers/api.php';
         $api = new API();
 
         $search = $api->getMovieBySearch($keyword,$page);

@@ -4,11 +4,10 @@
 ?>
 <body>
     <?php
+        require_once './controllers/api.php';
         if(!empty($_POST)){
             header("Location: ./pages/search.php?keyword=".$_POST['search']."&page=1");
         }
-
-        require_once './controllers/api.php';
         $api = new API();
         $trending = $api->getTrending(1);
 

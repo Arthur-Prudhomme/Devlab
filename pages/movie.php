@@ -1,9 +1,12 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] === 'GET'){
     require_once '../utils/header.php';
-    $movie_id = $_GET['id'];
+    ?>
+    <body>
+    <?php
     require_once '../controllers/api.php';
     require_once '../controllers/connection.php';
+    $movie_id = $_GET['id'];
     $api = new API();
     $movie = $api->getMovie($movie_id);
     $cast = $api->getCast($movie_id);

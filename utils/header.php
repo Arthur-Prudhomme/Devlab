@@ -1,3 +1,7 @@
+<?php
+if($_SERVER['REQUEST_METHOD'] === 'GET'){
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -41,6 +45,18 @@
         }
     }
     ?>
-
     <ul id="search_results"></ul>
+
+<?php
+}elseif($_SERVER['REQUEST_METHOD'] === 'POST'){
+    require_once './controllers/api.php';
+    $parameters = file_get_contents('php://input');
+    $parameters = json_decode($parameters, true);
+    $query = $parameters['query'];
+    $check_path = $parameters['check_path'];
+    $api = new API();
+    $search_results = $api->getMovieBySearch($query,1);
+    echo '<script>addSearchResult('.json_encode($search_results).','.$check_path.');</script>';
+}
+?>
 </head>

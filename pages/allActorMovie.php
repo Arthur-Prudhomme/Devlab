@@ -3,10 +3,9 @@ require_once '../utils/header.php';
 ?>
 <body>
 <?php
+    require_once '../controllers/api.php';
     $person_id = $_GET['id'];
     $page = $_GET['page'];
-
-    require_once '../controllers/api.php';
     $api = new API();
 
     $actorMovies = $api->getMovieByPerson($person_id,$page);

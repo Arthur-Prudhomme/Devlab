@@ -3,9 +3,8 @@ require_once '../utils/header.php';
 ?>
 <body>
     <?php
-        $page = $_GET['page'];
-
         require_once '../controllers/api.php';
+        $page = $_GET['page'];
         $api = new API();
 
         $topRated = $api->getTopRated($page);

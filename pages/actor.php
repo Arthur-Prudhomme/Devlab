@@ -3,8 +3,8 @@ require_once '../utils/header.php';
 ?>
 <body>
     <?php
-    $person_id = $_GET['id'];
     require_once '../controllers/api.php';
+    $person_id = $_GET['id'];
     $api = new API();
     $person = $api->getPerson($person_id);
 

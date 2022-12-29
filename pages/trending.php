@@ -4,8 +4,6 @@ require_once '../utils/header.php';
 <body>
     <?php
     $page = $_GET['page'];
-
-    require_once '../controllers/api.php';
     $api = new API();
 
     $trending = $api->getTrending($page);
