@@ -25,7 +25,7 @@ function addSearchResult(movie_title,movie_id){
     let list = document.getElementById("search_results");
     let a = document.createElement("a");
     let li = document.createElement("li");
-    a.href = './pages/movie.php?id=' + movie_id;
+    a.href = '../pages/movie.php?id=' + movie_id;
     a.innerText = movie_title;
     li.id = "search_proposal";
     li.appendChild(a)
