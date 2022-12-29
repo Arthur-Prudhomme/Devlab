@@ -3,6 +3,7 @@ require_once '../utils/header.php';
 ?>
 <body>
 <?php
+require_once '../controllers/api.php';
 $page = $_GET['page'];
 $api = new API();
 
