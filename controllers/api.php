@@ -48,7 +48,7 @@ class API
 
     public function getMovieBySearch($keyword, $page)
     {
-        $data = file_get_contents('https://api.themoviedb.org/3/search/movie?api_key=' . self::$APIkey . '&query=' . $keyword . '&page=' . $page);
+        $data = file_get_contents('https://api.themoviedb.org/3/search/movie?api_key=' . self::$APIkey . '&query=' . urlencode($keyword) . '&page=' . $page);
         return json_decode($data, true);
     }
 
