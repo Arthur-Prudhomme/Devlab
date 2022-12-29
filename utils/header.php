@@ -21,7 +21,7 @@
     echo ' ';
     ?>
 
-    <input id="search_bar" name="input" oninput=instantResearch('../fragments/dynamicSearch.php') />
+    <input id="search_bar" name="input" oninput=instantResearch('../sources/dynamicSearch.php') />
 
     <?php
 
