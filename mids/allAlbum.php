@@ -16,8 +16,6 @@ foreach ($allAlbums as $albums) {
         echo '</div>';
     }
 }
-echo '<br><br>';
-echo '<a href="./addAlbum.php?movie_id=' . $_GET['movie_id'] . '">New Album</a>';
 ?>
 </body>
 <?php
