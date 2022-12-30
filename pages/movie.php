@@ -13,11 +13,13 @@ $cast = $api->getCast($movie_id);
 echo '<div>';
 echo $movie['title'] . '<br />';
 echo '<img src=' . $api->getImg($movie['poster_path'], 300) . '><br />';
-?>
 
-<button onclick=watchedOrWatchLater("watched",<?php echo $movie_id; ?>)>watched</button>
-<button onclick=watchedOrWatchLater("watch_later",<?php echo $movie_id; ?>)>watch_later</button>
-<button onclick=addTo(<?php echo $movie_id; ?>)>add to</button>
+if (isset($_SESSION['user']['id'])) {
+    echo '<button onclick=watchedOrWatchLater("watched",' . $movie_id . ')>watched</button>';
+    echo '<button onclick=watchedOrWatchLater("watch_later",' . $movie_id . ')>watch_later</button>';
+    echo '<button onclick=addTo(' . $movie_id . ')>add to</button>';
+}
+?>
 <ul id="album_list"></ul>
 
 <?php
