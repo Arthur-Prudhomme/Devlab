@@ -6,4 +6,3 @@ $query = $parameters['query'];
 $api = new API();
 $search_results = $api->getMovieBySearch($query, 1);
 echo json_encode($search_results);
-?>

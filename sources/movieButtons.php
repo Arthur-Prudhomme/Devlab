@@ -17,4 +17,3 @@ if (isset($_SESSION['user']['id'])) {
 } else {
     header('HTTP/1.0 403 Forbidden');
 }
-?>

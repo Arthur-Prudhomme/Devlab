@@ -27,7 +27,7 @@ if (!empty($_POST)) {
         $visibility = 1;
     }
     $album->createAlbum($_SESSION['user']['id'], $_POST['album_name'], $visibility);
-    header("Location: ./allAlbum.php?movie_id=" . $_GET['movie_id']);
+    header("Location: ./allAlbums.php?movie_id=" . $_GET['movie_id']);
 }
 ?>
 

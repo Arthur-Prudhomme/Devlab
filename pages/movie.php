@@ -15,10 +15,10 @@ echo $movie['title'] . '<br />';
 echo '<img src=' . $api->getImg($movie['poster_path'], 300) . '><br />';
 ?>
 
-<button onclick=button("watched",<?php echo $movie_id; ?>)>watched</button>
-<button onclick=button("watch_later",<?php echo $movie_id; ?>)>watch_later</button>
-<button onclick=button("add_to",<?php echo $movie_id; ?>)>add to</button>
-<br>
+<button onclick=watchedOrWatchLater("watched",<?php echo $movie_id; ?>)>watched</button>
+<button onclick=watchedOrWatchLater("watch_later",<?php echo $movie_id; ?>)>watch_later</button>
+<button onclick=addTo(<?php echo $movie_id; ?>)>add to</button>
+<ul id="album_list"></ul>
 
 <?php
 

@@ -12,11 +12,45 @@ const instantResearch = (path) => {
         .catch(console.log)
 }
 
-const button = (action, movie_id) => {
+const watchedOrWatchLater = (action, movie_id) => {
     axios
         .post('../sources/movieButtons.php', {action, movie_id})
         .then(result => {
             return action
+        })
+        .catch(console.log)
+}
+
+const addTo = (movie_id) => {
+    axios
+        .post('../sources/allAlbums.php')
+        .then(result => {
+            let exist = document.getElementById('album_addTo')
+            if (exist !== null) {
+                let destroy = document.querySelectorAll(`[id="album_addTo"]`);
+                destroy.forEach(element => element.remove())
+            }else{
+                let list = document.getElementById("album_list");
+                result.data.forEach(element => {
+                    let button = document.createElement("button");
+                    let li = document.createElement("li");
+                    button.innerText = element.name;
+                    button.addEventListener("click", function() {addToAlbum(element.id,movie_id)})
+                    li.id = "album_addTo";
+                    li.appendChild(button)
+                    list.appendChild(li);
+                })
+            }
+        })
+        .catch(console.log)
+}
+
+const addToAlbum = (album_id, movie_id) => {
+    axios
+        .post('../sources/addToAlbum.php', {album_id, movie_id})
+        .then(result => {
+            let closeAlbumList = document.querySelectorAll(`[id="album_addTo"]`);
+            closeAlbumList.forEach(element => element.remove())
         })
         .catch(console.log)
 }
@@ -34,7 +68,5 @@ function addSearchResult(movie_title, movie_id) {
 
 function destroySearchResults() {
     let check = document.querySelectorAll(`[id="search_proposal"]`);
-    if (check) {
-        check.forEach(element => element.remove())
-    }
+    check.forEach(element => element.remove())
 }
