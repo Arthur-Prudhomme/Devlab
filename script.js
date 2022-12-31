@@ -60,6 +60,30 @@ const addToAlbum = (album_id, movie_id) => {
         .catch(console.log)
 }
 
+const allAlbum = () => {
+    axios
+        .post('../sources/allGenre.php')
+        .then(result => {
+            let exist = document.getElementById('genre_title_list')
+            if (exist !== null) {
+                destroyAllOccurrence("genre_title_list")
+            }else{
+                let list = document.getElementById("genre_list");
+                let genre_num = result.data.genres.length
+                for(let i = 0; i < genre_num; i++){
+                    let genre = document.createElement("a");
+                    let li = document.createElement("li");
+                    genre.innerText = result.data.genres[i].name;
+                    genre.href = '../pages/genre.php?id='+ result.data.genres[i].id +'&page=1&order=desc';
+                    li.id = "genre_title_list";
+                    li.appendChild(genre)
+                    list.appendChild(li);
+                }
+            }
+        })
+        .catch(console.log)
+}
+
 function addSearchResult(movie_title, movie_id) {
     let list = document.getElementById("search_results");
     let a = document.createElement("a");

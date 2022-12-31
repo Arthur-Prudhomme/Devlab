@@ -11,13 +11,13 @@
     <?php
     require_once '../controllers/connection.php';
 
-    echo '<a href="../pages/home.php">Home</a>';
+    echo '<button><a href="../pages/home.php">Home</a></button>';
     echo ' | ';
-    echo '<a href="../mids/allGenre.php">Genre</a>';
+    echo '<button onclick=allAlbum()>Genre</button>';
     echo ' | ';
-    echo '<a href="../pages/trending.php?page=1">Trending</a>';
+    echo '<button><a href="../pages/trending.php?page=1">Trending</a></button>';
     echo ' | ';
-    echo '<a href="../pages/topRated.php?page=1">Top Rated</a>';
+    echo '<button><a href="../pages/topRated.php?page=1">Top Rated</a></button>';
     echo ' ';
     ?>
 
@@ -32,4 +32,5 @@
     }
     ?>
     <ul id="search_results"></ul>
+    <ul id="genre_list"></ul>
 </head>
