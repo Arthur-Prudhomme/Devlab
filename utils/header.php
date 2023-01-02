@@ -25,12 +25,13 @@
 
     <?php
 
-    if (isset($_SESSION['user']['id'])) {
-        echo '<button><a href="../mids/accountNav.php">Account</a></button>';
+    if (isset($_SESSION['user'])) {
+        echo '<button onclick=accountNav()>Account</button>';
     } else {
         echo '<button><a href="../connection/login.php">Login</a></button>';
     }
     ?>
+    <ul id="account_nav"></ul>
     <ul id="search_results"></ul>
     <ul id="genre_list"></ul>
 </head>

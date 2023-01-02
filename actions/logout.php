@@ -1,14 +1,6 @@
 <?php
 
-if ($_SESSION['user'] == null) {
-    logout();
-}
-if (array_key_exists('logout', $_GET)) {
-    logout();
-}
+require_once '../controllers/connection.php';
 
-function logout()
-{
-    session_destroy();
-    header("Location: ../index.php");
-}
+session_destroy();
+header("Location: ../index.php");

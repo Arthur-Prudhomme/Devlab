@@ -3,7 +3,7 @@ require_once '../utils/header.php';
 ?>
 <body>
 <?php
-require_once '../actions/logout.php';
+require_once '../actions/checkLogin.php';
 require_once '../controllers/connection.php';
 require_once '../controllers/album.php';
 require_once '../controllers/api.php';

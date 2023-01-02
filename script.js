@@ -84,6 +84,33 @@ const allAlbum = () => {
         .catch(console.log)
 }
 
+function accountNav() {
+    let exist = document.getElementById('account_choice')
+    if (exist !== null) {
+        destroyAllOccurrence("account_choice")
+    }else{
+        for(let i = 0; i < 2; i++) {
+            let innerText
+            let href
+            if (i === 0) {
+                innerText = 'Profil'
+                href = '../pages/profil.php'
+            } else{
+                innerText = 'Logout'
+                href = '../actions/logout.php'
+            }
+            let list = document.getElementById("account_nav");
+            let choice = document.createElement("a");
+            let li = document.createElement("li");
+            choice.innerText = innerText;
+            choice.href = href;
+            li.id = "account_choice";
+            li.appendChild(choice)
+            list.appendChild(li);
+        }
+    }
+}
+
 function addSearchResult(movie_title, movie_id) {
     let list = document.getElementById("search_results");
     let a = document.createElement("a");
