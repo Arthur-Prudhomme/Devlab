@@ -14,13 +14,13 @@ $histAlbum = [];
 foreach ($allAlbums as $albums) {
     array_push($histAlbum, $albums['id']);
     $movie_id = $album->getFirstMovieInAlbum($albums['id']);
-    if(isset($movie_id)){
+    if (isset($movie_id)) {
         $movie = $api->getMovie($movie_id);
         $album_cover = $api->getImg($movie['poster_path'], 200);
-    }else{
+    } else {
         $album_cover = 'https://cdn.iconscout.com/icon/free/png-256/pig-face-sus-wild-animal-food-33928.png';
     }
-    echo '<div>';
+    echo '<div id="'.$albums['id'].'">';
     echo $albums['name'] . '<br />';
     echo '<a href="albumContent.php?id=' . $albums['id'] . '"><img src=' . $album_cover . '></a><br>';
     echo '</div>';

@@ -13,7 +13,7 @@ if (is_int($check)) {
     $api = new API();
     $checkIfDeletable = $album->isWatchedOrWatchLater($_GET['id']);
     if($checkIfDeletable === false){
-        echo '<button onclick=""><h3>Delete Album</h3></button><br><br><br>';
+        echo '<br><form method="POST"><input type="submit" value="Delete Album"></form><br><br>';
     }
 
     foreach ($allMovies as $movies) {
@@ -23,6 +23,9 @@ if (is_int($check)) {
         echo '<a href="movie.php?id=' . $movies['movie_id'] . '"><img src=' . $api->getImg($movie['poster_path'], 200) . '></a><br>';
         echo '<button onclick=removeFromAlbum('.$movies['movie_id'].','.$_GET['id'].')>Remove From Album</button>';
         echo '</div><br>';
+    }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $album->deleteAlbum($_GET['id']);
     }
 } else {
     header("Location: ./albums.php");

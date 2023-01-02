@@ -20,7 +20,7 @@ require_once '../controllers/connection.php';
 
 if ($_POST) {
     $connection = new Connection();
-    $login = $connection->login();
+    $connection->login();
 }
 ?>
 </body>

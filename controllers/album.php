@@ -87,9 +87,17 @@ class Album
         ]);
     }
 
-    public function deleteAlbum()
+    public function deleteAlbum($album_id)
     {
+        $query = 'DELETE FROM album_content WHERE `album_id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($album_id));
 
+        $query = 'DELETE FROM album WHERE `id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($album_id));
+
+        header("Location: ./albums.php");
     }
 
     public function isWatchedOrWatchLater($album_id):bool
