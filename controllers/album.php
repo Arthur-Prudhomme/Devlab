@@ -91,4 +91,37 @@ class Album
     {
 
     }
+
+    public function isWatchedOrWatchLater($album_id):bool
+    {
+        $query = 'SELECT * FROM `album` WHERE `id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($album_id));
+        $statement = $statement->fetch();
+        if($statement['is_watched'] === 1 || $statement['is_watch_later'] === 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function getFirstMovieInAlbum($album_id)
+    {
+        $query = 'SELECT `movie_id` FROM `album_content` WHERE `album_id`=?';
+
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($album_id));
+        $statement = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+        $value = count($statement) - 1;
+        if($value < 0){
+            return null;
+        }else {
+            return json_encode($statement[$value]);
+        }
+    }
+
+    public function getFirstAlbumFromLikedAlbums()
+    {
+
+    }
 }
