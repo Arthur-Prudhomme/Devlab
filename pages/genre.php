@@ -15,7 +15,13 @@ foreach ($movie['results'] as $item) {
 }
 ?>
 <form method="post">
-    <input type="number" name="page" placeholder="enter page" min="1" max="<?php echo $movie['total_pages'] ?>"
+    <input type="number" name="page" placeholder="enter page" min="1" max="
+    <?php if($movie['total_pages'] > 500){
+        echo 500;
+    } else{
+        $movie['total_pages'];
+    }
+    ?>"
            value="<?php echo $page ?>">
     <input type="submit" value="Jump to">
 </form>
