@@ -180,3 +180,13 @@ const addAlbum = (album_name, album_visibility) => {
         })
         .catch(console.log)
 }
+
+const removeFromAlbum = (div_id, album_id) => {
+    axios
+        .post('../sources/removeFromAlbum.php', {div_id, album_id})
+        .then(result => {
+            let divToDestroy = document.getElementById(div_id)
+            divToDestroy.remove()
+        })
+        .catch(console.log)
+}

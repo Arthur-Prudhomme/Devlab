@@ -14,9 +14,10 @@ if (is_int($check)) {
 
     foreach ($allMovies as $movies) {
         $movie = $api->getMovie($movies['movie_id']);
-        echo '<div>';
+        echo '<div id="'.$movies['movie_id'].'">';
         echo $movie['title'] . '<br />';
-        echo '<a href="movie.php?id=' . $movies['movie_id'] . '"><img src=' . $api->getImg($movie['poster_path'], 200) . '></a>';
+        echo '<a href="movie.php?id=' . $movies['movie_id'] . '"><img src=' . $api->getImg($movie['poster_path'], 200) . '></a><br>';
+        echo '<button onclick=removeFromAlbum('.$movies['movie_id'].','.$_GET['id'].')>Remove From Album</button>';
         echo '</div>';
     }
 } else {
