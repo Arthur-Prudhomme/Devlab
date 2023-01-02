@@ -18,7 +18,7 @@ foreach ($allAlbums as $albums) {
         $movie = $api->getMovie($movie_id);
         $album_cover = $api->getImg($movie['poster_path'], 200);
     } else {
-        $album_cover = 'https://cdn.iconscout.com/icon/free/png-256/pig-face-sus-wild-animal-food-33928.png';
+        $album_cover = 'https://redellantasonline.com/assets/img-temp/200x300/img1.png';
     }
     echo '<div id="'.$albums['id'].'">';
     echo $albums['name'] . '<br />';
