@@ -19,7 +19,7 @@ foreach ($movie['results'] as $item) {
     <?php if($movie['total_pages'] > 500){
         echo 500;
     } else{
-        $movie['total_pages'];
+        echo $movie['total_pages'];
     }
     ?>"
            value="<?php echo $page ?>">
