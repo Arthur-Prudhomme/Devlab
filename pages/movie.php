@@ -1,8 +1,5 @@
 <?php
 require_once '../utils/header.php';
-?>
-<body>
-<?php
 require_once '../controllers/api.php';
 require_once '../controllers/connection.php';
 $movie_id = $_GET['id'];

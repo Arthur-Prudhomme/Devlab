@@ -1,8 +1,5 @@
 <?php
 require_once '../utils/header.php';
-?>
-<body>
-<?php
 require_once '../controllers/api.php';
 
 if (!empty($_POST)) {
