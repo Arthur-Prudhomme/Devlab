@@ -22,7 +22,7 @@ if (is_int($check)) {
         echo $movie['title'] . '<br />';
         echo '<a href="movie.php?id=' . $movies['movie_id'] . '"><img src=' . $api->getImg($movie['poster_path'], 200) . '></a><br>';
         echo '<button onclick=removeFromAlbum('.$movies['movie_id'].','.$_GET['id'].')>Remove From Album</button>';
-        echo '</div><br>';
+        echo '<br></div>';
     }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $album->deleteAlbum($_GET['id']);
