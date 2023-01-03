@@ -43,6 +43,7 @@ if (!empty($_POST)) {
     </form>
 
   </main>
+
 </body>
 <?php
 require_once '../utils/footer.php';

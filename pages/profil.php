@@ -1,24 +1,39 @@
 <?php
-require_once '../utils/header.php';
-require_once '../actions/checkLogin.php';
-require_once '../controllers/album.php';
-require_once '../controllers/api.php';
+  require_once '../utils/header.php';
+  require_once '../actions/checkLogin.php';
+  require_once '../controllers/album.php';
+  require_once '../controllers/api.php';
 
-echo '<h1>Hello ' . $_SESSION['user']['username'] . '</h1>';
-
-$album = new Album();
-$api = new API();
-$first_album_id = $album->getFirstAlbumFrom($_SESSION['user']['id'],0);
-$first_album_first_movie_id = $album->getFirstMovieInAlbum($first_album_id);
-$movie = $api->getMovie($first_album_first_movie_id);
-
-echo '<h2>Your Albums</h2>';
-echo '<a href="albums.php"><img src=' . $api->getImg($movie['poster_path'], 200) . '></a><br>';
-
-echo '<h2>Liked Albums</h2>';
-echo '<a href="likedAlbum.php"><img src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a><br>';
+  $album = new Album();
+  $api = new API();
+  $first_album_id = $album->getFirstAlbumFrom($_SESSION['user']['id'],0);
+  $first_album_first_movie_id = $album->getFirstMovieInAlbum($first_album_id);
+  $movie = $api->getMovie($first_album_first_movie_id);
 
 ?>
+
+  <main class="flex flex-col lg:mt-32 mt-20">
+    <div class="w-11/12 mx-auto flex flex-col">
+      <?php 
+        echo '<h1 class="titre uppercase font-bold mt-8 lg:mt-0 text-2xl lg:text-3xl mb-8">Hello ' . $_SESSION['user']['username'] . '</h1>';
+      ?>
+      <div class="flex lg:flex-row flex-col">
+        <div class="flex flex-col lg:w-1/2 w-11/12 mx-auto">
+          <?php 
+            echo '<h2 class="titre uppercase font-semi-bold mt-8 lg:mt-0 text-lg lg:text-xl">Your Albums</h2>';
+            echo '<a class="mt-4" href="albums.php"><img class="rounded-lg lg:w-1/2 w-full" src=' . $api->getImg($movie['poster_path'], 200) . '></a><br>';
+          ?>
+        </div>
+        <div class="flex flex-col lg:w-1/2 w-11/12 mx-auto">
+          <?php
+            echo '<h2 class="titre uppercase font-semi-bold mt-8 lg:mt-0 text-lg lg:text-xl">Liked Albums</h2>';
+            echo '<a class="mt-4" href="likedAlbum.php"><img class="rounded-lg lg:w-1/2 w-full" src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a><br>';
+          ?>
+        </div>
+      </div>
+    </div>
+  </main>
+
 </body>
 <?php
 require_once '../utils/footer.php';
