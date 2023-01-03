@@ -1,7 +1,12 @@
-body{
+body {
     background-color: #212121;
+    color: white;
 }
 
-body a{
+body a {
     color: white;
+}
+
+body button a {
+    color: black;
 }
