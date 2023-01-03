@@ -22,11 +22,12 @@ foreach ($allAlbums as $albums) {
     }
     echo '<div id="'.$albums['id'].'">';
     echo $albums['name'] . '<br />';
-    echo '<a href="albumContent.php?id=' . $albums['id'] . '"><img src=' . $album_cover . '></a><br>';
+    echo '<a href="albumContent.php?id='.$albums['id'].'"><img src=' . $album_cover . '></a><br>';
     echo '</div>';
 }
 $_SESSION['hist'] = $histAlbum;
 ?>
+
 </body>
 <?php
 require_once '../utils/footer.php';

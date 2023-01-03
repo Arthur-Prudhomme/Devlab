@@ -21,7 +21,7 @@
         <div class="flex flex-col lg:w-1/2 w-11/12 mx-auto">
           <?php 
             echo '<h2 class="titre uppercase font-semi-bold mt-8 lg:mt-0 text-lg lg:text-xl">Your Albums</h2>';
-            echo '<a class="mt-4" href="albums.php"><img class="rounded-lg lg:w-1/2 w-full" src=' . $api->getImg($movie['poster_path'], 200) . '></a><br>';
+            echo '<a class="mt-4" href="albums.php"><img class="rounded-lg lg:w-1/2 w-full" src=' . $api->getImg($movie['poster_path'], 500) . '></a><br>';
           ?>
         </div>
         <div class="flex flex-col lg:w-1/2 w-11/12 mx-auto">
