@@ -41,15 +41,36 @@ input:focus {
 }
 
 .films img {
-    display: flex;
-    z-index: -10;
-    height: 100%;
-    width: 100%;
-    border-radius: 20px;
+  display: flex;
+  z-index: -10;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
 }
 
 .movie {
-    height: 100Vh;
+  height: 100Vh;
+}
+
+#album_list input{
+    background-color: transparent;
+    border: 1px solid #726F6F;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+#album_list select{
+    background-color: transparent;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+#album_list #button{
+    background-color: #AE0000;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    padding: 2px 12px;
+    color: white;
 }
 
 .movie h4 a{
@@ -60,11 +81,18 @@ input:focus {
 
 .movie h4 a:hover{
     opacity: 80%;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 .movie .affiche img{
     border-radius: 20px;
     height: 100%;
+}
+
+.acteur .affiche img{
+    border-radius: 20px;
+    height: 95%;
 }
 
 .movie .acteur img {
@@ -80,5 +108,9 @@ input:focus {
   .movie h4 a {
     display: none;
   }
-  
+
+  .movie .affiche img{
+    width: 100%;
+  }
+
 }

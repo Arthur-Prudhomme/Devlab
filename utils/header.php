@@ -8,6 +8,7 @@
   <link href="./style.css" rel="stylesheet">
   <link href="../style.css" rel="stylesheet">
   <link href="src/input.css" rel="stylesheet">
+  <link href="../src/input.css" rel="stylesheet">
   <link href="./build/css/style.css" rel="stylesheet">
   <link href="../build/css/style.css" rel="stylesheet">
 </head>
