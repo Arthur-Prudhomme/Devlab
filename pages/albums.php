@@ -10,7 +10,6 @@
   $allAlbums = $album->getAllAlbumFromUserId($_SESSION['user']['id']);
   $histAlbum = [];
 
-  $_SESSION['hist'] = $histAlbum;
   ?>
 
   <main class="flex flex-col lg:mt-32 mt-20 w-11/12 mx-auto">
@@ -33,6 +32,7 @@
             echo '<a href="albumContent.php?id='.$albums['id'].'"><img class="lg:mt-4 mt-2 rounded-lg w-full" src=' . $album_cover . '></a>';
             echo '</div>';
         }
+        $_SESSION['hist'] = $histAlbum;
       ?>
     </div>
     
