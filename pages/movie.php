@@ -13,7 +13,7 @@
     <div class="flex flex-col lg:flex-row w-11/12 mx-auto text-gris ">
       <div class="affiche flex lg:w-5/12 rounded-2xl w-full">
         <?php 
-          echo '<img class="w-[50vh]" src='.$api->getImg($movie['poster_path'], 300) . '><br />';
+          echo '<img class="w-[50vh]" src='.$api->getImg($movie['poster_path'], 500) . '><br />';
         ?>
       </div>
       <div class="droite flex flex-col w-full lg:w-8/12">
@@ -49,7 +49,7 @@
                     ?>
                     <ul class="bg-fond w-full absolute flex flex-col z-50 pt-4 p-3 rounded" id="album_list"></ul>
                   </div>
-                  <?php
+                <?php
               }
             ?>
           </div>

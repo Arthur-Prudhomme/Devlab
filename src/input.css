@@ -43,13 +43,9 @@ input:focus {
 .films img {
   display: flex;
   z-index: -10;
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
   border-radius: 10px;
-}
-
-.movie {
-  height: 100Vh;
 }
 
 #album_list input{
@@ -87,7 +83,7 @@ input:focus {
 
 .movie .affiche img{
     border-radius: 20px;
-    height: 100%;
+    /* height: 100%; */
 }
 
 .movie .acteur img {
