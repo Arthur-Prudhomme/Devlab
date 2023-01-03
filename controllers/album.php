@@ -127,17 +127,4 @@ class Album
             return json_encode($statement[$value]);
         }
     }
-
-    public function getFirstAlbumFrom($user_id, $is_liked)
-    {
-        if($is_liked === 1){
-
-        }else{
-            $query = 'SELECT * FROM `album` WHERE `user_id`=?';
-            $statement = $this->pdo->prepare($query);
-            $statement->execute(array($user_id));
-            $statement = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
-            return json_encode($statement[0]);
-        }
-    }
 }
