@@ -5,25 +5,44 @@ $page = $_GET['page'];
 $api = new API();
 
 $topRated = $api->getTopRated($page);
-foreach ($topRated['results'] as $item) {
-    echo '<div>';
-    echo $item['title'] . '<br />';
-    echo '<a href=movie.php?id=' . $item['id'] . '><img src=' . $api->getImg($item['poster_path'], 200) . '></a>';
-    echo '</div>';
-}
 ?>
-
-<form method="post">
-    <input type="number" name="page" placeholder="enter page" min="1" max="<?php echo $topRated['total_pages'] ?>"
-           value="<?php echo $page ?>">
-    <input type="submit" value="Jump to">
-</form>
 
 <?php
 if (!empty($_POST)) {
     header("Location: topRated.php?page=" . $_POST['page']);
 }
 ?>
+
+  <main class="flex flex-col mt-20 lg:mt-32  w-11/12 mx-auto">
+
+    <h2 class="titre uppercase text-rouge mt-8 font-bold text-2xl">Top Rated</h2>
+
+    <div class="films grid grid-cols-2 lg:grid-cols-5 gap-4 mx-auto mt-8">
+
+      <?php
+
+        foreach($topRated['results'] as $item) {
+          echo '<a href=movie.php?id='.$item['id'].'>';
+          echo '<div>';
+          echo '<img src='.$api->getImg($item['poster_path'], 200).'>';
+          echo '<div> </div>';
+          echo '<p>'. $item["title"]. '</p>'. '<br />';
+          echo '</div>';
+          echo '</a>';
+      }
+
+      ?>
+
+    </div>
+
+    <form class="mt-8 mb-24" method="post">
+        <input class="text-fond rounded-md pl-1 w-1/12" type="number" name="page" placeholder="enter page" min="1" max="<?php echo $topRated['total_pages'] ?>"
+              value="<?php echo $page ?>">
+        <input class="text-white" type="submit" value="Jump to">
+    </form>
+
+  </main>
+
 </body>
 <?php
 require_once '../utils/footer.php';
