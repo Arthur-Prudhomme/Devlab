@@ -90,11 +90,6 @@ input:focus {
     height: 100%;
 }
 
-.acteur .affiche img{
-    border-radius: 20px;
-    height: 95%;
-}
-
 .movie .acteur img {
     border-radius:10px;
 }
