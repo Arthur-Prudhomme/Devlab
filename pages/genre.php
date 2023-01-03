@@ -27,7 +27,7 @@ foreach ($movie['results'] as $item) {
 </form>
 <?php
 if (!empty($_POST)) {
-    header("Location: genre.php?id=" . $genre_id . "&page=" . $_POST['page']);
+    header("Location: genre.php?id=" . $genre_id . "&page=" . $_POST['page'] . "&order=" . $_GET['order']);
 }
 ?>
 </body>
