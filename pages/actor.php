@@ -11,7 +11,7 @@
     <div class="flex flex-col lg:flex-row w-11/12 mx-auto text-gris h-full justify-between">
       <div class="affiche flex lg:w-5/12 rounded-2xl">
         <?php 
-          echo '<img class="w-[55vh] h-[80vh] rounded-2xl" src='.$api->getImg($person['profile_path'], 300).'><br>';
+          echo '<img class="w-[55vh] h-[80vh] rounded-2xl" src='.$api->getImg($person['profile_path'], 500).'><br>';
         ?>
       </div>
       <div class="droite flex flex-col w-full lg:w-8/12">

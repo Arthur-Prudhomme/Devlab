@@ -86,6 +86,34 @@ input:focus {
     color: white;
 }
 
+#genre_list li:nth-child(1){
+    margin-top: 30px;
+}
+
+#search_results li:nth-child(1){
+    margin-top: 30px;
+}
+
+#album_list li:nth-child(1){
+    margin-top: 30px;
+}
+
+#album_list li{
+    margin-top: 8px;
+}
+
+#album_list input{
+    padding-left: 6px;
+}
+
+#album_list li:last-child{
+    background-color: #AE0000;
+    color: white;
+    padding: 4px 6px;
+    border-radius: 4px;
+    text-align: center;
+}
+
 .movie h4 a{
     margin-left: 2vh;
     color: #726F6F;

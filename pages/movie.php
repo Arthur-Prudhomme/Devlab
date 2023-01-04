@@ -43,11 +43,11 @@
                   echo '<button class="btn bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black" onclick=watchedOrWatchLater("watched",' . $movie_id . ')>watched</button>';
                   echo '<button class="btn bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black" onclick=watchedOrWatchLater("watch_later",' . $movie_id . ')>watch later</button>';
                   ?>
-                  <div class="relative">
+                  <div class="relative ">
                     <?php
-                      echo '<button class="addTo bg-fond lg:text-base text-sm px-7 py-2 font-bold uppercase rounded-lg hover:bg-black" onclick=addTo(' . $movie_id . ')>add to</button>';
+                      echo '<button class="addTo relative z-50 bg-fond lg:text-base text-sm px-7 py-2 font-bold uppercase rounded-lg hover:bg-black" onclick=addTo(' . $movie_id . ')>add to</button>';
                     ?>
-                    <ul class="bg-fond w-full absolute flex flex-col z-50 pt-4 p-3 rounded" id="album_list"></ul>
+                    <ul class="bg-fond w-max absolute flex flex-col pt-4 p-3 rounded top-0 z-10" id="album_list"></ul>
                   </div>
                 <?php
               }

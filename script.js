@@ -27,25 +27,25 @@ const addTo = (movie_id) => {
         .then(result => {
             let exist = document.getElementById('album_addTo')
             if (exist !== null) {
-                destroyAllOccurrence("album_addTo")
+              destroyAllOccurrence("album_addTo")
             }else{
-                let list = document.getElementById("album_list");
-                result.data.forEach(element => {
-                    let albums = document.createElement("button");
-                    let li = document.createElement("li");
-                    albums.innerText = element.name;
-                    albums.addEventListener("click", function() {addToAlbum(element.id,movie_id)})
-                    li.id = "album_addTo";
-                    li.appendChild(albums)
-                    list.appendChild(li);
-                })
-                let newAlbum = document.createElement("button");
+              let list = document.getElementById("album_list");
+              result.data.forEach(element => {
+                let albums = document.createElement("button");
                 let li = document.createElement("li");
-                newAlbum.innerText = "new album";
-                newAlbum.addEventListener("click", function() {addAlbumForm()})
+                albums.innerText = element.name;
+                albums.addEventListener("click", function() {addToAlbum(element.id,movie_id)})
                 li.id = "album_addTo";
-                li.appendChild(newAlbum)
+                li.appendChild(albums)
                 list.appendChild(li);
+              })
+              let newAlbum = document.createElement("button");
+              let li = document.createElement("li");
+              newAlbum.innerText = "new album";
+              newAlbum.addEventListener("click", function() {addAlbumForm()})
+              li.id = "album_addTo";
+              li.appendChild(newAlbum)
+              list.appendChild(li);
             }
         })
         .catch(console.log)
@@ -148,15 +148,15 @@ function addAlbumForm(){
         li.id = "album_addTo";
         element.id = idValue;
         if(i === 1){
-            let choice1 = document.createElement("option");
-            choice1.innerText = "public";
-            let choice2 = document.createElement("option");
-            choice2.innerText = "private";
-            element.appendChild(choice1)
-            element.appendChild(choice2)
+          let choice1 = document.createElement("option");
+          choice1.innerText = "public";
+          let choice2 = document.createElement("option");
+          choice2.innerText = "private";
+          element.appendChild(choice1)
+          element.appendChild(choice2)
         }else if(i === 2){
-            element.innerText = "create album";
-            element.addEventListener("click", function() {addAlbum(getElementValueById("input"),getElementValueById("select"))})
+          element.innerText = "create album";
+          element.addEventListener("click", function() {addAlbum(getElementValueById("input"),getElementValueById("select"))})
         }
         li.appendChild(element);
         list.appendChild(li);

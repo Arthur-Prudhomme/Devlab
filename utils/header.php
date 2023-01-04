@@ -31,22 +31,22 @@
     <div class="menu w-1/2 hidden lg:flex flex-row justify-between items-center text-gris">
       <ul class="flex flex-col lg:flex-row justify-between lg:items-center lg:w-full w-2/3 bg-fond absolute lg:relative top-0 right-0 p-8 lg:p-0 lg:h-auto h-80 items-start"> 
         <?php 
-          echo '<button><a class="text-gris cursor-pointer" href="../pages/home.php">Home</a></button>';
+          echo '<button><a class="text-gris cursor-pointer " href="../pages/home.php">Home</a></button>';
           ?> 
           <div>
             <?php
-              echo '<button class="text-gris cursor-pointer" onclick=allAlbum()>Genre</button>';
+              echo '<button class="text-gris cursor-pointer relative z-50" onclick=allAlbum()>Genre</button>';
             ?>
-            <ul class="bg-fond absolute flex flex-col z-50 pt-4 p-3 rounded w-4/12 justify-between" id="genre_list"></ul>
+            <ul class="bg-fond absolute flex flex-col z-40 py-4 pl-6 rounded w-4/12 justify-between top-0" id="genre_list"></ul>
           </div>
           <?php
-          echo '<button><a class="text-gris cursor-pointer" href="../pages/trending.php?page=1">Trending</a></button>';
-          echo '<button><a class="text-gris cursor-pointer" href="../pages/topRated.php?page=1">Top Rated</a></button>';
+          echo '<button><a class="text-gris cursor-pointer relative z-50" href="../pages/trending.php?page=1">Trending</a></button>';
+          echo '<button><a class="text-gris cursor-pointer relative z-50" href="../pages/topRated.php?page=1">Top Rated</a></button>';
         ?>
           <form class="lg:flex flex-row relative" method="post">
             <div class="relative">
               <input class="bg-transparent text-gris border border-gris p-1 px-2 rounded" placeholder="Enter Keywords..." id="search_bar" name="input" oninput=instantResearch('../sources/dynamicSearch.php') />
-              <ul class="bg-fond absolute flex flex-col pt-4 p-3 rounded top-0 mt-12" id="search_results"></ul>
+              <ul class="bg-fond absolute flex flex-col pt-4 p-3 rounded top-0 -z-10" id="search_results"></ul>
             </div>
           </form>
 
@@ -57,7 +57,7 @@
               <?php
                 echo '<button class=" text-white z-40 appear px-4 py-1 rounded bg-rouge cursor-pointer" onclick=accountNav()>Account</button>';
               ?>
-              <ul class="bg-fond absolute flex flex-col z-50 pt-4 p-3 rounded w-full" id="account_nav"></ul>
+              <ul class="bg-fond absolute flex flex-col p-3 rounded w-full -z-10" id="account_nav"></ul>
             </div>
             <?php
           } else {
