@@ -75,7 +75,7 @@ $trending = $api->getTrending(1);
             echo '<a href=./movie.php?id='.$item['id'].'>';
             echo '<div>';
             echo '<img src='.$api->getImg($item['poster_path'], 200).'>';
-            echo '<div> </div>';
+            echo '<div class="gradient"> </div>';
             echo '<p>'. $item["title"]. '</p>'. '<br />';
             echo '</div>';
             echo '</a>';

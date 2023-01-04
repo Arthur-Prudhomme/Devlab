@@ -536,6 +536,10 @@ video {
   left: 0px;
 }
 
+.bottom-5 {
+  bottom: 1.25rem;
+}
+
 .left-4 {
   left: 1rem;
 }
@@ -560,6 +564,34 @@ video {
   top: 0px;
 }
 
+.right-\[\] {
+  right: ;
+}
+
+.right-\[2vh\] {
+  right: 2vh;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
+.bottom-8 {
+  bottom: 2rem;
+}
+
+.bottom-1\/2 {
+  bottom: 50%;
+}
+
+.left-1\/2 {
+  left: 50%;
+}
+
+.left-1\/4 {
+  left: 25%;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -574,6 +606,34 @@ video {
 
 .z-40 {
   z-index: 40;
+}
+
+.-z-10 {
+  z-index: -10;
+}
+
+.-z-20 {
+  z-index: -20;
+}
+
+.-z-50 {
+  z-index: -50;
+}
+
+.-z-40 {
+  z-index: -40;
+}
+
+.-z-30 {
+  z-index: -30;
+}
+
+.z-0 {
+  z-index: 0;
+}
+
+.z-30 {
+  z-index: 30;
 }
 
 .mx-auto {
@@ -644,6 +704,30 @@ video {
 
 .mt-12 {
   margin-top: 3rem;
+}
+
+.mr-\[2vh\] {
+  margin-right: 2vh;
+}
+
+.ml-32 {
+  margin-left: 8rem;
+}
+
+.ml-\[\] {
+  margin-left: ;
+}
+
+.ml-\[5vh\] {
+  margin-left: 5vh;
+}
+
+.ml-\[2vh\] {
+  margin-left: 2vh;
+}
+
+.ml-\[3vh\] {
+  margin-left: 3vh;
 }
 
 .block {
@@ -719,12 +803,36 @@ video {
   height: 0px;
 }
 
-.h-\[10vh\] {
-  height: 10vh;
+.h-\[\] {
+  height: ;
 }
 
-.h-\[8vh\] {
-  height: 8vh;
+.h-\[60vh\] {
+  height: 60vh;
+}
+
+.h-\[40vh\] {
+  height: 40vh;
+}
+
+.h-\[0vh\] {
+  height: 0vh;
+}
+
+.h-\[50vh\] {
+  height: 50vh;
+}
+
+.h-\[45vh\] {
+  height: 45vh;
+}
+
+.h-\[47vh\] {
+  height: 47vh;
+}
+
+.h-\[48vh\] {
+  height: 48vh;
 }
 
 .w-11\/12 {
@@ -784,12 +892,64 @@ video {
   width: 66.666667%;
 }
 
+.w-4\/12 {
+  width: 33.333333%;
+}
+
 .w-5 {
   width: 1.25rem;
 }
 
 .w-7 {
   width: 1.75rem;
+}
+
+.w-3\/12 {
+  width: 25%;
+}
+
+.w-2\/12 {
+  width: 16.666667%;
+}
+
+.w-\[\] {
+  width: ;
+}
+
+.w-\[30vh\] {
+  width: 30vh;
+}
+
+.w-\[40vh\] {
+  width: 40vh;
+}
+
+.w-\[41vh\] {
+  width: 41vh;
+}
+
+.w-\[60vh\] {
+  width: 60vh;
+}
+
+.w-\[0vh\] {
+  width: 0vh;
+}
+
+.w-\[35vh\] {
+  width: 35vh;
+}
+
+.w-\[32vh\] {
+  width: 32vh;
+}
+
+.w-\[33vh\] {
+  width: 33vh;
+}
+
+.w-10\/12 {
+  width: 83.333333%;
 }
 
 .flex-none {
@@ -867,10 +1027,6 @@ video {
 
 .snap-start {
   scroll-snap-align: start;
-}
-
-.grid-cols-5 {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .grid-cols-2 {
@@ -995,6 +1151,21 @@ video {
   background-color: rgb(21 25 30 / var(--tw-bg-opacity));
 }
 
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
+.bg-green-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1059,10 +1230,6 @@ video {
   padding-bottom: 1.5rem;
 }
 
-.text-left {
-  text-align: left;
-}
-
 .text-center {
   text-align: center;
 }
@@ -1070,6 +1237,11 @@ video {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .text-sm {
@@ -1143,6 +1315,18 @@ video {
   opacity: 0;
 }
 
+.opacity-80 {
+  opacity: 0.8;
+}
+
+.opacity-20 {
+  opacity: 0.2;
+}
+
+.opacity-30 {
+  opacity: 0.3;
+}
+
 .shadow-2xl {
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
@@ -1195,12 +1379,30 @@ input:focus {
   text-align: center;
 }
 
-.films div div {
+.films .gradient{
   width: 100%;
   height: 100%;
   background: linear-gradient(transparent, #000);
   position: absolute;
   z-index: 5;
+}
+
+.gradient{
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(transparent, #000);
+  position: absolute;
+  z-index: 5;
+}
+
+.profil div div div{
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(transparent, #000);
+  position: absolute;
+  z-index: 5;
+  border-radius: 0 0 20px 20px;
+  bottom: 0;
 }
 
 .films p{
@@ -1216,7 +1418,7 @@ input:focus {
 .films img {
   display: flex;
   z-index: -10;
-  /* height: 100%; */
+  height: 100%;
   width: 100%;
   border-radius: 10px;
 }
@@ -1393,6 +1595,10 @@ input:focus {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .lg\:flex-row {
     flex-direction: row;
   }
@@ -1423,5 +1629,10 @@ input:focus {
   .lg\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }

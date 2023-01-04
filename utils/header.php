@@ -37,7 +37,7 @@
             <?php
               echo '<button class="text-gris cursor-pointer" onclick=allAlbum()>Genre</button>';
             ?>
-            <ul class="bg-fond absolute flex flex-col z-50 pt-4 p-3 rounded" id="genre_list"></ul>
+            <ul class="bg-fond absolute flex flex-col z-50 pt-4 p-3 rounded w-4/12 justify-between" id="genre_list"></ul>
           </div>
           <?php
           echo '<button><a class="text-gris cursor-pointer" href="../pages/trending.php?page=1">Trending</a></button>';
