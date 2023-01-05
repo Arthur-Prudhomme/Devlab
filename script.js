@@ -141,7 +141,7 @@ function addUserToSearchResults(username) {
     let list = document.getElementById("user_search_results");
     let a = document.createElement("a");
     let li = document.createElement("li");
-    a.href = '../pages/exploreProfil.php?username=' + username;
+    a.href = '../pages/profil.php?username=' + username;
     a.innerText = username;
     li.id = "user_search_proposal";
     li.appendChild(a)

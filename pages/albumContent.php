@@ -1,18 +1,26 @@
 <?php
 require_once '../utils/header.php';
 require_once '../actions/checkLogin.php';
-require_once '../controllers/connection.php';
 require_once '../controllers/album.php';
 require_once '../controllers/api.php';
 
 $album = new Album();
+$connection = new Connection();
+$api = new API();
 
-if($album->checkIfAlbumBelongsToUser($_GET['id'],$_SESSION['user']['id'])){
+if(!isset($_SESSION['exploreUsername'])) {
+    $user_id = $_SESSION['user']['id'];
+}else{
+    $user_id = $connection->getUserIdByUsername($_SESSION['exploreUsername']);
+}
+
+if($album->checkIfAlbumBelongsToUser($_GET['id'],$user_id)){
     $allMovies = $album->getAllMoviesFromAlbumId($_GET['id']);
-    $api = new API();
-    $checkIfDeletable = $album->isWatchedOrWatchLater($_GET['id']);
-    if($checkIfDeletable === false){
-        echo '<br><form method="POST"><input type="submit" value="Delete Album"></form><br><br>';
+    if(!isset($_SESSION['exploreUsername'])) {
+        $checkIfDeletable = $album->isWatchedOrWatchLater($_GET['id']);
+        if ($checkIfDeletable === false) {
+            echo '<br><form method="POST"><input type="submit" value="Delete Album"></form><br><br>';
+        }
     }
 
     foreach ($allMovies as $movies) {
@@ -20,14 +28,20 @@ if($album->checkIfAlbumBelongsToUser($_GET['id'],$_SESSION['user']['id'])){
         echo '<div id="'.$movies['movie_id'].'">';
         echo $movie['title'] . '<br />';
         echo '<a href="movie.php?id=' . $movies['movie_id'] . '"><img src=' . $api->getImg($movie['poster_path'], 200) . '></a><br>';
-        echo '<button onclick=removeFromAlbum('.$movies['movie_id'].','.$_GET['id'].')>Remove From Album</button>';
+        if(!isset($_SESSION['exploreUsername'])) {
+            echo '<button onclick=removeFromAlbum(' . $movies['movie_id'] . ',' . $_GET['id'] . ')>Remove From Album</button>';
+        }
         echo '<br></div>';
     }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $album->deleteAlbum($_GET['id']);
     }
 } else {
-    header("Location: ./albums.php");
+    if(!isset($_SESSION['exploreUsername'])) {
+        header("Location: ./albums.php");
+    }else{
+        header("Location: ./albums.php?username=".$_SESSION['exploreUsername']);
+    }
 }
 ?>
 </body>
