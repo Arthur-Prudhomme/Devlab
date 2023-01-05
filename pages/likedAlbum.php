@@ -35,9 +35,7 @@ if(!isset($no_user)) {
         $album_infos = $album->getAlbumInfosById($albums['album_id']);
         $user_infos = $connection->getUserById($album_infos[1]);
         echo $album_infos[2] . ' from ' . $user_infos[1] . '<br />';
-        if(isset($_GET['username'])){
-            $_SESSION['exploreUsername'] = $user_infos[1];
-        }
+        $_SESSION['exploreUsername'] = $user_infos[1];
         echo '<a href="albumContent.php?id=' . $albums['album_id'] . '"><img src=' . $album_cover . '></a><br>';
         if(!isset($_GET['username'])) {
             echo '<button onclick=likeAlbum(' . $albums['album_id'] . ',' . $_SESSION['user']['id'] . ')>👍</button>';
