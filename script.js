@@ -1,12 +1,27 @@
-const instantResearch = (path) => {
-    let query = document.getElementById('search_bar').value
+const instantResearch = (path, isForUser) => {
+    let query
+    if(isForUser === 0) {
+        query = document.getElementById('search_bar').value
+    }else{
+        query = document.getElementById('user_search_bar').value
+    }
     axios
         .post(path, {query})
         .then(result => {
             destroyAllOccurrence("search_proposal")
             let occurrence = 5
-            for (let i = 0; i < occurrence; i++) {
-                addSearchResult(result.data.results[i].title, result.data.results[i].id)
+            if(isForUser === 0){
+                for (let i = 0; i < occurrence; i++) {
+                    addMovieToSearchResults(result.data.results[i].title, result.data.results[i].id)
+                }
+            }else{
+                destroyAllOccurrence("user_search_proposal")
+                if(result.data.length < occurrence){
+                    occurrence = result.data.length
+                }
+                for(let i = 0; i < occurrence; i++){
+                    addUserToSearchResults(result.data[i].username)
+                }
             }
         })
         .catch(console.log)
@@ -111,13 +126,24 @@ function accountNav() {
     }
 }
 
-function addSearchResult(movie_title, movie_id) {
+function addMovieToSearchResults(movie_title, movie_id) {
     let list = document.getElementById("search_results");
     let a = document.createElement("a");
     let li = document.createElement("li");
     a.href = '../pages/movie.php?id=' + movie_id;
     a.innerText = movie_title;
     li.id = "search_proposal";
+    li.appendChild(a)
+    list.appendChild(li);
+}
+
+function addUserToSearchResults(username) {
+    let list = document.getElementById("user_search_results");
+    let a = document.createElement("a");
+    let li = document.createElement("li");
+    a.href = '../pages/exploreProfil.php?username=' + username;
+    a.innerText = username;
+    li.id = "user_search_proposal";
     li.appendChild(a)
     list.appendChild(li);
 }

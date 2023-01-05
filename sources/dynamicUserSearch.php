@@ -1,8 +1,8 @@
 <?php
-require_once '../controllers/api.php';
+require_once '../controllers/connection.php';
 $parameters = file_get_contents('php://input');
 $parameters = json_decode($parameters, true);
 $query = $parameters['query'];
-$api = new API();
-$search_results = $api->getMovieBySearch($query, 1);
+$connection = new Connection();
+$search_results = $connection->getUserByUsername($query);
 echo json_encode($search_results);

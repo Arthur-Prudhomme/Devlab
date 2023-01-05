@@ -90,4 +90,14 @@ class Connection
             }
         }
     }
+
+    public function getUserByUsername($username){
+        if(!empty($username)){
+            $query = 'SELECT * FROM user WHERE username LIKE ?';
+            $username = '%'.$username.'%';
+            $statement = $this->pdo->prepare($query);
+            $statement->execute(array($username));
+            return $statement->fetchAll();
+        }
+    }
 }

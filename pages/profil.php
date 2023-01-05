@@ -6,6 +6,10 @@ require_once '../controllers/api.php';
 
 echo '<h1>Hello ' . $_SESSION['user']['username'] . '</h1>';
 
+echo '<h2>Search User</h2>';
+echo '<input id="user_search_bar" name="input" oninput=instantResearch("../sources/dynamicUserSearch.php",1) />';
+echo '<ul id="user_search_results"></ul>';
+
 echo '<h2>Your Albums</h2>';
 echo '<a href="albums.php"><img src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a><br>';
 
