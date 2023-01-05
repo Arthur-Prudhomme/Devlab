@@ -91,13 +91,23 @@ class Connection
         }
     }
 
-    public function getUserByUsername($username){
+    public function getUserByUsername($username, bool $containing){
         if(!empty($username)){
             $query = 'SELECT * FROM user WHERE username LIKE ?';
-            $username = '%'.$username.'%';
+            if($containing === true){
+                $username = '%'.$username.'%';
+            }
             $statement = $this->pdo->prepare($query);
             $statement->execute(array($username));
             return $statement->fetchAll();
         }
+    }
+
+    public function getUserIdByUsername($username){
+        $query = 'SELECT id FROM user WHERE username LIKE ?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($username));
+        $statement = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+        return $statement[0];
     }
 }

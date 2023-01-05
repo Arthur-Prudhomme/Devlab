@@ -9,9 +9,13 @@ class Album
         $this->pdo = new PDO('mysql:dbname=devlab;host=127.0.0.1', 'root', '');
     }
 
-    public function getAllAlbumFromUserId(int $user_id): array
+    public function getAllAlbumFromUserId(int $user_id, bool $includePrivate): array
     {
-        $query = 'SELECT * FROM `album` WHERE `user_id` =?';
+        if($includePrivate === true){
+            $query = 'SELECT * FROM `album` WHERE `user_id` =?';
+        }else{
+            $query = 'SELECT * FROM `album` WHERE `user_id` =? AND `is_private`=0';
+        }
         $statement = $this->pdo->prepare($query);
         $statement->execute(array($user_id));
         return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -125,6 +129,21 @@ class Album
             return null;
         }else {
             return json_encode($statement[$value]);
+        }
+    }
+
+    public function checkIfAlbumBelongsToUser($album_id, $user_id){
+        $query = 'SELECT * FROM album WHERE id = :album_id AND user_id = :user_id';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'album_id' => $album_id,
+            'user_id' => $user_id
+        ]);
+        $statement = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+        if(!empty($statement)){
+            return true;
+        }else{
+            return false;
         }
     }
 }

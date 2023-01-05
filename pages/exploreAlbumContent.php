@@ -6,8 +6,11 @@ require_once '../controllers/album.php';
 require_once '../controllers/api.php';
 
 $album = new Album();
+$connection = new Connection();
 
-if($album->checkIfAlbumBelongsToUser($_GET['id'],$_SESSION['user']['id'])){
+$user_id = $connection->getUserIdByUsername($_SESSION['exploreUsername']);
+
+if ($album->checkIfAlbumBelongsToUser($_GET['id'],$user_id)) {
     $allMovies = $album->getAllMoviesFromAlbumId($_GET['id']);
     $api = new API();
     $checkIfDeletable = $album->isWatchedOrWatchLater($_GET['id']);
@@ -20,14 +23,10 @@ if($album->checkIfAlbumBelongsToUser($_GET['id'],$_SESSION['user']['id'])){
         echo '<div id="'.$movies['movie_id'].'">';
         echo $movie['title'] . '<br />';
         echo '<a href="movie.php?id=' . $movies['movie_id'] . '"><img src=' . $api->getImg($movie['poster_path'], 200) . '></a><br>';
-        echo '<button onclick=removeFromAlbum('.$movies['movie_id'].','.$_GET['id'].')>Remove From Album</button>';
         echo '<br></div>';
     }
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $album->deleteAlbum($_GET['id']);
-    }
 } else {
-    header("Location: ./albums.php");
+    header("Location: ./exploreAlbum.php?username=".$_SESSION['exploreUsername']);
 }
 ?>
 </body>

@@ -5,10 +5,15 @@ require_once '../controllers/connection.php';
 require_once '../controllers/album.php';
 require_once '../controllers/api.php';
 
-echo '<h2>Your Albums</h2>';
+$connection = new Connection();
+
+$userId = $connection->getUserIdByUsername($_GET['username']);
+$_SESSION['exploreUsername'] = $_GET['username'];
+
+echo '<h2>'.$_GET['username'].'\'s Albums</h2>';
 $album = new Album();
 $api = new API();
-$allAlbums = $album->getAllAlbumFromUserId($_SESSION['user']['id'],1);
+$allAlbums = $album->getAllAlbumFromUserId($userId,0);
 
 foreach ($allAlbums as $albums) {
     $movie_id = $album->getFirstMovieInAlbum($albums['id']);
@@ -20,10 +25,9 @@ foreach ($allAlbums as $albums) {
     }
     echo '<div id="'.$albums['id'].'">';
     echo $albums['name'] . '<br />';
-    echo '<a href="albumContent.php?id=' . $albums['id'] . '"><img src=' . $album_cover . '></a><br>';
+    echo '<a href="exploreAlbumContent.php?id=' . $albums['id'] . '"><img src=' . $album_cover . '></a><br>';
     echo '</div>';
 }
-
 ?>
 </body>
 <?php
