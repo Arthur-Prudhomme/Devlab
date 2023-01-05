@@ -35,6 +35,9 @@ if(!isset($no_user)){
         echo $albums['name'] . '<br />';
         echo '<a href="albumContent.php?id=' . $albums['id'] . '"><img src=' . $album_cover . '></a><br>';
         echo '</div>';
+        if($_GET['username'] !== $_SESSION['user']['username']){
+            echo '<button onclick=likeAlbum(' .$albums['id']. ',' .$_SESSION['user']['id']. ')>👍</button>';
+        }
     }
 }
 

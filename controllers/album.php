@@ -146,4 +146,33 @@ class Album
             return false;
         }
     }
+
+    public function getLikesOnAlbum($album_id){
+
+    }
+
+    public function getAllLikedAlbumsIdFromUser($user_id){
+
+    }
+
+    public function likeAlbum($album_id, $user_id){
+        $query = 'SELECT * FROM liked_album WHERE `album_id` = :album_id AND `user_id` = :user_id';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'album_id' => $album_id,
+            'user_id' => $user_id
+        ]);
+        $statement = $statement->fetch();
+
+        if(isset($statement['album_id'])) {
+            $query = 'DELETE FROM liked_album WHERE `album_id` = :album_id AND `user_id` = :user_id';
+        }else{
+            $query = 'INSERT INTO liked_album (`album_id`, `user_id`) VALUES (:album_id, :user_id)';
+        }
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'album_id' => $album_id,
+            'user_id' => $user_id
+        ]);
+    }
 }

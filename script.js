@@ -75,6 +75,13 @@ const addToAlbum = (album_id, movie_id) => {
         .catch(console.log)
 }
 
+const likeAlbum = (album_id, user_id) => {
+    axios
+        .post('../sources/likeAlbum.php', {album_id, user_id})
+        .then(result => {})
+        .catch(console.log)
+}
+
 const allAlbum = () => {
     axios
         .post('../sources/allGenre.php')
