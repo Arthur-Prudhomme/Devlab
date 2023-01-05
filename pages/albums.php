@@ -35,8 +35,15 @@ if(!isset($no_user)){
         echo $albums['name'] . '<br />';
         echo '<a href="albumContent.php?id=' . $albums['id'] . '"><img src=' . $album_cover . '></a><br>';
         echo '</div>';
-        if($_GET['username'] !== $_SESSION['user']['username']){
-            echo '<button onclick=likeAlbum(' .$albums['id']. ',' .$_SESSION['user']['id']. ')>👍</button>';
+        if(isset($_GET['username'])){
+            if ($_GET['username'] !== $_SESSION['user']['username']) {
+                echo '<button onclick=likeAlbum(' . $albums['id'] . ',' . $_SESSION['user']['id'] . ')>👍</button>';
+            }
+        }else{
+            $likes = $album->getLikesOnAlbum($albums['id']);
+            if($likes != 0){
+                echo $likes.' likes';
+            }
         }
     }
 }

@@ -110,4 +110,11 @@ class Connection
         $statement = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
         return $statement[0];
     }
+
+    public function getUserById($user_id){
+        $query = 'SELECT * FROM user WHERE `id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($user_id));
+        return $statement->fetch();
+    }
 }

@@ -148,11 +148,20 @@ class Album
     }
 
     public function getLikesOnAlbum($album_id){
-
+        $query = 'SELECT * FROM liked_album WHERE `album_id` = :album_id';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'album_id' => $album_id
+        ]);
+        $statement = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+        return count($statement);
     }
 
-    public function getAllLikedAlbumsIdFromUser($user_id){
-
+    public function getAllLikedAlbumsFromUser($user_id){
+        $query = 'SELECT * FROM liked_album WHERE `user_id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($user_id));
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function likeAlbum($album_id, $user_id){
@@ -174,5 +183,12 @@ class Album
             'album_id' => $album_id,
             'user_id' => $user_id
         ]);
+    }
+
+    public function getAlbumInfosById($album_id){
+        $query = 'SELECT * FROM album WHERE `id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($album_id));
+        return $statement->fetch();
     }
 }

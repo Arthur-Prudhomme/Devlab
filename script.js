@@ -78,7 +78,10 @@ const addToAlbum = (album_id, movie_id) => {
 const likeAlbum = (album_id, user_id) => {
     axios
         .post('../sources/likeAlbum.php', {album_id, user_id})
-        .then(result => {})
+        .then(result => {
+            let divToDestroy = document.getElementById("l"+album_id)
+            divToDestroy.remove()
+        })
         .catch(console.log)
 }
 
