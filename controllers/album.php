@@ -213,7 +213,7 @@ class Album
     }
 
     public function getAllPendingInvitationFromUserId($user_id){
-        $query = 'SELECT * FROM invitation WHERE `invited` =?';
+        $query = 'SELECT * FROM invitation WHERE is_accepted = 0 AND `invited` =?';
         $statement = $this->pdo->prepare($query);
         $statement->execute(array($user_id));
         return $statement->fetchAll(PDO::FETCH_ASSOC);
