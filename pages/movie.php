@@ -13,10 +13,10 @@
     <div class="flex flex-col lg:flex-row w-11/12 mx-auto text-gris ">
       <div class="affiche flex lg:w-5/12 rounded-2xl w-full">
         <?php 
-          echo '<img class="w-[50vh]" src='.$api->getImg($movie['poster_path'], 500) . '><br />';
+          echo '<img class="w-[50vh] h-[80vh]" src='.$api->getImg($movie['poster_path'], 500) . '><br />';
         ?>
       </div>
-      <div class="droite flex flex-col w-full lg:w-8/12">
+      <div class="droite flex flex-col w-full lg:w-8/12 ">
         <div>
           <h2 class="titre uppercase font-bold mt-8 lg:mt-0 text-2xl lg:text-3xl">
             <?php 
@@ -31,11 +31,18 @@
               }
             ?>
           </h4>
-          <p class="leading-5 mt-4 titre">
-            <?php
-              echo $movie['overview'];
-            ?>
-          </p>
+          <div>
+            <p class="leading-5 mt-4 titre overview">
+              <?php
+                echo $movie['overview'];
+              ?>
+              <!-- <script>
+                var string = "<?php echo $movie['overview']; ?>";
+                document.write(substr(string, 0, 40));
+              </script> -->
+            </p>
+            <!-- <p class="btn">Read more</p> -->
+          </div>
 
           <div class="lg:flex lg:flex-row grid grid-cols-2 gap-4 my-6 lg:w-7/12 justify-between">
             <?php 
@@ -90,4 +97,7 @@
 <?php
 require_once '../utils/footer.php';
 ?>
+<script>
+      
+</script>
 </html>

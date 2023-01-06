@@ -83,4 +83,14 @@
 
 </header>
 
+<script>
+  const menuBtn = document.querySelector('.menuBtn');
+  const menu = document.querySelector('.menu');
+
+  menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+  });
+
+</script>
+
 <body class="bg-bg h-full w-full flex flex-col relative text-white">

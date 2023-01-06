@@ -16,7 +16,7 @@
     <?php 
       echo '<h2 class=" uppercase font-bold mt-8 lg:mt-0 text-2xl lg:text-3xl">Your Albums</h2>'; 
     ?>
-    <div class="grid  lg:grid-cols-4 gap-4 grid-cols-2 mt-8">
+    <div class="grid  lg:grid-cols-4 gap-4 grid-cols-1< mt-8">
       <?php 
         foreach ($allAlbums as $albums) {
             array_push($histAlbum, $albums['id']);

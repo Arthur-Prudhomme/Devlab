@@ -68,7 +68,7 @@ $trending = $api->getTrending(1);
 
       <h2 class="titre uppercase text-rouge mt-8 font-bold text-2xl">Trending</h2>
 
-      <div class="films grid grid-cols-2 lg:grid-cols-5 gap-4 mx-auto mt-8 w-11/12 ">
+      <div class="grid lg:grid-cols-5 gap-4 grid-cols-2 mt-8">
 
         <?php
           foreach($trending['results'] as $item) {
