@@ -25,7 +25,7 @@ if (!empty($_POST)) {
         foreach($actorMovies['results'] as $item) {
             echo '<a href=movie.php?id='.$item['id'].'>';
             echo '<div>';
-            echo '<img src='.$api->getImg($item['poster_path'], 200).'>';
+            echo '<img src='.$api->getImg($item['poster_path'], 300).'>';
             echo '<div> </div>';
             echo '<p>'. $item["title"]. '</p>'. '<br />';
             echo '</div>';

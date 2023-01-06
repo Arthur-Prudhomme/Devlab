@@ -20,17 +20,16 @@ $movie = $api->getMovieByGenre($genre_id, $page, $order_by);
     <div class="films grid grid-cols-2 lg:grid-cols-5 gap-4 mx-auto mt-8">
     
       <?php
-    
         foreach($movie['results'] as $item) {
-          echo '<a href=movie.php?id='.$item['id'].'>';
-          echo '<div>';
-          echo '<img src='.$api->getImg($item['poster_path'], 200).'>';
-          echo '<div> </div>';
-          echo '<p>'. $item["title"]. '</p>'. '<br />';
+          echo '<div class="flex flex-col items-center">';
+            echo '<div class="flex flex-col items-center text-center relative w-full">';
+              echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="movie.php?id=' . $item['id'] . '"></a>';
+              echo '<p class="absolute text-white font-bold text-base z-10 w-11/12 bottom-5">'.$item["title"].'</p>';
+              echo '<a class="mt-4 w-[31vh] h-[47vh]" href="movie.php?id='.$item['id'].'"><img class="rounded-lg w-[31vh] h-[47vh]" src='.$api->getImg($item['poster_path'], 300).'></a>';
+              echo '<div class="w-[31vh] h-[47vh] absolute gradient"></div>';
+            echo '</div>';
           echo '</div>';
-          echo '</a>';
         }
-    
       ?>
     </div>
 
