@@ -25,7 +25,7 @@ if($album->checkIfAlbumBelongsToUser($_GET['id'],$user_id)){
 
     if(!isset($_SESSION['exploreUsername'])) {
         echo '<h2>Invite User</h2>';
-        echo '<input id="user_search_bar" name="input" oninput=instantResearch("../sources/dynamicUserSearch.php",1,1,'.$_GET['id'].','.$_SESSION['user']['id'].') />';
+        echo '<input id="user_search_bar" name="input" oninput=instantResearch("../sources/dynamicUserSearch.php",1,'.$_SESSION['user']['id'].',1,'.$_GET['id'].','.$_SESSION['user']['id'].') />';
         echo '<ul id="user_invitation_list"></ul>';
     }
 

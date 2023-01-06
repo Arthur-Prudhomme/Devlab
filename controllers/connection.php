@@ -91,9 +91,13 @@ class Connection
         }
     }
 
-    public function getUserByUsername($username, bool $containing){
+    public function getUserByUsername($username, bool $containing, $excludeUser){
         if(!empty($username)){
-            $query = 'SELECT * FROM user WHERE username LIKE ?';
+            if(!empty($excludeUser)){
+                $query = 'SELECT * FROM user WHERE id != '.$excludeUser.' AND username LIKE ?';
+            }else {
+                $query = 'SELECT * FROM user WHERE username LIKE ?';
+            }
             if($containing === true){
                 $username = '%'.$username.'%';
             }

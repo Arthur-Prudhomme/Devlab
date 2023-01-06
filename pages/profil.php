@@ -1,14 +1,31 @@
 <?php
 require_once '../utils/header.php';
 require_once '../actions/checkLogin.php';
+require_once '../controllers/album.php';
 
 $connection = new Connection();
+$album = new Album();
 
 if(!isset($_GET['username'])){
     echo '<h1>Hello ' . $_SESSION['user']['username'] . '</h1>';
 
+    $invitations = $album->getAllPendingInvitationFromUserId($_SESSION['user']['id']);
+    if(!empty($invitations)){
+        foreach ($invitations as $invitation){
+            echo '<div id="i' . $invitation['id'] . '">';
+            echo $connection->getUserById($invitation['owner'])[1]
+                . ' as invited you on ' .
+                $album->getAlbumInfosById($invitation['album_id'])[2]
+                . ' ' .
+                '<button onclick=answerInvitation('.$invitation['id'].',1)>Accept</button>'
+                . ' ' .
+                '<button onclick=answerInvitation('.$invitation['id'].',0)>Deny</button>';
+            echo '</div>';
+        }
+    }
+
     echo '<h2>Search User</h2>';
-    echo '<input id="user_search_bar" name="input" oninput=instantResearch("../sources/dynamicUserSearch.php",1,0) />';
+    echo '<input id="user_search_bar" name="input" oninput=instantResearch("../sources/dynamicUserSearch.php",1,0,0) />';
     echo '<ul id="user_search_results"></ul>';
 
     echo '<h2>Your Albums</h2>';

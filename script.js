@@ -1,4 +1,4 @@
-const instantResearch = (path, isForUser, isForInvite, album_id, owner_id) => {
+const instantResearch = (path, isForUser, excludeUser, isForInvite, album_id, owner_id) => {
     let query
     if(isForUser === 0) {
         query = document.getElementById('search_bar').value
@@ -6,7 +6,7 @@ const instantResearch = (path, isForUser, isForInvite, album_id, owner_id) => {
         query = document.getElementById('user_search_bar').value
     }
     axios
-        .post(path, {query})
+        .post(path, {query, excludeUser})
         .then(result => {
             destroyAllOccurrence("search_proposal")
             let occurrence = 5
@@ -16,6 +16,7 @@ const instantResearch = (path, isForUser, isForInvite, album_id, owner_id) => {
                 }
             }else{
                 destroyAllOccurrence("user_search_proposal")
+                destroyAllOccurrence("user_invitation_proposal")
                 if (result.data.length < occurrence) {
                     occurrence = result.data.length
                 }
@@ -98,6 +99,15 @@ const sendInvitation = (album_id, owner_id, invited_id) => {
         .then(result => {
             document.getElementById("user_search_bar").value = ''
             destroyAllOccurrence('user_invitation_proposal')
+        })
+        .catch(console.log)
+}
+
+const answerInvitation = (invitation_id, answer) => {
+    axios
+        .post('../sources/answerInvitation.php', {invitation_id, answer})
+        .then(result => {
+            destroyAllOccurrence("i"+invitation_id)
         })
         .catch(console.log)
 }

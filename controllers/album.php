@@ -202,25 +202,21 @@ class Album
         ]);
     }
 
-    public function acceptInvitation($invitationId){
-        $query = 'UPDATE invitation SET is_accepted = 1 WHERE `id` =?';
+    public function answerInvitation($invitationId, $answer){
+        if($answer === 1) {
+            $query = 'UPDATE invitation SET is_accepted = 1 WHERE `id` =?';
+        }else{
+            $query = 'DELETE FROM invitation WHERE `id` =?';
+        }
         $statement = $this->pdo->prepare($query);
         $statement->execute(array($invitationId));
-        return $statement->fetch();
-    }
-
-    public function deleteInvitation($invitationId){
-        $query = 'DELETE FROM invitation WHERE `id` =?';
-        $statement = $this->pdo->prepare($query);
-        $statement->execute(array($invitationId));
-        return $statement->fetch();
     }
 
     public function getAllPendingInvitationFromUserId($user_id){
-        $query = 'SELECT * FROM invitation WHERE `user_id` =?';
+        $query = 'SELECT * FROM invitation WHERE `invited` =?';
         $statement = $this->pdo->prepare($query);
         $statement->execute(array($user_id));
-        return $statement->fetch();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getAllSharedAlbumsFromUser($user_id){
