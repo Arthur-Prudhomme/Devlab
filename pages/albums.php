@@ -13,7 +13,7 @@ if(!isset($_GET['username'])) {
     $allAlbums = $album->getAllAlbumFromUserId($_SESSION['user']['id'],1);
     unset($_SESSION['exploreUsername']);
 }else{
-    if($connection->getUserByUsername($_GET['username'],0) == null){
+    if($connection->getUserByUsername($_GET['username'],0,'') == null){
         $no_user = 1;
         echo '<h1>No user found with the name "'.$_GET['username'].'"</h1>';
     }else{

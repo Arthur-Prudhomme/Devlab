@@ -37,7 +37,7 @@ if(!isset($_GET['username'])){
     echo '<h2>Shared With You</h2>';
     echo '<a href="sharedAlbum.php"><img src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a><br>';
 }else{
-    if($connection->getUserByUsername($_GET['username'],0) == null){
+    if($connection->getUserByUsername($_GET['username'],0,'') == null){
         echo '<h1>No user found with the name "'.$_GET['username'].'"</h1>';
     }else{
         echo '<h1>'.$_GET['username'].'\'s Profil</h1>';
