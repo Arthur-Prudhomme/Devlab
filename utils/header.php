@@ -23,7 +23,7 @@ echo '<button><a href="../pages/topRated.php?page=1">Top Rated</a></button>';
 echo ' ';
 ?>
 
-<input id="search_bar" name="input" oninput=instantResearch('../sources/dynamicSearch.php',0) />
+<input id="search_bar" name="input" oninput=instantResearch('../sources/dynamicSearch.php',0,0) />
 
 <?php
 

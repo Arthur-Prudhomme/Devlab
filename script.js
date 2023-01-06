@@ -1,4 +1,4 @@
-const instantResearch = (path, isForUser) => {
+const instantResearch = (path, isForUser, isForInvite, album_id, owner_id) => {
     let query
     if(isForUser === 0) {
         query = document.getElementById('search_bar').value
@@ -16,11 +16,18 @@ const instantResearch = (path, isForUser) => {
                 }
             }else{
                 destroyAllOccurrence("user_search_proposal")
-                if(result.data.length < occurrence){
+                if (result.data.length < occurrence) {
                     occurrence = result.data.length
                 }
-                for(let i = 0; i < occurrence; i++){
-                    addUserToSearchResults(result.data[i].username)
+
+                if(isForInvite === 0) {
+                    for (let i = 0; i < occurrence; i++) {
+                        addUserToSearchResults(result.data[i].username)
+                    }
+                }else{
+                    for (let i = 0; i < occurrence; i++) {
+                        addUserToInvitationList(result.data[i].username, album_id, owner_id, result.data[i].id)
+                    }
                 }
             }
         })
@@ -81,6 +88,16 @@ const likeAlbum = (album_id, user_id) => {
         .then(result => {
             let divToDestroy = document.getElementById("l"+album_id)
             divToDestroy.remove()
+        })
+        .catch(console.log)
+}
+
+const sendInvitation = (album_id, owner_id, invited_id) => {
+    axios
+        .post('../sources/sendInvitation.php', {album_id, owner_id, invited_id})
+        .then(result => {
+            document.getElementById("user_search_bar").value = ''
+            destroyAllOccurrence('user_invitation_proposal')
         })
         .catch(console.log)
 }
@@ -157,6 +174,20 @@ function addUserToSearchResults(username) {
     li.appendChild(a)
     list.appendChild(li);
 }
+
+function addUserToInvitationList(username, album_id, owner_id , invited_id){
+    let list = document.getElementById("user_invitation_list");
+    let a = document.createElement("a");
+    let li = document.createElement("li");
+    a.innerText = username;
+    a.href = '#';
+    a.addEventListener("click", function() {sendInvitation(album_id, owner_id, invited_id)})
+    li.id = "user_invitation_proposal";
+    li.appendChild(a)
+    list.appendChild(li);
+}
+
+
 
 function destroyAllOccurrence(elements_id) {
     let check = document.querySelectorAll(`[id=`+ elements_id +`]`);

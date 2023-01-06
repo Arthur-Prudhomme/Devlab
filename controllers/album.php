@@ -191,4 +191,42 @@ class Album
         $statement->execute(array($album_id));
         return $statement->fetch();
     }
+
+    public function createInvitation($album_id, $owner, $invited){
+        $query = 'INSERT INTO invitation (`album_id`, `owner`, `invited`) VALUES (:album_id, :owner, :invited)';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'album_id' => $album_id,
+            'owner' => $owner,
+            'invited' => $invited
+        ]);
+    }
+
+    public function acceptInvitation($invitationId){
+        $query = 'UPDATE invitation SET is_accepted = 1 WHERE `id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($invitationId));
+        return $statement->fetch();
+    }
+
+    public function deleteInvitation($invitationId){
+        $query = 'DELETE FROM invitation WHERE `id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($invitationId));
+        return $statement->fetch();
+    }
+
+    public function getAllPendingInvitationFromUserId($user_id){
+        $query = 'SELECT * FROM invitation WHERE `user_id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($user_id));
+        return $statement->fetch();
+    }
+
+    public function getAllSharedAlbumsFromUser($user_id){
+        $query = 'SELECT * FROM album INNER JOIN invitation ON `album`.id = `invitation`.album_id WHERE `is_accepted` = 1 AND `user_id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($user_id));
+        return $statement->fetch();
+    }
 }

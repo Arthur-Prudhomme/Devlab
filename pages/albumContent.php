@@ -19,8 +19,14 @@ if($album->checkIfAlbumBelongsToUser($_GET['id'],$user_id)){
     if(!isset($_SESSION['exploreUsername'])) {
         $checkIfDeletable = $album->isWatchedOrWatchLater($_GET['id']);
         if ($checkIfDeletable === false) {
-            echo '<br><form method="POST"><input type="submit" value="Delete Album"></form><br><br>';
+            echo '<br><form method="POST"><input type="submit" value="Delete Album"></form>';
         }
+    }
+
+    if(!isset($_SESSION['exploreUsername'])) {
+        echo '<h2>Invite User</h2>';
+        echo '<input id="user_search_bar" name="input" oninput=instantResearch("../sources/dynamicUserSearch.php",1,1,'.$_GET['id'].','.$_SESSION['user']['id'].') />';
+        echo '<ul id="user_invitation_list"></ul>';
     }
 
     foreach ($allMovies as $movies) {
