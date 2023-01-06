@@ -22,6 +22,8 @@ if(!isset($_GET['username'])){
     }
 }
 
+$exploreUsernameHistoric = [];
+
 if(!isset($no_user)) {
     foreach ($likedAlbums as $albums) {
         $movie_id = $album->getFirstMovieInAlbum($albums['album_id']);
@@ -35,13 +37,16 @@ if(!isset($no_user)) {
         $album_infos = $album->getAlbumInfosById($albums['album_id']);
         $user_infos = $connection->getUserById($album_infos[1]);
         echo $album_infos[2] . ' from ' . $user_infos[1] . '<br />';
-        $_SESSION['exploreUsername'] = $user_infos[1];
+
+        array_push($exploreUsernameHistoric, $user_infos[0]);
+
         echo '<a href="albumContent.php?id=' . $albums['album_id'] . '"><img src=' . $album_cover . '></a><br>';
         if(!isset($_GET['username'])) {
             echo '<button onclick=likeAlbum(' . $albums['album_id'] . ',' . $_SESSION['user']['id'] . ')>👍</button>';
         }
         echo '</div>';
     }
+    $_SESSION['exploreUsername'] = $exploreUsernameHistoric;
 }
 
 ?>

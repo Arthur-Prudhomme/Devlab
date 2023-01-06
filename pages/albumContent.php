@@ -11,10 +11,23 @@ $api = new API();
 if(!isset($_SESSION['exploreUsername'])) {
     $user_id = $_SESSION['user']['id'];
 }else{
-    $user_id = $connection->getUserIdByUsername($_SESSION['exploreUsername']);
+    function checkIfBelongs()
+    {
+        foreach ($_SESSION['exploreUsername'] as $value) {
+            $album = new Album();
+            $connection = new Connection();
+            $check = $album->checkIfAlbumBelongsToUser($_GET['id'], $value);
+            if ($check === true) {
+                $username = $connection->getUserById($value);
+                $_SESSION['exploreUsername'] = $username[1];
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
-if($album->checkIfAlbumBelongsToUser($_GET['id'],$user_id)){
+if(checkIfBelongs()){
     $allMovies = $album->getAllMoviesFromAlbumId($_GET['id']);
     if(!isset($_SESSION['exploreUsername'])) {
         $checkIfDeletable = $album->isWatchedOrWatchLater($_GET['id']);
