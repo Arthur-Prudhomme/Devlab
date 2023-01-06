@@ -40,7 +40,7 @@ if(!isset($no_user)) {
 
         array_push($exploreUsernameHistoric, $user_infos[0]);
 
-        echo '<a href="albumContent.php?id=' . $albums['album_id'] . '"><img src=' . $album_cover . '></a><br>';
+        echo '<a href="likedAlbumContent.php?id=' . $albums['album_id'] . '"><img src=' . $album_cover . '></a><br>';
         if(!isset($_GET['username'])) {
             echo '<button onclick=likeAlbum(' . $albums['album_id'] . ',' . $_SESSION['user']['id'] . ')>👍</button>';
         }
