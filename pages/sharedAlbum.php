@@ -11,7 +11,7 @@ $api = new API();
 $allSharedAlbums = $album->getAllSharedAlbumsFromUser($_SESSION['user']['id']);
 
 foreach ($allSharedAlbums as $albums) {
-    $movie_id = $album->getFirstMovieInAlbum($albums['id']);
+    $movie_id = $album->getFirstMovieInAlbum($albums['album_id']);
     if (isset($movie_id)) {
         $movie = $api->getMovie($movie_id);
         $album_cover = $api->getImg($movie['poster_path'], 200);

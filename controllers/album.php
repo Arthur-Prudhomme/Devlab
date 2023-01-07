@@ -9,15 +9,27 @@ class Album
         $this->pdo = new PDO('mysql:dbname=devlab;host=127.0.0.1', 'root', '');
     }
 
-    public function getAllAlbumFromUserId(int $user_id, bool $includePrivate): array
+    public function getAllAlbumFromUserId(int $user_id, bool $includePrivate, bool $includeShared): array
     {
         if($includePrivate === true){
-            $query = 'SELECT * FROM `album` WHERE `user_id` =?';
+            if($includeShared === true){
+                $query = 'SELECT * FROM `album` WHERE `user_id` = :user_id_1 UNION
+                      SELECT `album`.* FROM `album` INNER JOIN `invitation` ON `album`.id = `invitation`.album_id WHERE `invitation`.is_accepted = 1 AND `invited` = :user_id_2';
+            }else{
+                $query = 'SELECT * FROM `album` WHERE `user_id` =?';
+            }
         }else{
             $query = 'SELECT * FROM `album` WHERE `user_id` =? AND `is_private`=0';
         }
         $statement = $this->pdo->prepare($query);
-        $statement->execute(array($user_id));
+        if($includeShared === false) {
+            $statement->execute(array($user_id));
+        }else{
+            $statement->execute([
+                'user_id_1' => $user_id,
+                'user_id_2' => $user_id
+            ]);
+        }
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 

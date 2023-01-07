@@ -10,7 +10,7 @@ $api = new API();
 
 if(!isset($_GET['username'])) {
     echo '<h2>Your Albums</h2>';
-    $allAlbums = $album->getAllAlbumFromUserId($_SESSION['user']['id'],1);
+    $allAlbums = $album->getAllAlbumFromUserId($_SESSION['user']['id'],1,0);
     unset($_SESSION['exploreUsername']);
 }else{
     if($connection->getUserByUsername($_GET['username'],0,'') == null){
@@ -19,7 +19,7 @@ if(!isset($_GET['username'])) {
     }else{
         echo '<h2>'.$_GET['username'].'\'s Albums</h2>';
         $userId = $connection->getUserIdByUsername($_GET['username']);
-        $allAlbums = $album->getAllAlbumFromUserId($userId,0);
+        $allAlbums = $album->getAllAlbumFromUserId($userId,0,0);
         $_SESSION['exploreUsername'] = $_GET['username'];
     }
 }
