@@ -41,7 +41,7 @@ $api = new API();
         echo '<div class="flex flex-col items-center">';
           echo '<div class="flex flex-col items-center text-center relative w-full">';
             echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="albumContent.php?id=' . $albums['id'] . '"></a>';
-            echo '<p class="absolute text-white font-bold text-base z-10 w-11/12 bottom-5">'.$albums["name"].'</p>';
+            echo '<p class="absolute uppercase text-white font-bold text-base z-10 w-11/12 bottom-5">'.$albums["name"].'</p>';
             echo '<a class="mt-4 lg:w-[31vh] lg:h-[47vh]" href="albumContent.php?id='.$albums['id'].'"><img class="rounded-lg lg:w-[31vh] lg:h-[47vh]" src='.$album_cover.'></a>';
             echo '<div class="w-[31vh] h-[47vh] absolute gradient"></div>';
           echo '</div>';
