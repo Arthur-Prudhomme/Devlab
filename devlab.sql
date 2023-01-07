@@ -25,17 +25,19 @@ CREATE TABLE `album_content` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `invitation` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `album_id` int NOT NULL,
   `owner` int NOT NULL,
   `invited` int NOT NULL,
   `is_accepted` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
   KEY `album_id` (`album_id`),
   KEY `owner` (`owner`),
   KEY `invited` (`invited`),
   CONSTRAINT `invitation_ibfk_1` FOREIGN KEY (`album_id`) REFERENCES `album` (`id`),
   CONSTRAINT `invitation_ibfk_2` FOREIGN KEY (`owner`) REFERENCES `user` (`id`),
   CONSTRAINT `invitation_ibfk_3` FOREIGN KEY (`invited`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `liked_album` (
   `album_id` int NOT NULL,
