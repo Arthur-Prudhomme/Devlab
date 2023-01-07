@@ -187,13 +187,12 @@ function addUserToSearchResults(username) {
 
 function addUserToInvitationList(username, album_id, owner_id , invited_id){
     let list = document.getElementById("user_invitation_list");
-    let a = document.createElement("a");
+    let element = document.createElement("button");
     let li = document.createElement("li");
-    a.innerText = username;
-    a.href = '#';
-    a.addEventListener("click", function() {sendInvitation(album_id, owner_id, invited_id)})
+    element.innerText = username;
+    element.addEventListener("click", function() {sendInvitation(album_id, owner_id, invited_id)})
     li.id = "user_invitation_proposal";
-    li.appendChild(a)
+    li.appendChild(element)
     list.appendChild(li);
 }
 
