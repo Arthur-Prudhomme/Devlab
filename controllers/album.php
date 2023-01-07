@@ -6,7 +6,7 @@ class Album
 
     public function __construct()
     {
-        $this->pdo = new PDO('mysql:dbname=devlab;host=127.0.0.1', 'root', '');
+        $this->pdo = new PDO('mysql:dbname=devlab;host=127.0.0.1', 'root', 'root');
     }
 
     public function getAllAlbumFromUserId(int $user_id, bool $includePrivate, bool $includeShared): array
