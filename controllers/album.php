@@ -6,14 +6,30 @@ class Album
 
     public function __construct()
     {
-        $this->pdo = new PDO('mysql:dbname=devlab;host=127.0.0.1', 'root', 'root');
+        $this->pdo = new PDO('mysql:dbname=devlab;host=127.0.0.1', 'root', '');
     }
 
-    public function getAllAlbumFromUserId(int $user_id): array
+    public function getAllAlbumFromUserId(int $user_id, bool $includePrivate, bool $includeShared): array
     {
-        $query = 'SELECT * FROM `album` WHERE `user_id` =?';
+        if($includePrivate === true){
+            if($includeShared === true){
+                $query = 'SELECT * FROM `album` WHERE `user_id` = :user_id_1 UNION
+                      SELECT `album`.id,`album`.user_id,CONCAT(`album`.`name`, " from ", (SELECT `user`.username FROM `user` WHERE `user`.id = `album`.user_id)) as "name",`album`.is_watched,`album`.is_watch_later,`album`.is_private FROM `album` INNER JOIN `invitation` ON `album`.id = `invitation`.album_id WHERE `invitation`.is_accepted = 1 AND `invited` = :user_id_2';
+            }else{
+                $query = 'SELECT * FROM `album` WHERE `user_id` =?';
+            }
+        }else{
+            $query = 'SELECT * FROM `album` WHERE `user_id` =? AND `is_private`=0';
+        }
         $statement = $this->pdo->prepare($query);
-        $statement->execute(array($user_id));
+        if($includeShared === false) {
+            $statement->execute(array($user_id));
+        }else{
+            $statement->execute([
+                'user_id_1' => $user_id,
+                'user_id_2' => $user_id
+            ]);
+        }
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -128,16 +144,108 @@ class Album
         }
     }
 
-    public function getFirstAlbumFrom($user_id, $is_liked)
-    {
-        if($is_liked === 1){
-
+    public function checkIfAlbumBelongsToUser($album_id, $user_id){
+        $query = 'SELECT * FROM album WHERE id = :album_id AND user_id = :user_id';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'album_id' => $album_id,
+            'user_id' => $user_id
+        ]);
+        $statement = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+        if(!empty($statement)){
+            return true;
         }else{
-            $query = 'SELECT * FROM `album` WHERE `user_id`=?';
+            $query = 'SELECT * FROM invitation WHERE album_id = :album_id AND invited = :user_id';
             $statement = $this->pdo->prepare($query);
-            $statement->execute(array($user_id));
+            $statement->execute([
+                'album_id' => $album_id,
+                'user_id' => $user_id
+            ]);
             $statement = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
-            return json_encode($statement[0]);
+            if(!empty($statement)){
+                return true;
+            }else{
+                return false;
+            }
         }
+    }
+
+    public function getLikesOnAlbum($album_id){
+        $query = 'SELECT * FROM liked_album WHERE `album_id` = :album_id';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'album_id' => $album_id
+        ]);
+        $statement = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+        return count($statement);
+    }
+
+    public function getAllLikedAlbumsFromUser($user_id){
+        $query = 'SELECT * FROM liked_album WHERE `user_id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($user_id));
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function likeAlbum($album_id, $user_id){
+        $query = 'SELECT * FROM liked_album WHERE `album_id` = :album_id AND `user_id` = :user_id';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'album_id' => $album_id,
+            'user_id' => $user_id
+        ]);
+        $statement = $statement->fetch();
+
+        if(isset($statement['album_id'])) {
+            $query = 'DELETE FROM liked_album WHERE `album_id` = :album_id AND `user_id` = :user_id';
+        }else{
+            $query = 'INSERT INTO liked_album (`album_id`, `user_id`) VALUES (:album_id, :user_id)';
+        }
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'album_id' => $album_id,
+            'user_id' => $user_id
+        ]);
+    }
+
+    public function getAlbumInfosById($album_id){
+        $query = 'SELECT * FROM album WHERE `id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($album_id));
+        return $statement->fetch();
+    }
+
+    public function createInvitation($album_id, $owner, $invited){
+        $query = 'INSERT INTO invitation (`album_id`, `owner`, `invited`) VALUES (:album_id, :owner, :invited)';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'album_id' => $album_id,
+            'owner' => $owner,
+            'invited' => $invited
+        ]);
+    }
+
+    public function answerInvitation($invitationId, $answer){
+        if($answer === 1) {
+            $query = 'UPDATE invitation SET is_accepted = 1 WHERE `id` =?';
+        }else{
+            $query = 'DELETE FROM invitation WHERE `id` =?';
+        }
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($invitationId));
+    }
+
+    public function getAllPendingInvitationFromUserId($user_id){
+        $query = 'SELECT * FROM invitation WHERE is_accepted = 0 AND `invited` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($user_id));
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getAllSharedAlbumsFromUser($user_id){
+        $query = 'SELECT * FROM album INNER JOIN invitation ON `album`.id = `invitation`.album_id WHERE `is_accepted` = 1 AND `invited` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($user_id));
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

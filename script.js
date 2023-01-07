@@ -1,12 +1,35 @@
-const instantResearch = (path) => {
-    let query = document.getElementById('search_bar').value
+const instantResearch = (path, isForUser, excludeUser, isForInvite, album_id, owner_id) => {
+    let query
+    if(isForUser === 0) {
+        query = document.getElementById('search_bar').value
+    }else{
+        query = document.getElementById('user_search_bar').value
+    }
     axios
-        .post(path, {query})
+        .post(path, {query, excludeUser})
         .then(result => {
             destroyAllOccurrence("search_proposal")
             let occurrence = 5
-            for (let i = 0; i < occurrence; i++) {
-                addSearchResult(result.data.results[i].title, result.data.results[i].id)
+            if(isForUser === 0){
+                for (let i = 0; i < occurrence; i++) {
+                    addMovieToSearchResults(result.data.results[i].title, result.data.results[i].id)
+                }
+            }else{
+                destroyAllOccurrence("user_search_proposal")
+                destroyAllOccurrence("user_invitation_proposal")
+                if (result.data.length < occurrence) {
+                    occurrence = result.data.length
+                }
+
+                if(isForInvite === 0) {
+                    for (let i = 0; i < occurrence; i++) {
+                        addUserToSearchResults(result.data[i].username)
+                    }
+                }else{
+                    for (let i = 0; i < occurrence; i++) {
+                        addUserToInvitationList(result.data[i].username, album_id, owner_id, result.data[i].id)
+                    }
+                }
             }
         })
         .catch(console.log)
@@ -27,25 +50,25 @@ const addTo = (movie_id) => {
         .then(result => {
             let exist = document.getElementById('album_addTo')
             if (exist !== null) {
-              destroyAllOccurrence("album_addTo")
+                destroyAllOccurrence("album_addTo")
             }else{
-              let list = document.getElementById("album_list");
-              result.data.forEach(element => {
-                let albums = document.createElement("button");
+                let list = document.getElementById("album_list");
+                result.data.forEach(element => {
+                    let albums = document.createElement("button");
+                    let li = document.createElement("li");
+                    albums.innerText = element.name;
+                    albums.addEventListener("click", function() {addToAlbum(element.id,movie_id)})
+                    li.id = "album_addTo";
+                    li.appendChild(albums)
+                    list.appendChild(li);
+                })
+                let newAlbum = document.createElement("button");
                 let li = document.createElement("li");
-                albums.innerText = element.name;
-                albums.addEventListener("click", function() {addToAlbum(element.id,movie_id)})
+                newAlbum.innerText = "new album";
+                newAlbum.addEventListener("click", function() {addAlbumForm()})
                 li.id = "album_addTo";
-                li.appendChild(albums)
+                li.appendChild(newAlbum)
                 list.appendChild(li);
-              })
-              let newAlbum = document.createElement("button");
-              let li = document.createElement("li");
-              newAlbum.innerText = "new album";
-              newAlbum.addEventListener("click", function() {addAlbumForm()})
-              li.id = "album_addTo";
-              li.appendChild(newAlbum)
-              list.appendChild(li);
             }
         })
         .catch(console.log)
@@ -56,6 +79,35 @@ const addToAlbum = (album_id, movie_id) => {
         .post('../sources/addToAlbum.php', {album_id, movie_id})
         .then(result => {
             destroyAllOccurrence("album_addTo")
+        })
+        .catch(console.log)
+}
+
+const likeAlbum = (album_id, user_id) => {
+    axios
+        .post('../sources/likeAlbum.php', {album_id, user_id})
+        .then(result => {
+            let divToDestroy = document.getElementById("l"+album_id)
+            divToDestroy.remove()
+        })
+        .catch(console.log)
+}
+
+const sendInvitation = (album_id, owner_id, invited_id) => {
+    axios
+        .post('../sources/sendInvitation.php', {album_id, owner_id, invited_id})
+        .then(result => {
+            document.getElementById("user_search_bar").value = ''
+            destroyAllOccurrence('user_invitation_proposal')
+        })
+        .catch(console.log)
+}
+
+const answerInvitation = (invitation_id, answer) => {
+    axios
+        .post('../sources/answerInvitation.php', {invitation_id, answer})
+        .then(result => {
+            destroyAllOccurrence("i"+invitation_id)
         })
         .catch(console.log)
 }
@@ -111,7 +163,7 @@ function accountNav() {
     }
 }
 
-function addSearchResult(movie_title, movie_id) {
+function addMovieToSearchResults(movie_title, movie_id) {
     let list = document.getElementById("search_results");
     let a = document.createElement("a");
     let li = document.createElement("li");
@@ -121,6 +173,31 @@ function addSearchResult(movie_title, movie_id) {
     li.appendChild(a)
     list.appendChild(li);
 }
+
+function addUserToSearchResults(username) {
+    let list = document.getElementById("user_search_results");
+    let a = document.createElement("a");
+    let li = document.createElement("li");
+    a.href = '../pages/profil.php?username=' + username;
+    a.innerText = username;
+    li.id = "user_search_proposal";
+    li.appendChild(a)
+    list.appendChild(li);
+}
+
+function addUserToInvitationList(username, album_id, owner_id , invited_id){
+    let list = document.getElementById("user_invitation_list");
+    let a = document.createElement("a");
+    let li = document.createElement("li");
+    a.innerText = username;
+    a.href = '#';
+    a.addEventListener("click", function() {sendInvitation(album_id, owner_id, invited_id)})
+    li.id = "user_invitation_proposal";
+    li.appendChild(a)
+    list.appendChild(li);
+}
+
+
 
 function destroyAllOccurrence(elements_id) {
     let check = document.querySelectorAll(`[id=`+ elements_id +`]`);
@@ -148,15 +225,15 @@ function addAlbumForm(){
         li.id = "album_addTo";
         element.id = idValue;
         if(i === 1){
-          let choice1 = document.createElement("option");
-          choice1.innerText = "public";
-          let choice2 = document.createElement("option");
-          choice2.innerText = "private";
-          element.appendChild(choice1)
-          element.appendChild(choice2)
+            let choice1 = document.createElement("option");
+            choice1.innerText = "public";
+            let choice2 = document.createElement("option");
+            choice2.innerText = "private";
+            element.appendChild(choice1)
+            element.appendChild(choice2)
         }else if(i === 2){
-          element.innerText = "create album";
-          element.addEventListener("click", function() {addAlbum(getElementValueById("input"),getElementValueById("select"))})
+            element.innerText = "create album";
+            element.addEventListener("click", function() {addAlbum(getElementValueById("input"),getElementValueById("select"))})
         }
         li.appendChild(element);
         list.appendChild(li);

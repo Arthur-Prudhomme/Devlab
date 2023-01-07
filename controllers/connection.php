@@ -90,4 +90,35 @@ class Connection
             }
         }
     }
+
+    public function getUserByUsername($username, bool $containing, $excludeUser){
+        if(!empty($username)){
+            if(!empty($excludeUser)){
+                $query = 'SELECT * FROM user WHERE id != '.$excludeUser.' AND username LIKE ?';
+            }else {
+                $query = 'SELECT * FROM user WHERE username LIKE ?';
+            }
+            if($containing === true){
+                $username = '%'.$username.'%';
+            }
+            $statement = $this->pdo->prepare($query);
+            $statement->execute(array($username));
+            return $statement->fetchAll();
+        }
+    }
+
+    public function getUserIdByUsername($username){
+        $query = 'SELECT id FROM user WHERE username LIKE ?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($username));
+        $statement = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+        return $statement[0];
+    }
+
+    public function getUserById($user_id){
+        $query = 'SELECT * FROM user WHERE `id` =?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($user_id));
+        return $statement->fetch();
+    }
 }

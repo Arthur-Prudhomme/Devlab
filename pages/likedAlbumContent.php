@@ -11,22 +11,29 @@ $api = new API();
 if(!isset($_SESSION['exploreUsername'])) {
     $user_id = $_SESSION['user']['id'];
 }else{
-    $user_id = $connection->getUserIdByUsername($_SESSION['exploreUsername']);
+    function checkIfBelongs()
+    {
+        foreach ($_SESSION['exploreUsername'] as $value) {
+            $album = new Album();
+            $connection = new Connection();
+            $check = $album->checkIfAlbumBelongsToUser($_GET['id'], $value);
+            if ($check === true) {
+                $username = $connection->getUserById($value);
+                $_SESSION['exploreUsername'] = $username[1];
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
-if($album->checkIfAlbumBelongsToUser($_GET['id'],$user_id)){
+if(checkIfBelongs()){
     $allMovies = $album->getAllMoviesFromAlbumId($_GET['id']);
     if(!isset($_SESSION['exploreUsername'])) {
         $checkIfDeletable = $album->isWatchedOrWatchLater($_GET['id']);
         if ($checkIfDeletable === false) {
-            echo '<br><form method="POST"><input type="submit" value="Delete Album"></form>';
+            echo '<br><form method="POST"><input type="submit" value="Delete Album"></form><br><br>';
         }
-    }
-
-    if(!isset($_SESSION['exploreUsername'])) {
-        echo '<h2>Invite User</h2>';
-        echo '<input id="user_search_bar" name="input" oninput=instantResearch("../sources/dynamicUserSearch.php",1,'.$_SESSION['user']['id'].',1,'.$_GET['id'].','.$_SESSION['user']['id'].') />';
-        echo '<ul id="user_invitation_list"></ul>';
     }
 
     foreach ($allMovies as $movies) {
