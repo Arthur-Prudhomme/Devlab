@@ -6,6 +6,11 @@ input:focus {
     outline: none;
 }
 
+.ouaip {
+    width: 100%;
+    height: 100%;
+}
+
 .gradient{
     width: 100%;
     height: 100%;
