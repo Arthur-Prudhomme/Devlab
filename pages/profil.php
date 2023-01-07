@@ -11,17 +11,17 @@ if(!isset($_GET['username'])){
 
     $invitations = $album->getAllPendingInvitationFromUserId($_SESSION['user']['id']);
     if(!empty($invitations)){
-        foreach ($invitations as $invitation){
-            echo '<div id="i' . $invitation['id'] . '">';
-            echo $connection->getUserById($invitation['owner'])[1]
-                . ' as invited you on ' .
-                $album->getAlbumInfosById($invitation['album_id'])[2]
-                . ' ' .
-                '<button onclick=answerInvitation('.$invitation['id'].',1)>Accept</button>'
-                . ' ' .
-                '<button onclick=answerInvitation('.$invitation['id'].',0)>Deny</button>';
-            echo '</div>';
-        }
+      foreach ($invitations as $invitation){
+        echo '<div id="i' . $invitation['id'] . '">';
+        echo $connection->getUserById($invitation['owner'])[1]
+          . ' as invited you on ' .
+          $album->getAlbumInfosById($invitation['album_id'])[2]
+          . ' ' .
+          '<button onclick=answerInvitation('.$invitation['id'].',1)>Accept</button>'
+          . ' ' .
+          '<button onclick=answerInvitation('.$invitation['id'].',0)>Deny</button>';
+        echo '</div>';
+      }
     }
 
     echo '<h2>Search User</h2>';
