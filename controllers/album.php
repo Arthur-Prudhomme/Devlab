@@ -143,7 +143,18 @@ class Album
         if(!empty($statement)){
             return true;
         }else{
-            return false;
+            $query = 'SELECT * FROM invitation WHERE album_id = :album_id AND invited = :user_id';
+            $statement = $this->pdo->prepare($query);
+            $statement->execute([
+                'album_id' => $album_id,
+                'user_id' => $user_id
+            ]);
+            $statement = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+            if(!empty($statement)){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 
@@ -220,9 +231,9 @@ class Album
     }
 
     public function getAllSharedAlbumsFromUser($user_id){
-        $query = 'SELECT * FROM album INNER JOIN invitation ON `album`.id = `invitation`.album_id WHERE `is_accepted` = 1 AND `user_id` =?';
+        $query = 'SELECT * FROM album INNER JOIN invitation ON `album`.id = `invitation`.album_id WHERE `is_accepted` = 1 AND `invited` =?';
         $statement = $this->pdo->prepare($query);
         $statement->execute(array($user_id));
-        return $statement->fetch();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

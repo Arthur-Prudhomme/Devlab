@@ -12,7 +12,7 @@ if(!isset($_GET['username'])){
     echo '<h2>The Albums you liked</h2>';
     $likedAlbums = $album->getAllLikedAlbumsFromUser($_SESSION['user']['id']);
 }else {
-    if ($connection->getUserByUsername($_GET['username'], 0) == null) {
+    if ($connection->getUserByUsername($_GET['username'], 0, '') == null) {
         $no_user = 1;
         echo '<h1>No user found with the name "' . $_GET['username'] . '"</h1>';
     } else {

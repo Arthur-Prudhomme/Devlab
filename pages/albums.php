@@ -23,6 +23,7 @@ if(!isset($_GET['username'])) {
         $_SESSION['exploreUsername'] = $_GET['username'];
     }
 }
+
 if(!isset($no_user)){
     foreach ($allAlbums as $albums) {
         $movie_id = $album->getFirstMovieInAlbum($albums['id']);
