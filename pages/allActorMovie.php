@@ -29,7 +29,7 @@ if (!empty($_POST)) {
           echo '<a class="mt-4 w-[31vh] h-[47vh] ouaip" href="movie.php?id='.$item['id'].'"><img class="rounded-lg lg:w-[31vh] lg:h-[47vh] " src='.$api->getImg($item['poster_path'], 300).'></a>';
           echo '<div class="w-[31vh] h-[47vh] absolute gradient"></div>';
         echo '</div>';
-    echo '</div>';
+      echo '</div>';
     }
 
     ?>
