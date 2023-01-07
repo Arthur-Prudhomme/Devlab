@@ -568,6 +568,10 @@ video {
   right: 0px;
 }
 
+.top-8 {
+  top: 2rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -582,6 +586,10 @@ video {
 
 .-z-10 {
   z-index: -10;
+}
+
+.z-20 {
+  z-index: 20;
 }
 
 .mx-auto {
@@ -654,6 +662,14 @@ video {
 
 .mr-8 {
   margin-right: 2rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
 }
 
 .block {
@@ -729,6 +745,10 @@ video {
   height: 0px;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .w-11\/12 {
   width: 91.666667%;
 }
@@ -796,6 +816,14 @@ video {
 
 .w-7 {
   width: 1.75rem;
+}
+
+.w-\[300px\] {
+  width: 300px;
+}
+
+.w-4 {
+  width: 1rem;
 }
 
 .flex-none {
@@ -891,6 +919,10 @@ video {
   align-items: flex-start;
 }
 
+.items-end {
+  align-items: flex-end;
+}
+
 .items-center {
   align-items: center;
 }
@@ -943,13 +975,26 @@ video {
   border-radius: 0.25rem;
 }
 
+.rounded-tr-none {
+  border-top-right-radius: 0px;
+}
+
 .border {
   border-width: 1px;
+}
+
+.border-t {
+  border-top-width: 1px;
 }
 
 .border-gris {
   --tw-border-opacity: 1;
   border-color: rgb(114 111 111 / var(--tw-border-opacity));
+}
+
+.border-t-gris {
+  --tw-border-opacity: 1;
+  border-top-color: rgb(114 111 111 / var(--tw-border-opacity));
 }
 
 .bg-form {
@@ -1054,6 +1099,10 @@ video {
   padding-left: 1.5rem;
 }
 
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1093,6 +1142,10 @@ video {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .leading-5 {
@@ -1150,6 +1203,10 @@ video {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .transition {
@@ -1305,6 +1362,10 @@ input:focus {
   color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
+.focus\:rounded-br-none:focus {
+  border-bottom-right-radius: 0px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .motion-reduce\:transform-none {
     transform: none;
@@ -1376,6 +1437,10 @@ input:focus {
 
   .lg\:w-full {
     width: 100%;
+  }
+
+  .lg\:w-\[500px\] {
+    width: 500px;
   }
 
   .lg\:grid-cols-5 {
