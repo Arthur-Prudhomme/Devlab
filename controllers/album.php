@@ -14,7 +14,7 @@ class Album
         if($includePrivate === true){
             if($includeShared === true){
                 $query = 'SELECT * FROM `album` WHERE `user_id` = :user_id_1 UNION
-                      SELECT `album`.* FROM `album` INNER JOIN `invitation` ON `album`.id = `invitation`.album_id WHERE `invitation`.is_accepted = 1 AND `invited` = :user_id_2';
+                      SELECT `album`.id,`album`.user_id,CONCAT(`album`.`name`, " from ", (SELECT `user`.username FROM `user` WHERE `user`.id = `album`.user_id)) as "name",`album`.is_watched,`album`.is_watch_later,`album`.is_private FROM `album` INNER JOIN `invitation` ON `album`.id = `invitation`.album_id WHERE `invitation`.is_accepted = 1 AND `invited` = :user_id_2';
             }else{
                 $query = 'SELECT * FROM `album` WHERE `user_id` =?';
             }
