@@ -16,8 +16,8 @@ if(!isset($_SESSION['exploreUsername'])) {
 ?>
 
   <main class="flex flex-col lg:mt-32 mt-20 w-11/12 mx-auto">
-    <div class="flex flex-row items-center justify-between w-full">
-      <div class="flex flex-col">
+    <div class="flex lg:flex-row flex-col items-center justify-between w-full">
+      <div class="flex flex-col w-full lg:w-1/2">
         <?php
 
           if($album->checkIfAlbumBelongsToUser($_GET['id'],$user_id)){
@@ -34,7 +34,7 @@ if(!isset($_SESSION['exploreUsername'])) {
 
       if(!isset($_SESSION['exploreUsername'])) {
         ?> 
-        <div class="flex flex-col w-1/2">
+        <div class="flex flex-col lg:w-1/2 w-full">
           <?php
               echo '<input placeholder="Invite User" class="w-full mt-6 lg:mt-0 h-1/4 z-40 bg-transparent text-gris border border-gris p-1 px-2 rounded" id="user_search_bar" name="input" oninput=instantResearch("../sources/dynamicUserSearch.php",1,'.$_SESSION['user']['id'].',1,'.$_GET['id'].','.$_SESSION['user']['id'].') />';
               echo '<ul class="absolute text-white bg-bg flex flex-col z-30 mt-6 py-4 pl-6 rounded w-4/12 justify-between" id="user_invitation_list"></ul>';
