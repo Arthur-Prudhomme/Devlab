@@ -39,24 +39,25 @@ $api = new API();
           $album_cover = 'https://redellantasonline.com/assets/img-temp/200x300/img1.png';
         }
         echo '<div class="flex flex-col items-center">';
-          echo '<div class="flex flex-col items-center text-center relative w-full">';
-            echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="albumContent.php?id=' . $albums['id'] . '"></a>';
-            echo '<p class="absolute uppercase text-white font-bold text-base z-10 w-11/12 bottom-5">'.$albums["name"].'</p>';
-            echo '<a class="mt-4 lg:w-[31vh] lg:h-[47vh]" href="albumContent.php?id='.$albums['id'].'"><img class="rounded-lg lg:w-[31vh] lg:h-[47vh]" src='.$album_cover.'></a>';
-            echo '<div class="w-[31vh] h-[47vh] absolute gradient"></div>';
-          echo '</div>';
+            echo '<div class="flex flex-col items-center text-center relative w-full">';
+              echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="albumContent.php?id=' . $albums['id'] . '"></a>';
+              echo '<p class="absolute text-white font-bold text-base z-10 w-11/12 bottom-5">'.$albums["name"].'</p>';
+              echo '<a class="mt-4 lg:w-[31vh] lg:h-[47vh] ouaip" href="albumContent.php?id=' . $albums['id'] . '"><img class="rounded-lg w-[31vh] h-[47vh]" src='.$album_cover.'></a>';
+              echo '<div class=" absolute gradient"></div>';
+            echo '</div>';
+            
+            if(isset($_GET['username'])){
+              if ($_GET['username'] !== $_SESSION['user']['username']) {
+                echo '<button class="btn bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black mt-4" onclick=likeAlbum(' . $albums['id'] . ',' . $_SESSION['user']['id'] . ')>Like</button>';
+              }
+            }else{
+              $likes = $album->getLikesOnAlbum($albums['id']);
+              if($likes != 0){
+                echo $likes.' likes';
+              }
+            }
         echo '</div>';
         
-        if(isset($_GET['username'])){
-          if ($_GET['username'] !== $_SESSION['user']['username']) {
-            echo '<button onclick=likeAlbum(' . $albums['id'] . ',' . $_SESSION['user']['id'] . ')>👍</button>';
-          }
-        }else{
-          $likes = $album->getLikesOnAlbum($albums['id']);
-          if($likes != 0){
-            echo $likes.' likes';
-          }
-        }
       }
     }
 
