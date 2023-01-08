@@ -1,18 +1,17 @@
 <?php
-require_once '../utils/header.php';
-require_once '../actions/checkLogin.php';
-require_once '../controllers/album.php';
+  require_once '../utils/header.php';
+  require_once '../actions/checkLogin.php';
+  require_once '../controllers/album.php';
 
-$connection = new Connection();
-$album = new Album();
+  $connection = new Connection();
+  $album = new Album();
 
 ?>
-
 
 <main class="flex flex-col lg:mt-32 mt-10">
     <div class="w-11/12 mx-auto flex flex-col items-center">
       <div class="w-full mx-auto flex flex-row items-center justify-between">
-        <div class="w-1/2 flex flex-row">
+        <div class="w-1/2 flex flex-row relative items-center pb-6">
           <?php 
       
             if(!isset($_GET['username'])){
@@ -21,14 +20,14 @@ $album = new Album();
             $invitations = $album->getAllPendingInvitationFromUserId($_SESSION['user']['id']);
             if(!empty($invitations)){
               foreach ($invitations as $invitation){
-                echo '<div id="i' . $invitation['id'] . '">';
-                echo $connection->getUserById($invitation['owner'])[1]
-                  . ' as invited you on ' .
-                  $album->getAlbumInfosById($invitation['album_id'])[2]
-                  . ' ' .
-                  '<button onclick=answerInvitation('.$invitation['id'].',1)>Accept</button>'
-                  . ' ' .
-                  '<button onclick=answerInvitation('.$invitation['id'].',0)>Deny</button>';
+                echo '<div class="flex flex-row w-7/12 items-center bottom-0 absolute justify-between" id="i' . $invitation['id'] . '">';
+                  echo $connection->getUserById($invitation['owner'])[1]
+                    . ' as invited you on ' .
+                    $album->getAlbumInfosById($invitation['album_id'])[2]
+                    . ' ' .
+                    '<button class=" text-white z-40 appear px-4 py-1 rounded border-2 border-white cursor-pointer" onclick=answerInvitation('.$invitation['id'].',1)>Accept</button>'
+                    . ' ' .
+                    '<button class=" text-white z-40 appear px-4 py-1 rounded border-2 border-rouge bg-rouge cursor-pointer" onclick=answerInvitation('.$invitation['id'].',0)>Deny</button>';
                 echo '</div>';
               }
             }
