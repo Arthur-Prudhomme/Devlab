@@ -10,8 +10,8 @@
 
 <main class="flex flex-col lg:mt-32 mt-10">
     <div class="w-11/12 mx-auto flex flex-col items-center">
-      <div class="w-full mx-auto flex flex-row items-center justify-between">
-        <div class="w-1/2 flex flex-row relative items-center pb-6">
+      <div class="w-full lg:mx-auto flex lg:flex-row flex-col items-center justify-between">
+        <div class="lg:w-1/2 w-full flex flex-row relative items-center pb-6">
           <?php 
       
             if(!isset($_GET['username'])){
@@ -20,7 +20,7 @@
             $invitations = $album->getAllPendingInvitationFromUserId($_SESSION['user']['id']);
             if(!empty($invitations)){
               foreach ($invitations as $invitation){
-                echo '<div class="flex flex-row w-7/12 items-center bottom-0 absolute justify-between" id="i' . $invitation['id'] . '">';
+                echo '<div class="flex flex-row lg:w-7/12 w-full items-center text-sm lg:text-base bottom-0 absolute justify-between" id="i' . $invitation['id'] . '">';
                   echo $connection->getUserById($invitation['owner'])[1]
                     . ' as invited you on ' .
                     $album->getAlbumInfosById($invitation['album_id'])[2]
@@ -33,7 +33,7 @@
             }
           ?> 
         </div>
-        <div class="w-1/2 flex flex-row relative">
+        <div class="lg:w-1/2 w-full flex flex-row relative">
           <?php
             echo '<input class="w-full mt-6 lg:mt-0 h-1/4 bg-transparent text-gris border border-gris p-1 px-2 rounded" id="user_search_bar" placeholder="Search User" name="input" oninput=instantResearch("../sources/dynamicUserSearch.php",1,0,0) />';
             echo '<ul class=" absolute flex flex-col pt-8 p-3 rounded top-0 -z-10" id="user_search_results"></ul>';
