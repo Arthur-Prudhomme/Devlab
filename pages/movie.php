@@ -102,6 +102,10 @@ $cast = $api->getCast($movie_id);
                     </p>
                     <p class=" text-rouge font-bold">
                       <?php echo $item['character'] . ''; ?>
+                      <!-- <script>
+                        const name = "<?php echo $item['character'] . ''; ?>";
+                        document.write(name);
+                      </script> -->
                     </p>
                   </div>
                 <?php

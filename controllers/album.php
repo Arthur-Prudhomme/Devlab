@@ -248,4 +248,19 @@ class Album
         $statement->execute(array($user_id));
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function checkIfAlbumIsLikedByUser($album_id, $user_id):bool{
+        $query = 'SELECT * FROM liked_album WHERE album_id = :album_id AND user_id = :user_id';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'album_id' => $album_id,
+            'user_id' => $user_id
+        ]);
+        $statement = $statement->fetch();
+        if(empty($statement)){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
