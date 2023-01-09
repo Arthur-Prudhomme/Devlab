@@ -8,7 +8,6 @@ $album = new Album();
 
 if(!isset($_GET['username'])){
     echo '<h1>Hello ' . $_SESSION['user']['username'] . '</h1>';
-
     $invitations = $album->getAllPendingInvitationFromUserId($_SESSION['user']['id']);
     if(!empty($invitations)){
         foreach ($invitations as $invitation){

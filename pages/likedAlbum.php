@@ -8,23 +8,29 @@ $connection = new Connection();
 $album = new Album();
 $api = new API();
 
+$_SESSION['likedAlbum_userUsername'] = null;
+
 if(!isset($_GET['username'])){
-    echo '<h2>The Albums you liked</h2>';
-    $likedAlbums = $album->getAllLikedAlbumsFromUser($_SESSION['user']['id']);
-}else {
+    $_SESSION['likedAlbum_userUsername'] = $_SESSION['user']['username'];
+}else{
     if ($connection->getUserByUsername($_GET['username'], 0, '') == null) {
         $no_user = 1;
         echo '<h1>No user found with the name "' . $_GET['username'] . '"</h1>';
-    } else {
-        echo '<h2>The Albums that '.$_GET['username'].' liked</h2>';
-        $userId = $connection->getUserIdByUsername($_GET['username']);
-        $likedAlbums = $album->getAllLikedAlbumsFromUser($userId);
+    }else{
+        $_SESSION['likedAlbum_userUsername'] = $_GET['username'];
     }
 }
 
-$exploreUsernameHistoric = [];
-
 if(!isset($no_user)) {
+
+    $likedAlbums = $album->getAllLikedAlbumsFromUser($connection->getUserIdByUsername($_SESSION['likedAlbum_userUsername']));
+
+    if(!isset($_GET['username'])){
+        echo '<h2>The Albums you liked</h2>';
+    }else{
+        echo '<h2>The Albums that '.$_GET['username'].' liked</h2>';
+    }
+
     foreach ($likedAlbums as $albums) {
         $movie_id = $album->getFirstMovieInAlbum($albums['album_id']);
         if (isset($movie_id)) {
@@ -38,15 +44,12 @@ if(!isset($no_user)) {
         $user_infos = $connection->getUserById($album_infos[1]);
         echo $album_infos[2] . ' from ' . $user_infos[1] . '<br />';
 
-        array_push($exploreUsernameHistoric, $user_infos[0]);
-
         echo '<a href="likedAlbumContent.php?id=' . $albums['album_id'] . '"><img src=' . $album_cover . '></a><br>';
         if(!isset($_GET['username'])) {
             echo '<button onclick=likeAlbum(' . $albums['album_id'] . ',' . $_SESSION['user']['id'] . ')>👍</button>';
         }
         echo '</div>';
     }
-    $_SESSION['exploreUsername'] = $exploreUsernameHistoric;
 }
 
 ?>
