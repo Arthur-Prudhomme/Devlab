@@ -76,8 +76,8 @@ $trending = $api->getTrending(1);
 
         <?php
           foreach($trending['results'] as $item) {
-            echo '<div class="flex flex-col items-center">';
-              echo '<div class="flex flex-col items-center text-center relative w-full">';
+            echo '<div class="flex flex-col items-center ">';
+              echo '<div class="flex flex-col items-center text-center relative w-full ">';
                 echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="movie.php?id=' . $item['id'] . '"></a>';
                 echo '<p class="absolute text-white font-bold text-base z-10 w-11/12 bottom-5">'.$item["title"].'</p>';
                 echo '<a class="mt-4 w-[31vh] h-[47vh] ouaip" href="movie.php?id='.$item['id'].'"><img class="rounded-lg lg:w-[31vh] lg:h-[47vh] " src='.$api->getImg($item['poster_path'], 300).'></a>';

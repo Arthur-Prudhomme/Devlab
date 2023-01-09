@@ -45,38 +45,70 @@
         ?> 
         <div class="flex flex-col items-center ">
           <?php
-              echo '<div class="flex flex-col items-center">';
-                echo '<div class="flex flex-col items-center text-center relative w-full">';
-                  echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="albums.php"></a>';
-                  echo '<h2 class="absolute text-white font-bold text-base z-10 w-11/12 bottom-5">Your Albums</h2>';
-                  echo '<a class="mt-4 w-[31vh] h-[47vh] ouaip" href="albums.php"><img class="rounded-lg lg:w-[40vh] " src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a>';
-                  echo '<div class=" absolute gradient"></div>';
+            echo '<div class="flex flex-col relative items-center w-10/12" >';
+              echo '<a class="absolute w-[40vh] h-[60vh] z-50" href="albums.php"></a>';
+              echo '<p class="uppercase font-bold text-lg lg:text-3xl absolute bottom-1/2 z-30">Your Albums</p>';
+              echo '<div class="flex flex-row lg:mt-4 mt-2 ">';
+                echo '<div class="absolute rounded-lg w-[40vh] h-[60vh] bg-black opacity-30 z-20"></div>';
+                echo '<a href="albums.php"><img class=" z-10 rounded-lg w-[40vh] h-[60vh]" src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a>';
+                echo '<div class="flex flex-row absolute w-[40vh] h-[60vh] -z-10 ml-[3vh]">';
+                  echo '<div>';
+                    echo '<div class="absolute rounded-lg w-[40vh] h-[60vh] bg-black opacity-50 z-20"></div>';
+                    echo '<a href="albums.php"><img class=" -z-30 absolute rounded-lg w-[40vh] h-[60vh]" src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a>';
+                  echo '</div>';
+                  echo '<div >';
+                    echo '<div class="absolute rounded-lg w-[40vh] h-[60vh] ml-[3vh] bg-black opacity-70 -z-40"></div>';
+                    echo '<a href="albums.php"><img class="ml-[3vh]  -z-50 absolute rounded-lg w-[40vh] h-[60vh]" src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a>';
+                  echo '</div>';
                 echo '</div>';
               echo '</div>';
+            echo '</div>';
           ?>
         </div>
+
         <div class="flex flex-col items-center "> 
           <?php
-              echo '<div class="flex flex-col items-center">';
-                echo '<div class="flex flex-col items-center text-center relative w-full">';
-                  echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="likedAlbum.php"></a>';
-                  echo '<h2 class="absolute text-white font-bold text-base z-10 w-11/12 bottom-5">Liked Albums</h2>';
-                  echo '<a class="mt-4 w-[31vh] h-[47vh] ouaip" href="likedAlbum.php"><img class="rounded-lg lg:w-[40vh] " src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a>';
-                  echo '<div class="w-[31vh] h-[47vh] absolute gradient"></div>';
+            echo '<div class="flex flex-col relative items-center w-10/12" >';
+              echo '<a class="absolute w-[40vh] h-[60vh] z-50" href="likedAlbum.php"></a>';
+              echo '<p class="uppercase font-bold text-lg lg:text-3xl absolute bottom-1/2 z-30">Liked Albums</p>';
+              echo '<div class="flex flex-row lg:mt-4 mt-2 ">';
+                echo '<div class="absolute rounded-lg w-[40vh] h-[60vh] bg-black opacity-30 z-20"></div>';
+                echo '<a href="likedAlbum.php"><img class=" z-10 rounded-lg w-[40vh] h-[60vh]" src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a>';
+                echo '<div class="flex flex-row absolute w-[40vh] h-[60vh] -z-10 ml-[3vh]">';
+                  echo '<div>';
+                    echo '<div class="absolute rounded-lg w-[40vh] h-[60vh] bg-black opacity-50 z-20"></div>';
+                    echo '<a href="likedAlbum.php"><img class=" -z-30 absolute rounded-lg w-[40vh] h-[60vh]" src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a>';
+                  echo '</div>';
+                  echo '<div >';
+                    echo '<div class="absolute rounded-lg w-[40vh] h-[60vh] ml-[3vh] bg-black opacity-70 -z-40"></div>';
+                    echo '<a href="likedAlbum.php"><img class="ml-[3vh]  -z-50 absolute rounded-lg w-[40vh] h-[60vh]" src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a>';
+                  echo '</div>';
                 echo '</div>';
               echo '</div>';
+            echo '</div>';
           ?>
         </div>
+
         <div class="flex flex-col items-center "> 
           <?php
-              echo '<div class="flex flex-col items-center">';
-                echo '<div class="flex flex-col items-center text-center relative w-full">';
-                  echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="sharedAlbum.php"></a>';
-                  echo '<h2 class="absolute text-white font-bold text-base z-10 w-11/12 bottom-5">Shared With You</h2>';
-                  echo '<a class="mt-4 w-[31vh] h-[47vh] ouaip" href="sharedAlbum.php"><img class="rounded-lg lg:w-[40vh] " src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a>';
-                  echo '<div class="w-[31vh] h-[47vh] absolute gradient"></div>';
+            echo '<div class="flex flex-col relative items-center w-10/12" >';
+              echo '<a class="absolute w-[40vh] h-[60vh] z-50" href="sharedAlbum.php"></a>';
+              echo '<p class="uppercase font-bold text-lg lg:text-3xl absolute bottom-1/2 z-30">Shared With You</p>';
+              echo '<div class="flex flex-row lg:mt-4 mt-2 ">';
+                echo '<div class="absolute rounded-lg w-[40vh] h-[60vh] bg-black opacity-30 z-20"></div>';
+                echo '<a href="sharedAlbum.php"><img class=" z-10 rounded-lg w-[40vh] h-[60vh]" src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a>';
+                echo '<div class="flex flex-row absolute w-[40vh] h-[60vh] -z-10 ml-[3vh]">';
+                  echo '<div>';
+                    echo '<div class="absolute rounded-lg w-[40vh] h-[60vh] bg-black opacity-50 z-20"></div>';
+                    echo '<a href="sharedAlbum.php"><img class=" -z-30 absolute rounded-lg w-[40vh] h-[60vh]" src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a>';
+                  echo '</div>';
+                  echo '<div >';
+                    echo '<div class="absolute rounded-lg w-[40vh] h-[60vh] ml-[3vh] bg-black opacity-70 -z-40"></div>';
+                    echo '<a href="sharedAlbum.php"><img class="ml-[3vh]  -z-50 absolute rounded-lg w-[40vh] h-[60vh]" src=https://redellantasonline.com/assets/img-temp/200x300/img1.png></a>';
+                  echo '</div>';
                 echo '</div>';
               echo '</div>';
+            echo '</div>';
           ?>
         </div>
       </div>

@@ -35,20 +35,28 @@ $cast = $api->getCast($movie_id);
         <div>
           <p class="leading-5 mt-4 titre overview">
             <?php
-              echo $movie['overview'];
+              // echo $movie['overview'];
             ?>
-            <!-- <script>
-              var string = "<?php echo $movie['overview']; ?>";
-              document.write(substr(string, 0, 40));
-            </script> -->
+            <script>
+              const str = "<?php echo $movie['overview']; ?>";
+              document.write(str.substring( 0, 200));
+              
+                if(str.length > 200) {
+                    document.write('...&nbsp;');
+                    document.write('<button class="read-more hover:underline underline-offset-4">Read more</button>');
+                }
+                
+                document.querySelector('.read-more').addEventListener('click', () => {
+                    document.querySelector('.overview').innerHTML = str;
+                });
+            </script>
           </p>
-          <!-- <p class="btn">Read more</p> -->
         </div>
 
-        <div class="lg:flex lg:flex-row grid grid-cols-2 gap-4 my-6 lg:w-7/12 justify-between">
+        <div class="lg:flex lg:flex-row grid grid-cols-2 gap-4 my-6 lg:w-max justify-between">
           <?php 
             if (isset($_SESSION['user']['id'])) {
-                echo '<button class="btn bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black" onclick=watchedOrWatchLater("watched",' . $movie_id . ')>watched</button>';
+                echo '<button id="watched" class="btn  bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black" onclick=watchedOrWatchLater("watched",' . $movie_id . ')>watched</button>';
                 echo '<button class="btn bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black" onclick=watchedOrWatchLater("watch_later",' . $movie_id . ')>watch_later</button>';
                 ?>
                 <div class="relative ">
@@ -60,6 +68,19 @@ $cast = $api->getCast($movie_id);
               <?php
             }
           ?>
+          <script>
+            const watched = document.getElementById('watched');
+            const texts = ['Delete from watched', 'Watched'];
+            let index = 0;
+
+            watched.addEventListener('click', () => {
+              watched.innerHTML = texts[index];
+              index = (index + 1) % texts.length;
+            });
+
+
+
+          </script>
         </div>
 
       </div>
