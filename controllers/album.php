@@ -263,4 +263,11 @@ class Album
             return true;
         }
     }
+
+    public function getFirstMovieIdOfAllAlbums(){
+        $query = 'SELECT  album_id, movie_id FROM `album_content` st_outer WHERE movie_id = (SELECT MIN(movie_id) FROM `album_content` WHERE album_id = st_outer.album_id) GROUP BY movie_id, album_id ORDER BY album_id';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
