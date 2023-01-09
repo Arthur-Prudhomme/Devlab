@@ -40,7 +40,7 @@
           ?> 
         </div>
       </div>
-      <div class="w-full h-[65vh] grid grid-cols-2 lg:grid-cols-3 gap-4 mx-auto mt-6">
+      <div class="w-full h-[65vh] -ml-6 lg:-ml-0 grid grid-cols-1 lg:grid-cols-3 gap-4 mx-auto mt-6">
         <?php
         ?> 
         <div class="flex flex-col items-center ">
