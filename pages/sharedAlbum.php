@@ -30,11 +30,11 @@ $allSharedAlbums = $album->getAllSharedAlbumsFromUser($_SESSION['user']['id']);
             echo '<a class="mt-4 lg:w-[31vh] lg:h-[47vh]" href="albumContent.php?id='.$albums['id'].'"><img class="rounded-lg lg:w-[31vh] lg:h-[47vh]" src=' . $album_cover . '></a>';
             echo '<div class="w-[31vh] h-[47vh] absolute gradient"></div>';
           echo '</div>';
+          $likes = $album->getLikesOnAlbum($albums['album_id']);
+          if($likes != 0){
+            echo '<p class="btn bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black mt-4">'.$likes.' likes' . '</p>';
+          }
         echo '</div>';
-        $likes = $album->getLikesOnAlbum($albums['album_id']);
-        if($likes != 0){
-          echo $likes.' likes';
-        }
       }
 
     ?>
