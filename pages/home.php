@@ -8,6 +8,15 @@ if (!empty($_POST)) {
 $api = new API();
 $trending = $api->getTrending(1);
 
+$slider = [];
+for($i = 0; $i < 3; $i++){
+    $img = $api->getPoster($trending['results'][$i]['backdrop_path']);
+    array_push($slider,$img);
+}
+echo '<img src='.$slider[0].'>';
+echo '<img src='.$slider[1].'>';
+echo '<img src='.$slider[2].'>';
+
 foreach ($trending['results'] as $item) {
     echo '<div>';
     echo $item['title'] . '<br />';

@@ -34,6 +34,11 @@ class API
         return 'https://image.tmdb.org/t/p/w' . $size . $path;
     }
 
+    public function getPoster($path)
+    {
+        return 'https://image.tmdb.org/t/p/original' . $path;
+    }
+
     public function getAllGenre()
     {
         $data = file_get_contents('https://api.themoviedb.org/3/genre/movie/list?api_key=' . self::$APIkey);
