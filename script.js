@@ -1,3 +1,21 @@
+let belongsToWatched = document.getElementById('belongsToWatched')
+let belongsToWatchLater = document.getElementById('belongsToWatchLater')
+let buttonWatched = document.getElementById('watched')
+let buttonWatchLater = document.getElementById('watch_later')
+let colorOff = 'red'
+let colorOn = 'green'
+
+if(belongsToWatched.innerHTML === "1"){
+    buttonWatched.style.backgroundColor = colorOn
+}else{
+    buttonWatched.style.backgroundColor = colorOff
+}
+if(belongsToWatchLater.innerHTML === "1"){
+    buttonWatchLater.style.backgroundColor = colorOn
+}else{
+    buttonWatchLater.style.backgroundColor = colorOff
+}
+
 const instantResearch = (path, isForUser, excludeUser, isForInvite, album_id, owner_id) => {
     let query
     if(isForUser === 0) {
@@ -39,6 +57,19 @@ const watchedOrWatchLater = (action, movie_id) => {
     axios
         .post('../sources/movieButtons.php', {action, movie_id})
         .then(result => {
+            if(action === "watched"){
+                if(buttonWatched.style.backgroundColor === colorOn){
+                    buttonWatched.style.backgroundColor = colorOff
+                }else{
+                    buttonWatched.style.backgroundColor = colorOn
+                }
+            }else{
+                if(buttonWatchLater.style.backgroundColor === colorOn){
+                    buttonWatchLater.style.backgroundColor = colorOff
+                }else{
+                    buttonWatchLater.style.backgroundColor = colorOn
+                }
+            }
             return action
         })
         .catch(console.log)

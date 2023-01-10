@@ -2,8 +2,10 @@
 require_once '../utils/header.php';
 require_once '../controllers/api.php';
 require_once '../controllers/connection.php';
+require_once '../controllers/album.php';
 $movie_id = $_GET['id'];
 $api = new API();
+$album = new Album();
 $movie = $api->getMovie($movie_id);
 $cast = $api->getCast($movie_id);
 
@@ -56,9 +58,15 @@ $cast = $api->getCast($movie_id);
         <div class="lg:flex lg:flex-row grid grid-cols-2 gap-4 my-6 lg:w-max justify-between">
           <?php 
             if (isset($_SESSION['user']['id'])) {
-                echo '<button id="watched" class="btn  bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black" onclick=watchedOrWatchLater("watched",' . $movie_id . ')>watched</button>';
-                echo '<button class="btn bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black" onclick=watchedOrWatchLater("watch_later",' . $movie_id . ')>watch_later</button>';
+                echo '<button id="watched" class="btn bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black" onclick=watchedOrWatchLater("watched",' . $movie_id . ')>watched</button>';
+                echo '<button id="watch_later"  class="btn bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black" onclick=watchedOrWatchLater("watch_later",' . $movie_id . ')>watch_later</button>';
+
+                $belongsToWatched = $album->checkIfMovieBelongsToUserWatchedOrWatchLater($_SESSION['user']['id'],$movie_id,1);
+                $belongsToWatchLater = $album->checkIfMovieBelongsToUserWatchedOrWatchLater($_SESSION['user']['id'],$movie_id,0);
+                echo '<div style="display: none" id="belongsToWatched">'.$belongsToWatched.'</div>';
+                echo '<div style="display: none" id="belongsToWatchLater">'.$belongsToWatchLater.'</div>';
                 ?>
+                
                 <div class="relative ">
                   <?php
                     echo '<button class="addTo relative z-50 bg-fond lg:text-base text-sm px-7 py-2 font-bold uppercase rounded-lg hover:bg-black" onclick=addTo(' . $movie_id . ')>add to</button>';
@@ -77,8 +85,6 @@ $cast = $api->getCast($movie_id);
               watched.innerHTML = texts[index];
               index = (index + 1) % texts.length;
             });
-
-
 
           </script>
         </div>

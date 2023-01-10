@@ -263,4 +263,30 @@ class Album
             return true;
         }
     }
+
+    public function getFirstMovieIdOfAllAlbums(){
+        $query = 'SELECT  album_id, movie_id FROM `album_content` st_outer WHERE movie_id = (SELECT MIN(movie_id) FROM `album_content` WHERE album_id = st_outer.album_id) GROUP BY movie_id, album_id ORDER BY album_id';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function checkIfMovieBelongsToUserWatchedOrWatchLater(int $user_id, int $movie_id, bool $is_watched){
+        if($is_watched){
+            $query = 'SELECT album_id FROM `album_content` INNER JOIN `album` ON `album_content`.album_id = `album`.id WHERE `album`.user_id = :user_id AND `album_content`.movie_id = :movie_id AND `album`.is_watched = 1';
+        }else{
+            $query = 'SELECT album_id FROM `album_content` INNER JOIN `album` ON `album_content`.album_id = `album`.id WHERE `album`.user_id = :user_id AND `album_content`.movie_id = :movie_id AND `album`.is_watch_later = 1';
+        }
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'user_id' => $user_id,
+            'movie_id' => $movie_id
+        ]);
+        $statement = $statement->fetch();
+        if(empty($statement)){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
