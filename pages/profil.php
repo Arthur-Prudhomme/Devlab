@@ -140,11 +140,11 @@ $api = new API();
                         if ($i < count($userAllAlbum)) {
                             $key = array_search($userAllAlbum[$i]['id'], array_column($albumGroup, 'album_id'));
                             $path = $api->getMovie($albumGroup[$key]['movie_id'])['poster_path'];
-                            $img = $api->getImg($path, 200);
+                            $img = $api->getImg($path, 500);
                         } else {
                             $key = array_search($userAllAlbum[0]['id'], array_column($albumGroup, 'album_id'));
                             $path = $api->getMovie($albumGroup[$key]['movie_id'])['poster_path'];
-                            $img = $api->getImg($path, 200);
+                            $img = $api->getImg($path, 500);
                         }
                     }else{
                         $img = 'https://redellantasonline.com/assets/img-temp/200x300/img1.png';

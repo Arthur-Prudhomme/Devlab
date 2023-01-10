@@ -2,18 +2,22 @@ let belongsToWatched = document.getElementById('belongsToWatched')
 let belongsToWatchLater = document.getElementById('belongsToWatchLater')
 let buttonWatched = document.getElementById('watched')
 let buttonWatchLater = document.getElementById('watch_later')
-let colorOff = 'red'
-let colorOn = 'green'
+let colorOff = 'rgb(103, 1, 1)'
+let colorOn = 'rgb(13, 16, 19)'
 
 if(belongsToWatched.innerHTML === "1"){
     buttonWatched.style.backgroundColor = colorOn
+    buttonWatched.style.color = colorOff
 }else{
     buttonWatched.style.backgroundColor = colorOff
+    buttonWatched.style.color = colorOn
 }
 if(belongsToWatchLater.innerHTML === "1"){
     buttonWatchLater.style.backgroundColor = colorOn
+    buttonWatchLater.style.color = colorOff
 }else{
     buttonWatchLater.style.backgroundColor = colorOff
+    buttonWatchLater.style.color = colorOn
 }
 
 const instantResearch = (path, isForUser, excludeUser, isForInvite, album_id, owner_id) => {
@@ -60,14 +64,18 @@ const watchedOrWatchLater = (action, movie_id) => {
             if(action === "watched"){
                 if(buttonWatched.style.backgroundColor === colorOn){
                     buttonWatched.style.backgroundColor = colorOff
+                    buttonWatched.style.color = colorOn
                 }else{
                     buttonWatched.style.backgroundColor = colorOn
+                    buttonWatched.style.color = colorOff
                 }
             }else{
                 if(buttonWatchLater.style.backgroundColor === colorOn){
                     buttonWatchLater.style.backgroundColor = colorOff
+                    buttonWatchLater.style.color = colorOn
                 }else{
                     buttonWatchLater.style.backgroundColor = colorOn
+                    buttonWatchLater.style.color = colorOff
                 }
             }
             return action
@@ -218,13 +226,12 @@ function addUserToSearchResults(username) {
 
 function addUserToInvitationList(username, album_id, owner_id , invited_id){
     let list = document.getElementById("user_invitation_list");
-    let a = document.createElement("a");
+    let element = document.createElement("button");
     let li = document.createElement("li");
-    a.innerText = username;
-    a.href = '#';
-    a.addEventListener("click", function() {sendInvitation(album_id, owner_id, invited_id)})
+    element.innerText = username;
+    element.addEventListener("click", function() {sendInvitation(album_id, owner_id, invited_id)})
     li.id = "user_invitation_proposal";
-    li.appendChild(a)
+    li.appendChild(element)
     list.appendChild(li);
 }
 

@@ -50,9 +50,9 @@ $trending = $api->getTrending(1);
 							$img = $api->getPoster($trending['results'][$i]['backdrop_path']);
 							array_push($slider,$img);
 					}
-					echo '<img src='.$slider[0].'>';
-					echo '<img src='.$slider[1].'>';
-					echo '<img src='.$slider[2].'>';
+					// echo '<img src='.$slider[0].'>';
+					// echo '<img src='.$slider[1].'>';
+					// echo '<img src='.$slider[2].'>';
 
         ?>
 
@@ -61,13 +61,9 @@ $trending = $api->getTrending(1);
                 Alpine.data('slider', () => ({
                     currentIndex: 1,
                     images: [
-											<?php 
-												echo '<img src='.$slider[0].'>';
-												echo '<img src='.$slider[1].'>';
-												echo '<img src='.$slider[2].'>';
-											?>
-                        'https://static1.colliderimages.com/wordpress/wp-content/uploads/2021/09/hobbit-lotr-movies-in-order.jpg',
-                        'http://img.over-blog-kiwi.com/0/83/97/57/ob_3a7b42_the-hobbit-2.jpg'
+											'https://image.tmdb.org/t/p/original/faXT8V80JRhnArTAeYXz0Eutpv9.jpg',
+											'https://image.tmdb.org/t/p/original/b08BDQPq42AoLMfhi7DtTOoYqVu.jpg',
+											'https://image.tmdb.org/t/p/original/mSyQoValhBsJdq3JNGXJww2Q5yL.jpg'
                     ],
                     back() {
                         if (this.currentIndex > 1) {

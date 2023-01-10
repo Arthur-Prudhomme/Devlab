@@ -58,8 +58,8 @@ $cast = $api->getCast($movie_id);
         <div class="lg:flex lg:flex-row grid grid-cols-2 gap-4 my-6 lg:w-max justify-between">
           <?php 
             if (isset($_SESSION['user']['id'])) {
-                echo '<button id="watched" class="btn bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black" onclick=watchedOrWatchLater("watched",' . $movie_id . ')>watched</button>';
-                echo '<button id="watch_later"  class="btn bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black" onclick=watchedOrWatchLater("watch_later",' . $movie_id . ')>watch_later</button>';
+                echo '<button id="watched" class="btn  lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg " onclick=watchedOrWatchLater("watched",' . $movie_id . ')>watched</button>';
+                echo '<button id="watch_later"  class="btn  lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg " onclick=watchedOrWatchLater("watch_later",' . $movie_id . ')>watch_later</button>';
 
                 $belongsToWatched = $album->checkIfMovieBelongsToUserWatchedOrWatchLater($_SESSION['user']['id'],$movie_id,1);
                 $belongsToWatchLater = $album->checkIfMovieBelongsToUserWatchedOrWatchLater($_SESSION['user']['id'],$movie_id,0);
@@ -77,14 +77,14 @@ $cast = $api->getCast($movie_id);
             }
           ?>
           <script>
-            const watched = document.getElementById('watched');
-            const texts = ['Delete from watched', 'Watched'];
-            let index = 0;
+            // const watched = document.getElementById('watched');
+            // const texts = ['Delete from watched', 'Watched'];
+            // let index = 0;
 
-            watched.addEventListener('click', () => {
-              watched.innerHTML = texts[index];
-              index = (index + 1) % texts.length;
-            });
+            // watched.addEventListener('click', () => {
+            //   watched.innerHTML = texts[index];
+            //   index = (index + 1) % texts.length;
+            // });
 
           </script>
         </div>
