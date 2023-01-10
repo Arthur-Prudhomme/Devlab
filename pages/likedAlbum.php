@@ -46,20 +46,20 @@ $api = new API();
               } else {
                   $album_cover = 'https://redellantasonline.com/assets/img-temp/200x300/img1.png';
               }
-              echo '<div class="flex flex-col items-center">';
-                echo '<div class="flex flex-col items-center text-center relative w-full" id="l' . $albums['album_id'] . '">';
+              echo '<div class="flex flex-col items-center  mx-auto" id="l' . $albums['album_id'] . '">';
+                echo '<div class="flex flex-col items-center text-center relative w-full">';
                 echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="likedAlbumContent.php?id=' . $albums['album_id'] . '"></a>';
                 $album_infos = $album->getAlbumInfosById($albums['album_id']);
                 $user_infos = $connection->getUserById($album_infos[1]);
                 echo '<p class="absolute text-white font-bold text-base z-10 w-11/12 bottom-5">'.$album_infos[2] . ' from ' . $user_infos[1] . '</p>';
 
                 echo '<a class="mt-4 lg:w-[31vh] lg:h-[47vh] ouaip" href="likedAlbumContent.php?id=' . $albums['album_id'] . '"><img class="rounded-lg w-[31vh] h-[47vh]" src=' . $album_cover . '></a><br>';
-                echo '<div class=" absolute gradient"></div>';
-              echo '</div>';
-
+                    echo '<div class="lg:w-[31vh] lg:h-[50vh]  absolute gradient"></div>';
+                echo '</div>';
               if(!isset($_GET['username'])) {
                   echo '<button class="btn bg-fond lg:text-base text-sm px-7 py-2 text-rouge font-bold uppercase rounded-lg hover:bg-black mt-4"  onclick=likeAlbum(' . $albums['album_id'] . ',' . $_SESSION['user']['id'] . ')>Like</button>';
               }
+
               echo '</div>';
           }
       }

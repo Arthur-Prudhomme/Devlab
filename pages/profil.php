@@ -16,24 +16,28 @@ $api = new API();
               ?> 
               <div class="w-full lg:mx-auto flex lg:flex-row flex-col items-center justify-between">
                 <div class="lg:w-1/2 w-full flex flex-row relative items-center pb-6">
-              <?php
-                echo '<h1 class="uppercase font-bold mt-8 lg:mt-4 text-2xl lg:text-3xl lg:mb-8 mb-2">Hello ' . $_SESSION['user']['username'] . '</h1>';
-                $invitations = $album->getAllPendingInvitationFromUserId($_SESSION['user']['id']);
-                if(!empty($invitations)){
-                    foreach ($invitations as $invitation){
-                        echo '<div id="i' . $invitation['id'] . '">';
-                        echo $connection->getUserById($invitation['owner'])[1]
-                            . ' as invited you on ' .
-                            $album->getAlbumInfosById($invitation['album_id'])[2]
-                            . ' ' .
-                            '<button class=" text-white z-40 appear px-4 py-1 rounded border-2 border-white cursor-pointer"  onclick=answerInvitation('.$invitation['id'].',1)>Accept</button>'
-                            . ' ' .
-                            '<button class=" text-white z-40 appear px-4 py-1 rounded border-2 border-rouge bg-rouge cursor-pointer" onclick=answerInvitation('.$invitation['id'].',0)>Deny</button>';
-                        echo '</div>';
-                    }
-                }
-                ?> 
-          </div>
+                  <?php
+                    echo '<h1 class="uppercase font-bold mt-8 lg:mt-4 text-2xl lg:text-3xl lg:mb-8 mb-2">Hello ' . $_SESSION['user']['username'] . '</h1>';
+                    $invitations = $album->getAllPendingInvitationFromUserId($_SESSION['user']['id']);
+                    if(!empty($invitations)){
+                        ?>
+<!--                        <div class="absolute flex flex-col justify-between pt-8 mt-8">-->
+                            <?php
+                            foreach ($invitations as $invitation){
+                                echo '<div class="absolute flex flex-row w-[60vh] mt-16 justify-between" id="i' . $invitation['id'] . '">';
+                                echo $connection->getUserById($invitation['owner'])[1]
+                                    . ' as invited you on ' .
+                                    $album->getAlbumInfosById($invitation['album_id'])[2]
+                                    . ' ' .
+                                    '<button class=" text-white z-40 appear px-4 py-1 rounded border-2 border-white cursor-pointer"  onclick=answerInvitation('.$invitation['id'].',1)>Accept</button>'
+                                    . ' ' .
+                                    '<button class=" text-white z-40 appear px-4 py-1 rounded border-2 border-rouge bg-rouge cursor-pointer" onclick=answerInvitation('.$invitation['id'].',0)>Deny</button>';
+                                echo '</div>';
+                                }
+                            }
+                            ?>
+<!--                        </div>-->
+                </div>
         <div class="lg:w-1/2 w-full flex flex-row relative">
             <?php
 

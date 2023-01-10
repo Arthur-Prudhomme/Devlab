@@ -86,16 +86,16 @@ $trending = $api->getTrending(1);
 
       <h2 class="titre uppercase text-rouge mt-8 font-bold text-2xl">Trending</h2>
 
-      <div class="grid lg:grid-cols-5 gap-4 grid-cols-2 mt-8">
+      <div class="grid lg:grid-cols-5 gap-4 grid-cols-2 mx-auto w-full mt-8">
 
         <?php
           foreach($trending['results'] as $item) {
-            echo '<div class="flex flex-col items-center ">';
+            echo '<div class="flex flex-col items-center mx-auto">';
               echo '<div class="flex flex-col items-center text-center relative w-full ">';
                 echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="movie.php?id=' . $item['id'] . '"></a>';
                 echo '<p class="absolute text-white font-bold text-base z-10 w-11/12 bottom-5">'.$item["title"].'</p>';
                 echo '<a class="mt-4 w-[31vh] h-[47vh] ouaip" href="movie.php?id='.$item['id'].'"><img class="rounded-lg lg:w-[31vh] lg:h-[47vh] " src='.$api->getImg($item['poster_path'], 500).'></a>';
-                echo '<div class="w-[31vh] h-[47vh] absolute gradient"></div>';
+                echo '<div class=" w-[31vh] h-[47vh] absolute gradient"></div>';
               echo '</div>';
           echo '</div>';
           }

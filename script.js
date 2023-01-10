@@ -288,8 +288,8 @@ let belongsToWatched = document.getElementById('belongsToWatched')
 let belongsToWatchLater = document.getElementById('belongsToWatchLater')
 let buttonWatched = document.getElementById('watched')
 let buttonWatchLater = document.getElementById('watch_later')
-let colorOff = 'rgb(103, 1, 1)'
-let colorOn = 'rgb(13, 16, 19)'
+let colorOff = 'rgb(13, 16, 19)'
+let colorOn = 'rgb(103, 1, 1)'
 
 if(belongsToWatched.innerHTML === "1"){
     buttonWatched.style.backgroundColor = colorOn

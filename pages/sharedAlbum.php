@@ -28,7 +28,7 @@ $allSharedAlbums = $album->getAllSharedAlbumsFromUser($_SESSION['user']['id']);
             echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="sharedAlbumContent.php?id=' . $albums['album_id'] . '"></a>';
             echo '<p class="absolute uppercase text-white font-bold text-base z-10 w-11/12 bottom-5">'.$albums['name'] . ' from ' . $connection->getUserById($albums['user_id'])[1] . '</p>';
             echo '<a class="mt-4 lg:w-[31vh] lg:h-[47vh]" href="albumContent.php?id='.$albums['id'].'"><img class="rounded-lg lg:w-[31vh] lg:h-[47vh]" src=' . $album_cover . '></a>';
-            echo '<div class="w-[31vh] h-[47vh] absolute gradient"></div>';
+            echo '<div class="lg:w-[31vh] lg:h-[50vh]  absolute gradient"></div>';
           echo '</div>';
           $likes = $album->getLikesOnAlbum($albums['album_id']);
           if($likes != 0){

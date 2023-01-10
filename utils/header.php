@@ -46,7 +46,7 @@ require_once '../controllers/connection.php';
         ?>
           <form class="lg:flex flex-row relative" method="post">
             <div class="relative">
-              <input class="bg-transparent text-gris border border-gris p-1 px-2 rounded" placeholder="Enter Keywords..." id="search_bar" name="input" oninput=instantResearch('../sources/dynamicSearch.php',0,0) />
+              <input class="bg-transparent text-gris border border-gris p-1 px-2 rounded w-11/12" placeholder="Enter Keywords..." id="search_bar" name="input" oninput=instantResearch('../sources/dynamicSearch.php',0,0) />
               <ul class="bg-fond absolute flex flex-col pt-4 p-3 rounded top-0 -z-10" id="search_results"></ul>
             </div>
           </form>
@@ -58,7 +58,7 @@ require_once '../controllers/connection.php';
               <?php
                 echo '<button class=" text-white z-40 appear px-4 py-1 rounded bg-rouge cursor-pointer" onclick=accountNav()>Account</button>';
               ?>
-              <ul class="bg-fond absolute flex flex-col p-3 rounded w-full -z-10" id="account_nav"></ul>
+              <ul class="bg-fond absolute flex flex-col p-3 rounded w-full z-30" id="account_nav"></ul>
             </div>
             <?php
           } else {

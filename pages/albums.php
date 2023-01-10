@@ -43,7 +43,7 @@ $api = new API();
               echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="albumContent.php?id=' . $albums['id'] . '"></a>';
               echo '<p class="absolute text-white font-bold text-base z-10 w-11/12 bottom-5">'.$albums["name"].'</p>';
               echo '<a class="mt-4 lg:w-[31vh] lg:h-[47vh] ouaip" href="albumContent.php?id=' . $albums['id'] . '"><img class="rounded-lg w-[31vh] h-[47vh]" src='.$album_cover.'></a>';
-              echo '<div class=" absolute gradient"></div>';
+              echo '<div class="lg:w-[31vh] lg:h-[50vh]  absolute gradient"></div>';
             echo '</div>';
             
             if(isset($_GET['username'])){

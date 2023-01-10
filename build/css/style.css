@@ -684,6 +684,10 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mt-16 {
+  margin-top: 4rem;
+}
+
 .-ml-6 {
   margin-left: -1.5rem;
 }
@@ -824,6 +828,10 @@ video {
 
 .w-\[25vh\] {
   width: 25vh;
+}
+
+.w-\[60vh\] {
+  width: 60vh;
 }
 
 .w-10\/12 {
@@ -1465,6 +1473,10 @@ input:focus {
 
   .lg\:h-\[47vh\] {
     height: 47vh;
+  }
+
+  .lg\:h-\[50vh\] {
+    height: 50vh;
   }
 
   .lg\:h-20 {

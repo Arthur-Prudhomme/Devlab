@@ -54,7 +54,7 @@ if(!isset($_SESSION['exploreUsername'])) {
                 echo '<a class="absolute w-[31vh] h-[47vh] z-10 bottom-0" href="movie.php?id=' . $movies['movie_id'] . '"></a>';
                 echo '<p class="absolute text-white font-bold text-base z-10 w-11/12 bottom-5">'.$movie['title'].'</p>';
                 echo '<a class="mt-4 lg:w-[31vh] lg:h-[47vh] ouaip" href="movie.php?id='.$movies['movie_id'].'"><img class="rounded-lg w-[31vh] h-[47vh]" src='.$api->getImg($movie['poster_path'], 500).'></a>';
-                echo '<div class=" absolute gradient"></div>';
+                echo '<div class="lg:w-[31vh] lg:h-[50vh] absolute gradient"></div>';
               echo '</div>';
 
               if(!isset($_SESSION['exploreUsername'])) {
