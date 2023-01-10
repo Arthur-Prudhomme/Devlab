@@ -50,9 +50,9 @@ $trending = $api->getTrending(1);
 							$img = $api->getPoster($trending['results'][$i]['backdrop_path']);
 							array_push($slider,$img);
 					}
-					// echo '<img src='.$slider[0].'>';
-					// echo '<img src='.$slider[1].'>';
-					// echo '<img src='.$slider[2].'>';
+					echo '<div style="display: none" id="slider0">'.$slider[0].'</div>';
+					echo '<div style="display: none" id="slider1">'.$slider[1].'</div>';
+					echo '<div style="display: none" id="slider2">'.$slider[2].'</div>';
 
         ?>
 
@@ -61,10 +61,10 @@ $trending = $api->getTrending(1);
                 Alpine.data('slider', () => ({
                     currentIndex: 1,
                     images: [
-											'https://image.tmdb.org/t/p/original/faXT8V80JRhnArTAeYXz0Eutpv9.jpg',
-											'https://image.tmdb.org/t/p/original/b08BDQPq42AoLMfhi7DtTOoYqVu.jpg',
-											'https://image.tmdb.org/t/p/original/mSyQoValhBsJdq3JNGXJww2Q5yL.jpg'
-                    ],
+											document.getElementById('slider0').innerHTML,
+											document.getElementById('slider1').innerHTML,
+											document.getElementById('slider2').innerHTML
+										],
                     back() {
                         if (this.currentIndex > 1) {
                             this.currentIndex = this.currentIndex - 1;

@@ -1,25 +1,3 @@
-let belongsToWatched = document.getElementById('belongsToWatched')
-let belongsToWatchLater = document.getElementById('belongsToWatchLater')
-let buttonWatched = document.getElementById('watched')
-let buttonWatchLater = document.getElementById('watch_later')
-let colorOff = 'rgb(103, 1, 1)'
-let colorOn = 'rgb(13, 16, 19)'
-
-if(belongsToWatched.innerHTML === "1"){
-    buttonWatched.style.backgroundColor = colorOn
-    buttonWatched.style.color = colorOff
-}else{
-    buttonWatched.style.backgroundColor = colorOff
-    buttonWatched.style.color = colorOn
-}
-if(belongsToWatchLater.innerHTML === "1"){
-    buttonWatchLater.style.backgroundColor = colorOn
-    buttonWatchLater.style.color = colorOff
-}else{
-    buttonWatchLater.style.backgroundColor = colorOff
-    buttonWatchLater.style.color = colorOn
-}
-
 const instantResearch = (path, isForUser, excludeUser, isForInvite, album_id, owner_id) => {
     let query
     if(isForUser === 0) {
@@ -304,4 +282,26 @@ const removeFromAlbum = (div_id, album_id) => {
             divToDestroy.remove()
         })
         .catch(console.log)
+}
+
+let belongsToWatched = document.getElementById('belongsToWatched')
+let belongsToWatchLater = document.getElementById('belongsToWatchLater')
+let buttonWatched = document.getElementById('watched')
+let buttonWatchLater = document.getElementById('watch_later')
+let colorOff = 'rgb(103, 1, 1)'
+let colorOn = 'rgb(13, 16, 19)'
+
+if(belongsToWatched.innerHTML === "1"){
+    buttonWatched.style.backgroundColor = colorOn
+    buttonWatched.style.color = colorOff
+}else{
+    buttonWatched.style.backgroundColor = colorOff
+    buttonWatched.style.color = colorOn
+}
+if(belongsToWatchLater.innerHTML === "1"){
+    buttonWatchLater.style.backgroundColor = colorOn
+    buttonWatchLater.style.color = colorOff
+}else{
+    buttonWatchLater.style.backgroundColor = colorOff
+    buttonWatchLater.style.color = colorOn
 }
