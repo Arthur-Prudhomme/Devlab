@@ -19,7 +19,7 @@ $allSharedAlbums = $album->getAllSharedAlbumsFromUser($_SESSION['user']['id']);
         $movie_id = $album->getFirstMovieInAlbum($albums['album_id']);
         if (isset($movie_id)) {
           $movie = $api->getMovie($movie_id);
-          $album_cover = $api->getImg($movie['poster_path'], 200);
+          $album_cover = $api->getImg($movie['poster_path'], 500);
         } else {
           $album_cover = 'https://redellantasonline.com/assets/img-temp/200x300/img1.png';
         }

@@ -101,17 +101,13 @@ $cast = $api->getCast($movie_id);
                 
                   <div class=" mr-8">
                     <?php
-                    echo '<img src='. $api->getImg($item['profile_path'], 200).'><br />';
+                    echo '<img class="w-[25vh]" src='. $api->getImg($item['profile_path'], 500).'><br />';
                     ?>
                     <p>
                       <?php echo $item['name'] . ' as '. '<br />'; ?>
                     </p>
                     <p class=" text-rouge font-bold">
                       <?php echo $item['character'] . ''; ?>
-                      <!-- <script>
-                        const name = "<?php echo $item['character'] . ''; ?>";
-                        document.write(name);
-                      </script> -->
                     </p>
                   </div>
                 <?php
