@@ -7,13 +7,17 @@ let colorOn = 'green'
 
 if(belongsToWatched.innerHTML === "1"){
     buttonWatched.style.backgroundColor = colorOn
+    buttonWatched.style.color = colorOff
 }else{
     buttonWatched.style.backgroundColor = colorOff
+    buttonWatched.style.color = colorOn
 }
 if(belongsToWatchLater.innerHTML === "1"){
     buttonWatchLater.style.backgroundColor = colorOn
+    buttonWatchLater.style.color = colorOff
 }else{
     buttonWatchLater.style.backgroundColor = colorOff
+    buttonWatchLater.style.color = colorOn
 }
 
 const instantResearch = (path, isForUser, excludeUser, isForInvite, album_id, owner_id) => {
@@ -60,14 +64,18 @@ const watchedOrWatchLater = (action, movie_id) => {
             if(action === "watched"){
                 if(buttonWatched.style.backgroundColor === colorOn){
                     buttonWatched.style.backgroundColor = colorOff
+                    buttonWatched.style.color = colorOn
                 }else{
                     buttonWatched.style.backgroundColor = colorOn
+                    buttonWatched.style.color = colorOff
                 }
             }else{
                 if(buttonWatchLater.style.backgroundColor === colorOn){
                     buttonWatchLater.style.backgroundColor = colorOff
+                    buttonWatchLater.style.color = colorOn
                 }else{
                     buttonWatchLater.style.backgroundColor = colorOn
+                    buttonWatchLater.style.color = colorOff
                 }
             }
             return action
